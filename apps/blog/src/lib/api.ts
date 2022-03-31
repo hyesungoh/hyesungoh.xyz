@@ -70,7 +70,11 @@ export function getAllPostsByCategory(category: string, field: string[] = []) {
   const posts = slugs
     .filter(slug => isVaildFile(slug))
     .map(slug => getPostBySlugAndCategory(slug, category, field))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    .sort((post1, post2) => {
+      const post1Date = new Date(post1.date);
+      const post2Date = new Date(post2.date);
+      return post1Date.getTime() > post2Date.getTime() ? -1 : 1;
+    });
   return posts;
 }
 

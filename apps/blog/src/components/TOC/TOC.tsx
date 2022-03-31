@@ -55,7 +55,6 @@ function useScrollSpy({ ids, options }: HookProps) {
   const observer = useRef<IntersectionObserver>();
 
   useEffect(() => {
-    console.log(ids);
     const elements = ids.map(id => document.getElementById(`${id}`));
 
     if (observer.current) {
