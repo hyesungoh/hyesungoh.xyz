@@ -17,7 +17,7 @@ function isVaildFile(value: string) {
 function getLocalDate(str: string) {
   const regex = /"/gi;
   const date = new Date(str.replace(regex, ''));
-  return date.toLocaleDateString();
+  return date.toISOString().slice(0, 10);
 }
 
 export function getAllCategories() {
