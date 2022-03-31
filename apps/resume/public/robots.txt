@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://resume.hyesungoh.xyz/sitemap.xml

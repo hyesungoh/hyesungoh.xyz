@@ -1,0 +1,59 @@
+{
+  "title": "기술",
+  "list": [
+    {
+      "name": "의사소통",
+      "descriptions": [
+        "많고 편한 의사소통이 갈등을 방지할 수 있다고 믿습니다.",
+        "내가 모르는 것은 솔직하게 모른다고 말할 수 있는 용기를 위해 노력합니다.",
+        "백문이 불여일견을 믿어, 다양한 도구와 방법으로 의사소통하는 것을 좋아합니다."
+      ]
+    },
+    {
+      "name": "HTML/CSS",
+      "descriptions": [
+        "의미있는 마크업을 작성하기 위해 노력합니다.",
+        "CSS 전처리기를 사용할 수 있습니다.",
+        "웹 접근성과 표준을 지키기 위해 Lighthouse, W3C Markup Validation Service를 사용한 경험이 있습니다.",
+        "검색 엔진 최적화 경험과 Robots.txt를 통해 네이버, 구글에서 검색되도록 지원해본 경험이 있습니다."
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "descriptions": [
+        "ES6 이후의 문법에 익숙합니다.",
+        "Vanilla JavaScript를 사용해 개인 프로젝트를 진행한 경험이 있습니다."
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "descriptions": ["JavaScript보다 TypeScript 개발환경에 익숙합니다.", "Type Safe하게 개발하는 것을 지향합니다."]
+    },
+    {
+      "name": "비동기",
+      "descriptions": [
+        "Async Await 문법에 익숙합니다.",
+        "Data caching, revalidate를 이유로 Data fetching 라이브러리 React-query, SWR을 사용한 경험이 있습니다."
+      ]
+    },
+    {
+      "name": "React",
+      "descriptions": [
+        "함수 컴포넌트와 Hooks를 사용하는 것에 익숙합니다.",
+        "Suspense와 Error Boundary를 사용해본 경험이 있습니다.",
+        "SSR, SSG를 위해 Next.js를 사용해본 경험이 있습니다.",
+        "Cypress를 이용해 간단한 E2E 테스트코드를 작성한 경험이 있습니다.",
+        "Recoil을 이용해 전역 상태를 관리한 경험이 있습니다.",
+        "Redux를 이용한 경험은 부족합니다."
+      ]
+    },
+    {
+      "name": "DevOps",
+      "descriptions": [
+        "자동화를 통해 생산성을 높히는 것을 좋아합니다.",
+        "Github actions를 이용한 테스트와 배포 자동화 경험이 있습니다.",
+        "간단한 AWS IAM 설정, S3, CF, EC2 사용 경험이 있습니다."
+      ]
+    }
+  ]
+}

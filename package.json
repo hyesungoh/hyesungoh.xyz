@@ -1,0 +1,29 @@
+{
+  "name": "comet-land",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.17",
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "eslint": "^7.32.0",
+    "prettier": "^2.5.1",
+    "turbo": "^1.1.10",
+    "typescript": "^4.5.3"
+  }
+}
