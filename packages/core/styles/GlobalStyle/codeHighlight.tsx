@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { config } from '@nextui-org/react';
 
 export const codeHighlight = css`
   code[class*='language-'],
@@ -20,12 +19,6 @@ export const codeHighlight = css`
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-
-    /* mobile font size error handling */
-    font-size: 1rem;
-    @media ${config.media.xsMax} {
-      font-size: 0.875rem !important;
-    }
   }
 
   /* Code blocks */

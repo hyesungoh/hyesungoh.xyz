@@ -12,6 +12,8 @@ const globalStyle = css`
   html {
     font-size: 16px;
     word-break: keep-all;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -30,7 +32,7 @@ const globalStyle = css`
 
   ${codeHighlight};
 
-  @media ${config.media.xsMax} {
+  @media screen and (max-width: 650px) {
     html {
       font-size: 14px;
     }
