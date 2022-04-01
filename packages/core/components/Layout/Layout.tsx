@@ -10,6 +10,7 @@ const Div = styled.div`
   max-width: 660px;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
   margin: 0 auto;
   padding: 2rem 1.3125rem 100px 1.3125rem;
 `;

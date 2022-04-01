@@ -1,6 +1,6 @@
 ---
 title: '[WAVY] 0. Intro'
-date: 2022-01-08 00:01:00
+date: 2022-01-07 00:01:00
 category: 'Project'
 draft: false
 ---
@@ -11,19 +11,19 @@ draft: false
 
 Wavy의 기획부터 어떻게 개발하였는 지, 어떤 이슈를 겪었는 지 회고와 공유를 목적으로 게시해봅니다.
 
-## 1. [무슨 서비스를 만들까?](https://www.hyesungoh.xyz/Project/wavy1-what/)
+## 1. [무슨 서비스를 만들까?](https://www.hyesungoh.xyz/wavy1-what/)
 
 서비스를 기획하게 된 배경과 함께 초기 접근을 소개합니다.
 
-## 2. [우리는 어떻게 만들까?](https://www.hyesungoh.xyz/Project/wavy2-howWe/)
+## 2. [우리는 어떻게 만들까?](https://www.hyesungoh.xyz/wavy2-howWe/)
 
 팀원들과 어떻게 의사소통하며 프로젝트를 진행했는 지 소개합니다.
 
-## 3. [나는 어떻게 만들까?](https://www.hyesungoh.xyz/Project/wavy3-howI/)
+## 3. [나는 어떻게 만들까?](https://www.hyesungoh.xyz/wavy3-howI/)
 
 웹 프론트엔드를 전담한 제가 어떻게 만들지 고민한 것과 기억에 남는 구현을 소개합니다.
 
-## 4. [겪었던 이슈들](https://www.hyesungoh.xyz/Project/wavy4-issue/)
+## 4. [겪었던 이슈들](https://www.hyesungoh.xyz/wavy4-issue/)
 
 프로젝트를 진행하며 겪었던 이슈들을 소개하며 회고를 마칩니다.
 

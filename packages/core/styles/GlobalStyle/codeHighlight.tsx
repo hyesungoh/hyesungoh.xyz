@@ -24,7 +24,7 @@ export const codeHighlight = css`
     /* mobile font size error handling */
     font-size: 1rem;
     @media ${config.media.xsMax} {
-      font-size: 0.875rem;
+      font-size: 0.875rem !important;
     }
   }
 
