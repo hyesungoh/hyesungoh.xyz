@@ -165,7 +165,7 @@
           "startDate": "2021.03",
           "endDate": null,
           "which": ["지식을 공유하는 것에 즐거움을 느껴 진행하고 있습니다."],
-          "techStack": [""]
+          "techStack": []
         }
       ]
     },
@@ -226,7 +226,7 @@
           "startDate": "2018.03",
           "endDate": "2020.12",
           "which": ["지식을 공유하는 것에 즐거움을 느껴 진행하였습니다."],
-          "techStack": [""]
+          "techStack": null
         }
       ]
     }
