@@ -22,7 +22,10 @@ export const codeHighlight = css`
     hyphens: none;
 
     /* mobile font size error handling */
-    font-size: 1rem;
+    font-size: 16px;
+    @media ${config.media.xsMax} {
+      font-size: 14px;
+    }
   }
 
   /* Code blocks */
