@@ -24,7 +24,7 @@ export default function BlogApp({ Component, pageProps }: AppProps) {
     >
       <NextUIProvider>
         <KBarProvider actions={kbarActions}>
-          <HandleActionWithRoute />
+          <HandleKbarActionWithRoute />
           <KbarComponent />
           <Component {...pageProps} />
         </KBarProvider>
@@ -33,7 +33,7 @@ export default function BlogApp({ Component, pageProps }: AppProps) {
   );
 }
 
-function HandleActionWithRoute() {
+function HandleKbarActionWithRoute() {
   const router = useRouter();
 
   const homeAction = {

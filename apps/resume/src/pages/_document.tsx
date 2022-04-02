@@ -25,15 +25,13 @@ export default class ResumeDocument extends Document {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta name="description" content={data.description} />
           <link rel="canonical" href={resumeUrl} />
-          <meta name="keywords" content="resume,development,developer" />
+          <meta name="keywords" content="resume,development,developer,hyesungoh,이력서,개발,개발자,오혜성" />
           <meta property="og:type" content="website" />
           <meta property="og:locale" content="ko_KR" />
           <meta property="og:title" content={TITLE} />
           <meta property="og:url" content={resumeUrl} />
           <meta property="og:description" content={data.description} />
           <meta property="og:image" content={authorImage.default.src} />
-          {/* for korean keywords */}
-          {/* <meta name="keywords" content="resume,development,developer,이력서,개발,개발자" /> */}
           <meta name="twitter:creator" content={authorName} />
           <meta name="twitter:title" content={TITLE} />
           <meta name="twitter:description" content={data.description} />
