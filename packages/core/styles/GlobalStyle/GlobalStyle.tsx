@@ -32,7 +32,7 @@ const globalStyle = css`
 
   ${codeHighlight};
 
-  @media screen and (max-width: 650px) {
+  @media ${config.media.xsMax} {
     html {
       font-size: 14px;
     }
