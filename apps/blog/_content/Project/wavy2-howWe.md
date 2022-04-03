@@ -1,5 +1,6 @@
 ---
 title: '[WAVY] 2. 우리는 어떻게 만들까?'
+subtitle: '서비스를 어떻게 협업하며 만들지에 대한 경험을 공유합니다.'
 date: 2022-01-09 00:02:00
 category: 'Project'
 draft: false

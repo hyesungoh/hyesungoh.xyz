@@ -1,5 +1,6 @@
 ---
 title: '[WAVY] 4. 겪었던 이슈들'
+subtitle: '서비스를 기획, 개발하며 겪었던 이슈들을 공유합니다.'
 date: 2022-01-12 00:02:00
 category: 'Project'
 draft: false

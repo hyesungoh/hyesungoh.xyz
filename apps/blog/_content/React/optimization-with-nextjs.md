@@ -1,5 +1,6 @@
 ---
 title: 'bundle-analyzer, gzip으로 Next.js 최적화하기'
+subtitle: '현실 다이어트는 매번 실패하니, 서비스 다이어트라도 해보자'
 date: 2022-02-25 20:24:00
 category: 'React'
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: 'TypeScript, 항상 같은 길이인 두 배열 Type 정의하기'
+subtitle: 'Custom hook에서 항상 같은 길이인 두 배열을 받았어야하는 상황을 공유합니다.'
 date: 2022-03-09 20:24:00
 category: 'JavaScript'
 draft: false

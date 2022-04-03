@@ -1,5 +1,6 @@
 ---
 title: 'i18next를 사용해 React 다국어 지원하게 만들기 w/ TypeScript'
+subtitle: 'Type Safe하게 다국어 지원 서비스를 개발한 경험을 공유합니다.'
 date: 2022-01-21 20:24:00
 category: 'React'
 draft: false

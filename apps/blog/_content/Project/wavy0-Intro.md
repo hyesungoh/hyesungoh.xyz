@@ -1,5 +1,6 @@
 ---
 title: '[WAVY] 0. Intro'
+subtitle: 'Software Maestro 과정에서 개발한 Wavy의 개발기입니다.'
 date: 2022-01-07 00:01:00
 category: 'Project'
 draft: false

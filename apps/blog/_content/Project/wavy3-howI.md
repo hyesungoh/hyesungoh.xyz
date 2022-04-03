@@ -1,5 +1,6 @@
 ---
 title: '[WAVY] 3. 나는 어떻게 만들까?'
+subtitle: '프론트엔드 개발자로써, 어떻게 개발할지에 대한 고민과 과정을 공유합니다.'
 date: 2022-01-10 00:02:00
 category: 'Project'
 draft: false

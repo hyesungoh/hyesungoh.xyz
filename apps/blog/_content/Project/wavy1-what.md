@@ -1,5 +1,6 @@
 ---
 title: '[WAVY] 1. 무슨 서비스를 만들까?'
+subtitle: '어떤 서비스를 만들지, 기획에 대한 과정을 공유합니다.'
 date: 2022-01-08 00:02:00
 category: 'Project'
 draft: false
