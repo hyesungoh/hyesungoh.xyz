@@ -13,7 +13,7 @@ function restoreScrollPos(url) {
   }
 }
 
-export default function useScrollRestoration() {
+function useScrollRestoration() {
   const router = useRouter();
 
   useEffect(() => {
@@ -55,3 +55,5 @@ export default function useScrollRestoration() {
     }
   }, [router]);
 }
+
+export default useScrollRestoration;
