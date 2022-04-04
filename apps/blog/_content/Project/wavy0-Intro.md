@@ -30,7 +30,7 @@ Wavy의 기획부터 어떻게 개발하였는 지, 어떤 이슈를 겪었는 �
 
 ## 프로젝트 결과물
 
-- <a href="https://github.com/EO2-WAVY" target="_blank">팀 깃허브 organization</a>
-- <a href="https://github.com/EO2-WAVY/WavyFrontend" target="_blank">Web Client 깃허브</a>
-- <a href="https://www.youtube.com/watch?v=MYtoSIxjS7Y" target="_blank">시연 영상</a>
-- <a href="https://drive.google.com/file/d/1AAZCyyrcsokhkVQlJFc6zzLnKSMQpR3D/view?usp=sharing" target="_blank">홍보 동영상</a>
+- [팀 깃허브 organization](https://github.com/EO2-WAVY)
+- [Web Client 깃허브](https://github.com/EO2-WAVY/WavyFrontend)
+- [시연 영상](https://www.youtube.com/watch?v=MYtoSIxjS7Y)
+- [홍보 동영상](https://drive.google.com/file/d/1AAZCyyrcsokhkVQlJFc6zzLnKSMQpR3D/view?usp=sharing)

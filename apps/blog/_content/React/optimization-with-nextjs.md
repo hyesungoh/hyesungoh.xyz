@@ -8,7 +8,7 @@ draft: false
 
 Next.js를 사용해 개발한 교내 동아리 랜딩 페이지를 최적화한 경험을 공유합니다.
 
-> 해당 랜딩 페이지는 [다음 링크](www.dogvelopers.com)를 통해 확인하실 수 있습니다!
+> 해당 랜딩 페이지는 [다음 링크](https://www.dogvelopers.com)를 통해 확인하실 수 있습니다!
 
 ## 들어가기 앞서
 
