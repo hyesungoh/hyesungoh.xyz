@@ -21,7 +21,6 @@
             "Next.js를 사용해 SSG를 구현하였습니다.",
             "Unified, Rehype를 이용해 Markdown을 컴파일하였습니다.",
             "robots.txt, sitemap.xml과 같은 정적 파일 생성을 자동화하였습니다.",
-            "NextUI를 사용해 Next.js 디자인 컨셉을 따랐습니다.",
             "블로그와 이력서 간 동일한 설정, 컴포넌트를 재사용하기 위해 Turborepo를 사용해 모노레포를 구성하였습니다."
           ],
           "techStack": ["Next.js", "NextUI", "Turborepo", "KBar", "GA", "Hotjar", "Vercel"]

@@ -3,6 +3,18 @@
   "list": [
     {
       "title": {
+        "text": "Faker",
+        "githubLink": "https://github.com/faker-js/faker",
+        "otherLink": null
+      },
+      "position": "Contributor",
+      "startDate": "2022.02",
+      "endDate": "2022.02",
+      "description": "가짜 데이터를 생성해주는 라이브러리에 한국어 정보를 추가, 잘못된 정보를 수정하여 기여하였습니다.",
+      "which": []
+    },
+    {
+      "title": {
         "text": "React-router",
         "githubLink": "https://github.com/remix-run/react-router",
         "otherLink": null
