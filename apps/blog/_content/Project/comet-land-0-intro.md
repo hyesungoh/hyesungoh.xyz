@@ -15,4 +15,12 @@ Comet-land를 왜 만들게 되었는지부터 어떤 도구를 사용하게 되
 
 왜 개발하게 되었으며 어떻게 개발할지에 대한 고민과 결과를 공유합니다.
 
-## 2. [겪었던 이슈들과 앞으로]()
+## 2. [겪었던 이슈들과 앞으로](https://www.hyesungoh.xyz/comet-land-2-issue)
+
+프로젝트를 개발하며 겪었던 이슈와 앞으로의 방향 공유하고 회고를 마칩니다.
+
+### 링크들
+
+- [Comet-land github](https://github.com/hyesungoh/comet-land)
+- [Blog demo](https://comet-land-blog.vercel.app/)
+- [Resume demo](https://comet-land-resume.vercel.app/)
