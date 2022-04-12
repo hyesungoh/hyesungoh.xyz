@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from '@nextui-org/react';
+
 import { authorName, defaultUrl } from '../../constants';
 
 export function Footer() {

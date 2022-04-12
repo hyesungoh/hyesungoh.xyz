@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import { Text, useTheme, Avatar } from '@nextui-org/react';
+import { Avatar, Text, useTheme } from '@nextui-org/react';
 import { ThemeSwitch } from 'core';
 import { authorImage, authorName } from 'core/constants';
+
 import { IHeader } from '../../../_content/Header';
 
 function Header({ heading, description }: IHeader) {

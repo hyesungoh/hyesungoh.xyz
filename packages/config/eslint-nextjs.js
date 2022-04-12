@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
   extends: ['next', 'plugin:import/recommended', 'plugin:import/typescript', 'prettier'],
-  plugins: ['@typescript-eslint', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'import', 'prettier', 'simple-import-sort'],
   settings: {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],
@@ -47,6 +47,18 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
 
     'react/jsx-no-target-blank': 'error',
+
+    'simple-import-sort/imports': [
+      'error',
+      {
+        groups: [
+          ['^react$', '^next', '^@', '^~', '^[a-z]'],
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$', '^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          ['^\\u0000'],
+        ],
+      },
+    ],
+    'simple-import-sort/exports': 'error',
   },
   ignorePatterns: ['**/*.js', '**/*.json', 'node_modules', 'public', 'styles', '.next', 'coverage', 'dist', '.turbo'],
 };

@@ -1,12 +1,7 @@
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import useIntersectionObserver, { Props as IntersectionOberserProps } from './useIntersectionObserver';
 
-interface Props<T> extends Omit<IntersectionOberserProps, 'onIntersect'> {
-  fullElements: T[];
-  sessionKey: string;
-  offset: number;
-}
+import useIntersectionObserver, { Props as IntersectionOberserProps } from './useIntersectionObserver';
 
 function saveIntersectionCount(key: string, count: number) {
   sessionStorage.setItem(key, JSON.stringify(count));
@@ -14,6 +9,7 @@ function saveIntersectionCount(key: string, count: number) {
 
 function getIntersectionCount(key: string) {
   if (typeof sessionStorage === 'undefined') return 1;
+
   const sessionValue = sessionStorage.getItem(key);
   if (sessionValue) return parseInt(sessionValue);
 
@@ -21,7 +17,14 @@ function getIntersectionCount(key: string) {
   return 1;
 }
 
-function useInfiniteScroll<T>({ fullElements, sessionKey, offset }: Props<T>) {
+interface Props<T> extends Omit<IntersectionOberserProps, 'onIntersect'> {
+  fullElements: T[];
+  offset: number;
+}
+
+function useInfiniteScroll<T>({ fullElements, offset }: Props<T>) {
+  const router = useRouter();
+  const sessionKey = useMemo(() => `i-s-a-${router.asPath}`, [router]);
   const [elements, setElements] = useState<T[]>(fullElements.slice(0, offset));
   const [intersectionCount, setIntersectionCount] = useState<number>(getIntersectionCount(sessionKey));
   const [isEnded, setIsEnded] = useState<boolean>(fullElements.length < offset);
@@ -39,7 +42,6 @@ function useInfiniteScroll<T>({ fullElements, sessionKey, offset }: Props<T>) {
     setIsEnded(offset * intersectionCount > fullElements.length);
   }, [fullElements, intersectionCount, offset]);
 
-  const router = useRouter();
   useEffect(() => {
     function onRouteChangeStart() {
       saveIntersectionCount(sessionKey, intersectionCount);

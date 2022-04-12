@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
 import { useTheme } from '@nextui-org/react';
-import PostCard from '../../components/PostCard';
-import MainHeader from '../../components/Header/MainHeader';
+
 import AuthorSection from '../../components/AuthorSection';
+import MainHeader from '../../components/Header/MainHeader';
+import PostCard from '../../components/PostCard';
+import SEO from '../../components/SEO';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
+import useScrollRestoration from '../../hooks/useScrollRestoration';
 import { getAllCategories, getAllPostsByCategory } from '../../lib/api';
 import PostType from '../../types/post';
-import SEO from '../../components/SEO';
-import useScrollRestoration from '../../hooks/useScrollRestoration';
 
 interface Props {
   category: string;
@@ -18,11 +19,7 @@ function EachCategory({ category, allPosts }: Props) {
   const { theme } = useTheme();
   useScrollRestoration();
 
-  const {
-    setTarget,
-    elements: posts,
-    isEnded,
-  } = useInfiniteScroll<PostType>({ offset: 10, sessionKey: 'category', fullElements: allPosts });
+  const { setTarget, elements: posts, isEnded } = useInfiniteScroll<PostType>({ offset: 10, fullElements: allPosts });
 
   return (
     <>

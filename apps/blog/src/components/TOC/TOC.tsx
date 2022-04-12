@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { Link, NextUITheme, useTheme } from '@nextui-org/react';
 import { useMediaQuery } from 'core';
+
 import getHeadings from '../../utils/getHeadings';
 
 function TOC() {
