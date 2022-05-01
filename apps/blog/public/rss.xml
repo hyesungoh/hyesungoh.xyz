@@ -1784,10 +1784,16 @@
 <p>이러한 이유에 더불어 아래 기술할 SWR에 대한 부분, Redux 비동기 라이브러리에 대한 이해도 부족을 이유로 Redux가 아닌 Recoil을 전역 상태 관리 라이브러리로 선택하게 되었습니다.</p>
 <h2 id="data-fetching" class="heading">Data fetching</h2>
 <p>내장된 캐시를 통해 요청 중복 제거, 자동화된 재검증, 간단한 Mutation 등을 이유로 Data fetching 라이브러리를 도입할 계획이였습니다.</p>
+<blockquote>
+<p>저희 서비스는 "BTS", "블랙핑크" 등의 태그 별로 나누어져 Infinity Scroll이 적용되는 기획이였으며, 이는 다른 태그 방문 후 재방문이 일어날 확률이 매우 높다고 가설을 세웠습니다. 이에 대한 사용자 경험을 최적화하기 위해 캐싱을 통해 중복되는 요청을 제거하는 이유였습니다.</p>
+</blockquote>
 <p>결론적으로 Wavy에 도입한 것은 React-query가 아닌 <strong>SWR</strong> 이였습니다.</p>
 <p>기존에 React-query를 간단하게나마 사용한 경험이 있지만, SWR을 도입한 이유는 Vercel 때문이였습니다.</p>
 <p><a href="https://github.com/tannerlinsley" target="_blank" rel="noopener noreferer">Tanner Linsley</a>의 오픈 소스 프로젝트인 React-query와 Next.js에 더불어 turborepo, vercel, svelte의 rich haris 영입 등 엄청난 영향력을 끼치고 있는 vercel의 SWR을 단순히 비교하였을 때</p>
 <p>저는 SWR이 더욱 배우고 사용해볼 가치가 있다고 판단되어 사용하였습니다.</p>
+<blockquote>
+<p>또한 React-query의 경우 key 값을 별도로 지정해야되는 것에 비해 SWR의 경우 API endpoint를 key 값으로 사용하는 점이 global하게 mutate가 일어나지 않는 서비스라, 보다 개발 리소스를 줄이는 방법이라 생각하였습니다.</p>
+</blockquote>
 <h2 id="styling" class="heading">Styling</h2>
 <p>CSS in JS 라이브러리는 Emotion과 Styled-components를 고민하였습니다.</p>
 <p>결론적으로는 <strong>Styled-components</strong>를 사용하였으며, 이유로는 Emotion과 달리 다양하게 사용해보았기 때문이 가장 컷습니다.</p>

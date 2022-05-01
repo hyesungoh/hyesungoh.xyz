@@ -55,6 +55,8 @@ draft: false
 
 내장된 캐시를 통해 요청 중복 제거, 자동화된 재검증, 간단한 Mutation 등을 이유로 Data fetching 라이브러리를 도입할 계획이였습니다.
 
+> 가장 큰 이유로써 저희 서비스는 "BTS", "블랙핑크" 등의 태그 별로 나누어져 Infinity Scroll이 적용되는 기획이였습니다. 이는 다른 태그 방문 후 재방문이 일어날 확률이 매우 높다고 가설을 세웠고, 이에 대한 사용자 경험을 최적화하기 위함입니다.
+
 결론적으로 Wavy에 도입한 것은 React-query가 아닌 **SWR** 이였습니다.
 
 기존에 React-query를 간단하게나마 사용한 경험이 있지만, SWR을 도입한 이유는 Vercel 때문이였습니다.
@@ -62,6 +64,8 @@ draft: false
 [Tanner Linsley](https://github.com/tannerlinsley)의 오픈 소스 프로젝트인 React-query와 Next.js에 더불어 turborepo, vercel, svelte의 rich haris 영입 등 엄청난 영향력을 끼치고 있는 vercel의 SWR을 단순히 비교하였을 때
 
 저는 SWR이 더욱 배우고 사용해볼 가치가 있다고 판단되어 사용하였습니다.
+
+> 또한 React-query의 경우 key 값을 별도로 지정해야되는 것에 비해 SWR의 경우 API endpoint를 key 값으로 사용하는 점이 global하게 mutate가 일어나지 않는 저희 환경에서는 보다 개발 리소스를 줄이는 방법이라 생각하였습니다.
 
 ## Styling
 
