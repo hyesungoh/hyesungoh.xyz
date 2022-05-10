@@ -25,9 +25,9 @@ Lighthouse 지표와 추천 사항을 기준으로 최적화 작업을 진행하
 ### Next.js에서 적용 방법
 
 ```bash
-npm install @next/bundle-analyzer
+npm install @next/bundle-analyzer --save-dev
 # or
-yarn add @next/bundle-analyzer
+yarn add @next/bundle-analyzer -D
 ```
 
 우선 설치를 진행해준 후,
@@ -58,9 +58,9 @@ ANALYZER=true
 위 문서를 확인하셨다면 아시겠지만, **next-compose-plugins**를 사용하여 다른 plugin들과 함께 `next.config.js` 파일을 더욱 깔끔히 관리할 수 있습니다.
 
 ```bash
-npm install --save next-compose-plugins
+npm install next-compose-plugins --save-dev
 # or
-yarn add next-compose-plugins
+yarn add next-compose-plugins -D
 ```
 
 설치 후 다음과 같은 형태로 `next.config.js` 파일을 작성하실 수 있습니다.
@@ -114,7 +114,7 @@ Gzip이란 파일 압축에 쓰이는 응용 소프트웨어로써, HTML, CSS, J
 ```bash
 npm install compression-webpack-plugin --save-dev
 # or
-yarn add -D compression-webpack-plugin
+yarn add compression-webpack-plugin -D
 ```
 
 설치 후 다음과 같은 형태로 `next.config.js` 파일을 작성하실 수 있습니다.
