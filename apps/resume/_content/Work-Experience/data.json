@@ -34,6 +34,7 @@
             "Vercel",
             "Github actions",
             "Jest",
+            "React Testing Library",
             "Cypress"
           ]
         }
@@ -49,14 +50,37 @@
         {
           "title": {
             "text": "영감탱",
-            "githubLink": null,
+            "githubLink": "https://github.com/depromeet/11th_7team_web",
             "otherLink": null
           },
           "description": "영감을 기록하는 모든 이들을 위한, 아카이빙 서비스입니다.",
           "startDate": "2022.03",
           "endDate": null,
-          "which": ["현재 서비스 개발중에 있습니다."],
-          "techStack": []
+          "which": [
+            "10인 프로젝트, 4인의 프론트엔드 파트에서 파트 리드를 맡고 있습니다.",
+            "Web 어플리케이션의 스캐폴딩을 담당하였습니다.",
+            "공용 컴포넌트와 Hook을 개발하였습니다.",
+            "홈 화면과 온보딩 화면을 개발하였습니다.",
+            "Lint, Codecov, Cypress 등의 CI 적용을 전담하였습니다.",
+            "커스컴 Eslint rule 개발을 전담하였습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "React-Native",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "React-Query",
+            "Recoil",
+            "Jest",
+            "React Testing Library",
+            "Cypress",
+            "Github actions",
+            "GA",
+            "Hotjar",
+            "Sentry",
+            "Cloudflare Pages"
+          ]
         }
       ]
     },

@@ -3,6 +3,18 @@
   "list": [
     {
       "title": {
+        "text": "Software Maestro Expert",
+        "githubLink": null,
+        "otherLink": null
+      },
+      "position": "13기 Expert",
+      "startDate": "2022.06",
+      "endDate": "",
+      "description": "연수생이 보다 개발에 몰입할 수 있도록 조언과 도움을 주는 활동에 참여하고 있습니다.",
+      "which": ["현재 팀 매칭 중입니다."]
+    },
+    {
+      "title": {
         "text": "Faker",
         "githubLink": "https://github.com/faker-js/faker",
         "otherLink": null

@@ -637,9 +637,9 @@
 <p><img src="https://user-images.githubusercontent.com/26461307/155719898-d59e0146-718f-4244-9957-a00df8f64c95.png" alt="bundle analyzer"></p>
 <p><strong>bundle analyzer</strong>를 사용하면 위 사진처럼 빌드 후 각 모듈의 번들링된 사이즈를 확인하실 수 있으며, 이는 번들링 크기를 줄이는 <strong>tree shaking</strong>의 지표로 활용할 수 있습니다.</p>
 <h3 id="nextjs에서-적용-방법">Next.js에서 적용 방법</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> @next/bundle-analyzer
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> @next/bundle-analyzer --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @next/bundle-analyzer
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @next/bundle-analyzer -D
 </span></code></pre>
 <p>우선 설치를 진행해준 후,</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -657,9 +657,9 @@
 <p><a href="https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer" target="_blank" rel="noopener noreferer">Next.js github</a>에서 적용 방법에 대한 문서를 확인하실 수 있으며, <a href="https://www.npmjs.com/package/@next/bundle-analyzer" target="_blank" rel="noopener noreferer">npm 주소는 다음 링크</a>에서 확인하실 수 있습니다.</p>
 <h2 id="다른-plugin들과-함께-사용하기" class="heading">다른 Plugin들과 함께 사용하기</h2>
 <p>위 문서를 확인하셨다면 아시겠지만, <strong>next-compose-plugins</strong>를 사용하여 다른 plugin들과 함께 <code>next.config.js</code> 파일을 더욱 깔끔히 관리할 수 있습니다.</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> --save next-compose-plugins
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> next-compose-plugins --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> next-compose-plugins
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> next-compose-plugins -D
 </span></code></pre>
 <p>설치 후 다음과 같은 형태로 <code>next.config.js</code> 파일을 작성하실 수 있습니다.</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -704,7 +704,7 @@
 <h3 id="nextjs에서-적용-방법-1">Next.js에서 적용 방법</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> compression-webpack-plugin --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> -D compression-webpack-plugin
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> compression-webpack-plugin -D
 </span></code></pre>
 <p>설치 후 다음과 같은 형태로 <code>next.config.js</code> 파일을 작성하실 수 있습니다.</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -1785,14 +1785,14 @@
 <h2 id="data-fetching" class="heading">Data fetching</h2>
 <p>내장된 캐시를 통해 요청 중복 제거, 자동화된 재검증, 간단한 Mutation 등을 이유로 Data fetching 라이브러리를 도입할 계획이였습니다.</p>
 <blockquote>
-<p>저희 서비스는 "BTS", "블랙핑크" 등의 태그 별로 나누어져 Infinity Scroll이 적용되는 기획이였으며, 이는 다른 태그 방문 후 재방문이 일어날 확률이 매우 높다고 가설을 세웠습니다. 이에 대한 사용자 경험을 최적화하기 위해 캐싱을 통해 중복되는 요청을 제거하는 이유였습니다.</p>
+<p>가장 큰 이유로써 저희 서비스는 "BTS", "블랙핑크" 등의 태그 별로 나누어져 Infinity Scroll이 적용되는 기획이였습니다. 이는 다른 태그 방문 후 재방문이 일어날 확률이 매우 높다고 가설을 세웠고, 이에 대한 사용자 경험을 최적화하기 위함입니다.</p>
 </blockquote>
 <p>결론적으로 Wavy에 도입한 것은 React-query가 아닌 <strong>SWR</strong> 이였습니다.</p>
 <p>기존에 React-query를 간단하게나마 사용한 경험이 있지만, SWR을 도입한 이유는 Vercel 때문이였습니다.</p>
 <p><a href="https://github.com/tannerlinsley" target="_blank" rel="noopener noreferer">Tanner Linsley</a>의 오픈 소스 프로젝트인 React-query와 Next.js에 더불어 turborepo, vercel, svelte의 rich haris 영입 등 엄청난 영향력을 끼치고 있는 vercel의 SWR을 단순히 비교하였을 때</p>
 <p>저는 SWR이 더욱 배우고 사용해볼 가치가 있다고 판단되어 사용하였습니다.</p>
 <blockquote>
-<p>또한 React-query의 경우 key 값을 별도로 지정해야되는 것에 비해 SWR의 경우 API endpoint를 key 값으로 사용하는 점이 global하게 mutate가 일어나지 않는 서비스라, 보다 개발 리소스를 줄이는 방법이라 생각하였습니다.</p>
+<p>또한 React-query의 경우 key 값을 별도로 지정해야되는 것에 비해 SWR의 경우 API endpoint를 key 값으로 사용하는 점이 global하게 mutate가 일어나지 않는 저희 환경에서는 보다 개발 리소스를 줄이는 방법이라 생각하였습니다.</p>
 </blockquote>
 <h2 id="styling" class="heading">Styling</h2>
 <p>CSS in JS 라이브러리는 Emotion과 Styled-components를 고민하였습니다.</p>
