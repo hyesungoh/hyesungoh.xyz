@@ -72,9 +72,7 @@ function Foo() {
         <textarea placeholder="어떤 내용이 궁금한가요?" />
         <Button onClick={handleQuestionSubmit}>질문하기</Button>
       </form>
-      {popupOpened && (
-        <연결전문가팝업 onSubmit={handleMyExpertQuestionSubmit} />
-      )}
+      {popupOpened && <연결전문가팝업 onSubmit={handleMyExpertQuestionSubmit} />}
     </main>
   );
 }
@@ -117,11 +115,7 @@ function Foo() {
       <form>
         <textarea placeholder="어떤 내용이 궁금한가요?" />
         {연결전문가.connected ? (
-          <PopupTriggerButton
-            popup={
-              <연결전문가팝업 onButtonSubmit={handleMyExpertQuestionSubmit} />
-            }
-          >
+          <PopupTriggerButton popup={<연결전문가팝업 onButtonSubmit={handleMyExpertQuestionSubmit} />}>
             질문하기
           </PopupTriggerButton>
         ) : (
@@ -159,7 +153,7 @@ function Foo() {
 선언적 프로그래밍 :
 
 - '무엇'을 하는 함수인지 빠르게 이해가능
-- 세부 구현을 안쪽에 뭉쳐두어 신경 쓸 필요가 없다
+- 세부 구현을 안쪽에 뭉쳐두어 신경 쓸 필요가 없다.
 - '무엇'만 바꿔 쉽게 재사용할 수 있다.
 
 > 이의 반대는 명령형 프로그래밍
@@ -271,19 +265,19 @@ const label = await getPlannerLabel(plannerId);
 
 **1. 담대하게 기존 코드 수정하기**
 
-두려워하지 말고 기존 코드를 수정하자
+두려워하지 말고 기존 코드를 수정하자.
 
 **2. 큰 그림 보는 연습하기**
 
-기능 추가 자체는 클린해도, 전체적으로는 어지러울 수 있다
+기능 추가 자체는 클린해도, 전체적으로는 어지러울 수 있다.
 
 **3. 팀과 함께 공감대 형성하기**
 
-코드에 정답은 없으므로 명시적으로 이야기를 하는 시간이 필요하다
+코드에 정답은 없으므로 명시적으로 이야기를 하는 시간이 필요하다.
 
 **4. 문서로 적어보기**
 
-향후 어떤 점에서 위험할 수 있는지, 어떻게 개선할 수 있는 지 글로 적어보자
+향후 어떤 점에서 위험할 수 있는지, 어떻게 개선할 수 있는 지 글로 적어보자.
 
 ## 마치며
 
