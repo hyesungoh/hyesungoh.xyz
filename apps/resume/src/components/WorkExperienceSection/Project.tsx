@@ -55,5 +55,5 @@ const TechSpan = styled.span<{ theme: NextUITheme | undefined }>`
   background-color: ${({ theme }) => theme.colors.accents1.value};
   border-radius: 32px;
   font-size: 0.75rem;
-  transition: all 1s;
+  transition: background-color 0.4s, color 0.3s;
 `;
