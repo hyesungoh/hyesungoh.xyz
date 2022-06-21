@@ -37,6 +37,22 @@
             "React Testing Library",
             "Cypress"
           ]
+        },
+        {
+          "title": {
+            "text": "create-comet-land",
+            "githubLink": "https://github.com/hyesungoh/create-comet-land",
+            "otherLink": "https://www.npmjs.com/package/create-comet-land"
+          },
+          "description": "comet-land 프로젝트를 더욱 쉽게 시작할 수 있도록 개발하였습니다.",
+          "startDate": "2022.06",
+          "endDate": null,
+          "which": [
+            "동적이며 아름답게 보여짐과 동시에 관리에 용이할 것이라 판단하여 React와 Ink를 사용하였습니다.",
+            "Shelljs를 이용해 git clone 후, fs 모듈을 이용해 파일을 수정하는 방법으로 개발하였습니다.",
+            "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다."
+          ],
+          "techStack": ["React", "Ink", "Shelljs", "Github actions"]
         }
       ]
     },
