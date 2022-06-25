@@ -13,8 +13,12 @@ export function KBarToggleButton() {
       auto
       size="sm"
       aria-label="search button"
-      icon={<Icon name="Search" width="18px" fill={theme?.colors.accents8.value} />}
-      css={{ backgroundColor: theme?.colors.accents2.value, height: '32px', borderRadius: theme?.radii.pill.value }}
+      icon={<Icon name="Search" width="18px" fill={theme?.colors.text.value} />}
+      css={{
+        backgroundColor: theme?.colors.accents2.value,
+        height: '32px',
+        borderRadius: theme?.radii.pill.value,
+      }}
     />
   );
 }
