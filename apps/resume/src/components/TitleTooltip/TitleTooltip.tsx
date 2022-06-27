@@ -10,7 +10,11 @@ interface Props {
 
 function TitleTooltip({ text, githubLink, otherLink }: Props) {
   return githubLink !== null || otherLink !== null ? (
-    <Tooltip placement="topStart" content={<TooltipContent githubLink={githubLink} otherLink={otherLink} />}>
+    <Tooltip
+      placement="topStart"
+      color="primary"
+      content={<TooltipContent githubLink={githubLink} otherLink={otherLink} />}
+    >
       <StyledButton auto light color="primary" animated={false}>
         <h3>{text}</h3>
       </StyledButton>
@@ -39,12 +43,12 @@ function TooltipContent({ githubLink, otherLink }: TooltipProps) {
     <Div>
       {githubLink && (
         <a href={githubLink} rel="noreferrer" target="_blank">
-          <Button auto light icon={<Icon name="GithubLine" fill={theme.colors.accents4.value} />} />
+          <Button auto light icon={<Icon name="GithubLine" fill={theme.colors.white.value} />} />
         </a>
       )}
       {otherLink && (
         <a href={otherLink} rel="noreferrer" target="_blank">
-          <Button auto light icon={<Icon name="Link" fill={theme.colors.accents4.value} />} />
+          <Button auto light icon={<Icon name="Link" fill={theme.colors.white.value} />} />
         </a>
       )}
     </Div>
@@ -53,4 +57,6 @@ function TooltipContent({ githubLink, otherLink }: TooltipProps) {
 
 const Div = styled.div`
   display: flex;
+  gap: 2px;
+  padding: 0 2px;
 `;
