@@ -130,7 +130,7 @@ console.log('bar');
 
 결론적으로는 `unified`를 사용해 텍스트의 범용 처리를, `remarkParse`를 통해 마크다운으로, `remarkRehype`를 이용해 HTML로, 마지막으로 `rehypeStringify`를 사용해 문자열로 컴파일하였습니다.
 
-이 외에 다양한 마크다운 문법을 지원하기 위해 사용한 라이브러리들은 [다음 파일](https://github.com/hyesungoh/comet-land/blob/main/apps/blog/src/lib/markdownToHtml.ts)에서 확인하실 수 있습니다.
+이 외에 다양한 마크다운 문법을 지원하기 위해 사용한 라이브러리들은 [다음 파일](https://github.com/hyesungoh/comet-land/blob/main/apps/blog/src/libs/markdownToHtml/markdownToHtml.ts)에서 확인하실 수 있습니다.
 
 ## 어떤 모습으로 보이면 좋을까?
 
