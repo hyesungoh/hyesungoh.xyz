@@ -71,9 +71,7 @@ robots.txt 또한 알지 못하는 사용자에게는 번거로울 수 있을 �
 
 ![static file generator](https://user-images.githubusercontent.com/26461307/162629703-7da872f3-1d7f-439d-9850-fc6eebe00b60.png)
 
-적용 방식으로는 자동화 스크립트를 작성 후 package.json의 `predev`, `prebuild`에 실행 명렁어를 적용해 개발 혹은 빌드 전에 자동으로 실행될 수 있도록 하여 사용자의 수고를 덜어주었습니다.
-
-> ECMAScript module system이 더욱 익숙하여 .mjs 확장자로 개발하였습니다.
+적용 방식으로는 자동화 스크립트를 작성 후 package.json의 `predev`, `prebuild`에 실행 명렁어를 적용해 개발 혹은 빌드 전에 자동으로 실행될 수 있도록 하였습니다.
 
 - 해당 코드는 [다음 링크](https://github.com/hyesungoh/comet-land/blob/main/apps/blog/scripts/generate-static-files.mjs)에서 확인할 수 있습니다.
 
