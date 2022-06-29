@@ -12,8 +12,220 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2022-04-11</lastBuildDate>
+        <lastBuildDate>2022-06-30</lastBuildDate>
         <item>
+    <title><![CDATA[Next.js Head 테스트 작성하기 w/ Next.js router mock]]></title>
+    <link>https://www.hyesungoh.xyz/test-nextjs-head-with-mocking-router</link>
+    <pubDate>2022-06-30</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/test-nextjs-head-with-mocking-router</guid>
+    <description>
+    <![CDATA[Next.js Head안의 meta 태그들을 테스트했던 경험을 공유합니다.]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/176507342-2589ed89-ad0e-44b1-8d58-fe734f0ff622.png" alt="header image"></p>
+<p><code>jest</code>, <code>react-testing-library</code>를 이용해 Next.js Head안의 meta 태그들을 테스트했던 방법을 공유합니다.</p>
+<h2 id="문제" class="heading">문제</h2>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token constant">SEO</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">,</span> description<span class="token punctuation">,</span> ogImage <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token constant">TITLE</span> <span class="token operator">=</span> title <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> - </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>authorName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>blogName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> - </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>authorName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token constant">DESCRIPTION</span> <span class="token operator">=</span> description <span class="token operator">?</span> description <span class="token operator">:</span> blogDescription<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token constant">URL</span> <span class="token operator">=</span> blogUrl <span class="token operator">+</span> router<span class="token punctuation">.</span><span class="token property-access">asPath</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token constant">IMAGE</span> <span class="token operator">=</span> ogImage <span class="token operator">?</span> ogImage <span class="token operator">:</span> defaultMetaBackground<span class="token punctuation">.</span><span class="token property-access">default</span><span class="token punctuation">.</span><span class="token property-access">src</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Head</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>title</span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token constant">TITLE</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>title</span><span class="token punctuation">></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>canonical<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">URL</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">DESCRIPTION</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:title<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">TITLE</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">DESCRIPTION</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">IMAGE</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:url<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">URL</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token punctuation">{</span><span class="token comment">/* for twitter */</span><span class="token punctuation">}</span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>twitter:title<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">TITLE</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>twitter:description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">DESCRIPTION</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>twitter:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">IMAGE</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span><span class="token class-name">Head</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>운영중인 <a href="https://github.com/hyesungoh/comet-land" target="_blank" rel="noopener noreferer"><code>comet-land</code></a> 프로젝트에서는 위와 같이 매 페이지마다 달라야하는 meta 태그들을 <code>SEO</code>라는 이름의 컴포넌트로 관리하고 있는데요.</p>
+<p>이 컴포넌트를 일반적인 컴포넌트를 테스트하듯 <code>render</code>하고 확인해보면 결과는 아래와 같습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">.</span><span class="token property-access">children</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 0</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token method function property-access">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// &#x3C;body></span>
+</span><span class="code-line">  <span class="token comment">//   &#x3C;div /></span>
+</span><span class="code-line">  <span class="token comment">// &#x3C;/body></span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이와 같은 상황에서는 개발자의 의도대로 title, meta 등의 태그가 올바르게 작성되었는지 확인하기 어렵습니다.</p>
+<h2 id="mocking-nexthead" class="heading">Mocking 'next/head'</h2>
+<p>이를 확인하기 위해서 우선 <code>next/head</code>, 즉 <code>Head</code> 컴포넌트를 mocking 할 수 있습니다.</p>
+<blockquote>
+<p>mock이란 사전적으로 '거짓된', '가짜의'의 뜻을 갖으며, 테스트 코드를 작성할 때 허위의 구문이나 값으로 대체하는 기법을 뜻합니다.</p>
+</blockquote>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">ReactElement</span> <span class="token punctuation">}</span></span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">jest<span class="token punctuation">.</span><span class="token method function property-access">mock</span><span class="token punctuation">(</span><span class="token string">'next/head'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    __esModule<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> children<span class="token operator">:</span> <span class="token maybe-class-name">ReactElement</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span></span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이렇게 children을 반환하도록 mocking 후 screen의 값을 확인해보면 다음과 같은 결과를 확인할 수 있습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">.</span><span class="token property-access">children</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 0</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token method function property-access">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// &#x3C;body></span>
+</span><span class="code-line">  <span class="token comment">//     &#x3C;div></span>
+</span><span class="code-line">  <span class="token comment">//       &#x3C;title></span>
+</span><span class="code-line">  <span class="token comment">//         Cometin' - hyesungoh</span>
+</span><span class="code-line">  <span class="token comment">//       &#x3C;/title></span>
+</span><span class="code-line">  <span class="token comment">//       &#x3C;link</span>
+</span><span class="code-line">  <span class="token comment">//         href="https://comet-land-blog.vercel.app"</span>
+</span><span class="code-line">  <span class="token comment">//         rel="canonical"</span>
+</span><span class="code-line">  <span class="token comment">//       /></span>
+</span><span class="code-line">  <span class="token comment">//       &#x3C;meta</span>
+</span><span class="code-line">  <span class="token comment">//         content="I like to share my knowledge."</span>
+</span><span class="code-line">  <span class="token comment">//         name="description"</span>
+</span><span class="code-line">  <span class="token comment">//       /></span>
+</span><span class="code-line">  <span class="token comment">//       ...</span>
+</span><span class="code-line">  <span class="token comment">//     &#x3C;/div></span>
+</span><span class="code-line">  <span class="token comment">//   &#x3C;/body></span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>실제 사용될 때처럼 document.head에 렌더링되진 않았지만, body에는 정상적으로 태그들이 렌더링된 모습을 확인할 수 있습니다.</p>
+<p>이 상황에서도 테스트 코드를 작성할 수도 있지만 보다 실제 사용할 때처럼 테스트를 하기 위해서는 간단히 render되는 container를 바꿔줄 수 있습니다.</p>
+<h2 id="render-container-설정" class="heading">render container 설정</h2>
+<p><a href="https://testing-library.com/docs/react-testing-library/api/#render-options" target="_blank" rel="noopener noreferer">react-testing-library의 공식 문서</a>에서 확인할 수 있듯이, render 메소드는 container 옵션을 설정할 수 있습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> container<span class="token operator">:</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">head</span><span class="token punctuation">.</span><span class="token property-access">children</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 10 (SEO 컴포넌트의 태그 수)</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token method function property-access">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// &#x3C;body /></span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이처럼 body가 아닌 head에 렌더링하여 실제 사용할 때와 같은 모습으로 렌더링되는 모습을 확인할 수 있습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line highlight-line"><span class="token keyword">function</span> <span class="token function">renderAtHead</span><span class="token punctuation">(</span>element<span class="token operator">:</span> <span class="token maybe-class-name">ReactElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> <span class="token punctuation">{</span> container<span class="token operator">:</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">head</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'test 1'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">renderAtHead</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'test 2'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">renderAtHead</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token attr-name">foo</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>foo<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>여기에 더해, 간단한 함수를 만들어 각 테스트 케이스마다 container를 설정하지 않도록 할 수 있습니다.</p>
+<h2 id="테스트-방법" class="heading">테스트 방법</h2>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">expect</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toBe</span><span class="token punctuation">(</span><span class="token string">'올바른 타이틀'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>title 태그의 값은 위처럼 document에서 직접적으로 접근하여 테스트할 수 있지만,</p>
+<p>다른 태그들의 경우 container 값을 수정하여 <code>screen</code>은 <code>body</code> 태그만을 렌더링하고 있기 때문에 <code>getBy*</code>, <code>queryBy*</code>와 같은 screen api를 사용하지 않으면서 각 태그들의 값들을 확인해야하는데요.</p>
+<p>Vanilla에 익숙하신 분들은 친숙하실 <code>querySelector</code>를 이용해 테스트할 수 있습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:title<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</span></code></pre>
+<p>예를 들어 위와 같은 오픈 그래프 meta 태그의 content 값을 확인하기 위해서는</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should be foo'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">renderAtHead</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// og:title</span>
+</span><span class="code-line highlight-line">  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">"meta[property='og:title']"</span><span class="token punctuation">)</span><span class="token operator">?.</span><span class="token method function property-access">getAttribute</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toBe</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이렇게 meta 태그이면서 property가 'og:title'인 것의 attribute를 확인하는 방법으로 테스트할 수 있습니다.</p>
+<blockquote>
+<p>lint 설정으로 인해, 테스트 코드 내에서는 querySelector가 에러를 일으킬 수 있습니다. 저는 다른 테스트 코드에서는 querySelector를 사용하지 않으면서 Head를 확인해야하는 상황에서만 <code>testing-library/no-node-access</code> rule을 disable<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref aria-describedby="footnote-label">1</a></sup>하여 테스트하였습니다.</p>
+</blockquote>
+<h2 id="route에-따른-태그-확인하기" class="heading">route에 따른 태그 확인하기</h2>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:url<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token string">'https://some.url'</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+</span></code></pre>
+<p><code>og:url</code>과 같은 각 route path에 따라 달라져야하는 메타 태그들이 존재하는데요.</p>
+<p>props로 주입하는 형태가 된다면 테스트하기 용이하겠지만, 저는 컴포넌트 내에서 <code>next/router</code>의 <code>useRouter</code>를 사용하고 있습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token punctuation">{</span> useRouter <span class="token punctuation">}</span></span> <span class="token keyword">from</span> <span class="token string">'next/router'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token constant">URL</span> <span class="token operator">=</span> <span class="token constant">ROOT_URL</span> <span class="token operator">+</span> router<span class="token punctuation">.</span><span class="token property-access">asPath</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:url<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">URL</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이런 상황에서는 useRouter를 mocking하는 방향으로 테스트를 진행할 수 있습니다.</p>
+<h2 id="mocking-userouter" class="heading">mocking useRouter</h2>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">const</span> mockPath <span class="token operator">=</span> <span class="token string">'/foo'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> useRouter <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token method function property-access">spyOn</span><span class="token punctuation">(</span><span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'next/router'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'useRouter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">useRouter<span class="token punctuation">.</span><span class="token method function property-access">mockImplementation</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  asPath<span class="token operator">:</span> mockPath<span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>위와 같이 jest의 <code>spyOn</code>, <code>mockImplementation</code>를 이용해 useRouter asPath의 반환값을 mocking 할 수 있습니다.</p>
+<p>전역으로 선언하여 모든 테스트 케이스에서 mocking한 값을 기준으로 테스트할 수도 있지만, 저는 각 경우들을 테스트하기 위해 아래와 같이 각 테스트 케이스에서 mocking하는 방법으로 작성하였습니다.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  jest<span class="token punctuation">.</span><span class="token method function property-access">restoreAllMocks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should URL to be ROOT URL'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">renderAtHead</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// og:url</span>
+</span><span class="code-line">  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">"meta[property='og:url']"</span><span class="token punctuation">)</span><span class="token operator">?.</span><span class="token method function property-access">getAttribute</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toBe</span><span class="token punctuation">(</span><span class="token constant">ROOT_URL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should URL contain router path'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> mockPath <span class="token operator">=</span> <span class="token string">'/foo'</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> useRouter <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token method function property-access">spyOn</span><span class="token punctuation">(</span><span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'next/router'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'useRouter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  useRouter<span class="token punctuation">.</span><span class="token method function property-access">mockImplementation</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">    asPath<span class="token operator">:</span> mockPath<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">renderAtHead</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SEO</span></span> <span class="token attr-name">title</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>mockTitle<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// og:url</span>
+</span><span class="code-line">  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">"meta[property='og:url']"</span><span class="token punctuation">)</span><span class="token operator">?.</span><span class="token method function property-access">getAttribute</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toBe</span><span class="token punctuation">(</span><span class="token constant">ROOT_URL</span> <span class="token operator">+</span> mockPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>언급하지 않았던 아래의 코드를 확인하실 수 있으실텐데요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  jest<span class="token punctuation">.</span><span class="token method function property-access">restoreAllMocks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이는 모든 테스트 케이스 이후에 (<code>afterEach</code>), mocking한 값을 원래의 값으로 복원하는 (<code>restoreAllMocks</code>) 구문입니다.</p>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>이와 같이 <code>next/head</code>, <code>next/router의 useRouter</code>를 mocking하여 head 내부의 태그들의 단위 테스트를 작성해보았는데요.</p>
+<p>mocking하며 사용한 메소드들인 <code>jest.mock</code>, <code>jest.spyOn</code>, <code>jest.mockImplementation</code>의 경우 <a href="https://jestjs.io/" target="_blank" rel="noopener noreferer">jest 공식 문서</a>에 자세히 설명되어 있으니 참고하시면 좋을 것 같습니다.</p>
+<p>제가 작성한 전체적인 코드는 <a href="https://github.com/hyesungoh/comet-land/blob/24aedf3ebd9ff26700e487493e61906a3f7b5052/apps/blog/src/components/SEO/SEO.test.tsx#L1" target="_blank" rel="noopener noreferer">다음 링크</a>에서 확인하실 수 있으며 긴 글 읽어주셔서 감사드리고 피드백 부탁드리겠습니다. 감사합니다.</p>
+<h2 id="참고" class="heading">참고</h2>
+<ul>
+<li><a href="https://github.com/vercel/next.js/discussions/11060" target="_blank" rel="noopener noreferer">Next.js issue - how to test metadata</a></li>
+</ul>
+<section data-footnotes class="footnotes"><h2 id="footnote-label" class="sr-only heading">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://github.com/hyesungoh/comet-land/blob/24aedf3ebd9ff26700e487493e61906a3f7b5052/apps/blog/src/components/SEO/SEO.test.tsx#L1" target="_blank" rel="noopener noreferer">testing-library/no-node-access rule disable하는 법</a> <a href="#user-content-fnref-1" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+</ol>
+</section>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[[Comet-land] 2. 겪었던 이슈들과 앞으로]]></title>
     <link>https://www.hyesungoh.xyz/comet-land-2-issue</link>
     <pubDate>2022-04-11</pubDate>
@@ -66,10 +278,7 @@
 <p>robots.txt의 경우 간단하여 사용자가 직접 작성하기에 무리가 없지만, 검색을 위한 파일과 sitemap의 경우 블로그의 글이 늘어날 수록 추가해줘야하는 번거로움이 있었습니다.</p>
 <p>robots.txt 또한 알지 못하는 사용자에게는 번거로울 수 있을 것이라 판단해 위 3 종류의 정적 파일 생성을 자동화하였습니다.</p>
 <p><img src="https://user-images.githubusercontent.com/26461307/162629703-7da872f3-1d7f-439d-9850-fc6eebe00b60.png" alt="static file generator"></p>
-<p>적용 방식으로는 자동화 스크립트를 작성 후 package.json의 <code>predev</code>, <code>prebuild</code>에 실행 명렁어를 적용해 개발 혹은 빌드 전에 자동으로 실행될 수 있도록 하여 사용자의 수고를 덜어주었습니다.</p>
-<blockquote>
-<p>ECMAScript module system이 더욱 익숙하여 .mjs 확장자로 개발하였습니다.</p>
-</blockquote>
+<p>적용 방식으로는 자동화 스크립트를 작성 후 package.json의 <code>predev</code>, <code>prebuild</code>에 실행 명렁어를 적용해 개발 혹은 빌드 전에 자동으로 실행될 수 있도록 하였습니다.</p>
 <ul>
 <li>해당 코드는 <a href="https://github.com/hyesungoh/comet-land/blob/main/apps/blog/scripts/generate-static-files.mjs" target="_blank" rel="noopener noreferer">다음 링크</a>에서 확인할 수 있습니다.</li>
 </ul>
@@ -267,7 +476,7 @@
 <p>이번 포스트는 어떻게를 다루는 글이니 만큼, 이를 적용하며 겪었던 일들은 다음 포스트에서 더욱 자세히 다뤄보겠습니다.</p>
 </blockquote>
 <p>결론적으로는 <code>unified</code>를 사용해 텍스트의 범용 처리를, <code>remarkParse</code>를 통해 마크다운으로, <code>remarkRehype</code>를 이용해 HTML로, 마지막으로 <code>rehypeStringify</code>를 사용해 문자열로 컴파일하였습니다.</p>
-<p>이 외에 다양한 마크다운 문법을 지원하기 위해 사용한 라이브러리들은 <a href="https://github.com/hyesungoh/comet-land/blob/main/apps/blog/src/lib/markdownToHtml.ts" target="_blank" rel="noopener noreferer">다음 파일</a>에서 확인하실 수 있습니다.</p>
+<p>이 외에 다양한 마크다운 문법을 지원하기 위해 사용한 라이브러리들은 <a href="https://github.com/hyesungoh/comet-land/blob/main/apps/blog/src/libs/markdownToHtml/markdownToHtml.ts" target="_blank" rel="noopener noreferer">다음 파일</a>에서 확인하실 수 있습니다.</p>
 <h2 id="어떤-모습으로-보이면-좋을까" class="heading">어떤 모습으로 보이면 좋을까?</h2>
 <p>가장 먼저 추구했던 가치는 깔끔함을 기반으로 한 <strong>덜어냄의 미학</strong>입니다.</p>
 <p>제가 기존 블로그에 추가되었으면 했던 기능들을 구현하면서 적절히 덜어내어 깔끔하고 직관적이게 보여지길 바랬습니다.</p>
@@ -303,7 +512,7 @@
 <p>블로그는 대부분의 개발자분들이 마크다운을 사용해 관리하는 것으로 알고 있어 어렵지 않게 방향을 정해 개발할 수 있었지만</p>
 <p>이력서의 경우 노션, 워드 등 사용하시는 도구들이 따로 존재하는 경우가 있는 것으로 파악해 이와 대비해 어떻게하면 Comet-land의 이력서가 이점을 가지고 유연하게 대응할 수 있을까를 중점적으로 고민하였습니다.</p>
 <p>마크다운을 이용해 관리하자니 구조적으로 작성하고 사용하기에 불편할 것이라고 판단하여 내린 결론은 <code>json</code>을 이용해 관리하는 방법입니다.</p>
-<p>Comet-land의 사용자는 대부분 개발자일 것이라고 판단하여 어느 분야든 익숙하게 다룰 수 있는 형식은 마크다운 다음으로 json 형식이라고 판단함과 동시에 데이터 오브젝트를 전달하기 위해 개발된 것이기 때문에 가장 적합한 방식으로 판단하였기 때문입니다.</p>
+<p>Comet-land의 사용자중 거의 전부는 개발자일 것이라고 판단함과 동시에 어느 분야든 익숙하게 다룰 수 있는 형식은 마크다운 그리고 json이라고 판단하였습니다. 동시에 데이터 오브젝트를 전달하기 위해 개발된 것이기 때문에 가장 적합한 방식으로 판단하였습니다.</p>
 <p>이에 더해 각 section 별로 directory를 나눠 사용자가 파악하기 쉽도록 하였으며,</p>
 <p><img src="https://user-images.githubusercontent.com/26461307/162624018-d3ea011a-b555-4f56-9390-504a615e2ed5.png" alt="resume interative point"></p>
 <p>Github와 일반 링크를 Tooltip으로 나눠 보여주고 Work experience section에서 요소를 Sticky하게 보여주어 읽는 사람으로 하여금 가독성을 보장하면서 과하지 않게 동적으로 보여줄 수 있도록 노력하였습니다.</p>
@@ -327,7 +536,7 @@
 </ul>
 <p>아직 테스트 케이스가 많이 부족해 효과가 있진 않지만 커버리지 99%를 목표로 작성하여 프로젝트 안정화와 동시에 개인적으로 테스트 코드에 익숙해지는 것을 바라고 있습니다.</p>
 <h2 id="마치며" class="heading">마치며</h2>
-<p>제가 직접 사용할 것이기 때문에 조금 더 심혈을 기울여 개발하게 되었던 것 같습니다. 이처럼 Dog-foodin한 서비스를 개발할 때 아닌 서비스들과 달리 더욱 재미를 느끼는 제 모습을 알 수 있었던 프로젝트였습니다.</p>
+<p>제가 직접 사용할 것이기 때문에 조금 더 심혈을 기울여 개발하게 되었던 것 같습니다. 이처럼 Dog-foodin한 서비스를 개발할 때 더욱 재미를 느끼는 제 모습을 알 수 있었던 프로젝트였습니다.</p>
 <p>거기에 더해 새로 시도했던 것이 많은만큼 배우고 겪은 것이 많았었다고 말씀드릴 수 있을 것 같습니다.</p>
 <p>겪었던 이슈들은 다음 블로그 글에서 다룰 예정이며, Comet-land에 대해 궁금하신 분들은 아래 링크 참고해주시면 감사드릴 것 같습니다.</p>
 <p>긴 글 읽어주셔서 감사합니다.</p>
@@ -11128,103 +11337,6 @@ SWR? React-Query?</p>
 </span><span class="code-line">ans <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span>find<span class="token punctuation">(</span>parent<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">for</span> i <span class="token keyword">in</span> plan<span class="token punctuation">]</span><span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"YES"</span> <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token string">"NO"</span><span class="token punctuation">)</span>
 </span><span class="code-line">
-</span></code></pre>]]>
-    </content:encoded>
-  </item><item>
-    <title><![CDATA[gatsby-starter-bee theme 네이버, 구글 검색 노출시키기]]></title>
-    <link>https://www.hyesungoh.xyz/gatsby_starter_bee_seo</link>
-    <pubDate>2021-02-07</pubDate>
-    <guid isPermaLink="false">https://www.hyesungoh.xyz/gatsby_starter_bee_seo</guid>
-    <description>
-    <![CDATA[gatsby_starter_bee_seo]]>
-    </description>
-    <content:encoded>
-      <![CDATA[<p>해당 블로그는 <a href="https://github.com/JaeYeopHan/gatsby-starter-bee" target="_blank" rel="noopener noreferer">gatsby-starter-bee</a> theme을 수정하여 사용중입니다.</p>
-<p>해당 테마의 경우 구글 검색 엔진 최적화 (SEO)를 위한 sitemap은 설치돼 있으나,</p>
-<p>네이버 검색 노출을 위한 robots는 작성돼 있지 않아 추가하는 법과</p>
-<p>등록 방법을 공유하도록 하겠습니다. :D</p>
-<h2 id="구글-검색-노출-등록" class="heading">구글 검색 노출 등록</h2>
-<ul>
-<li><a href="https://search.google.com/search-console/about?hl=ko" target="_blank" rel="noopener noreferer">구글 서치 콘솔</a>에 접속하여 로그인</li>
-<li>URL 접두어 선택 후 하단에 있는 HTML meta 태그 클릭</li>
-<li>해당 태그를 복사</li>
-</ul>
-<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// src/components/head/index.js</span>
-</span><span class="code-line">    <span class="token operator">&#x3C;</span><span class="token maybe-class-name">Helmet</span>
-</span><span class="code-line">    htmlAttributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-</span><span class="code-line">    lang<span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">}</span>
-</span><span class="code-line">    title<span class="token operator">=</span><span class="token punctuation">{</span>title<span class="token punctuation">}</span>
-</span><span class="code-line">    titleTemplate<span class="token operator">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">%s | </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span><span class="token property-access">site</span><span class="token punctuation">.</span><span class="token property-access">siteMetadata</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span>
-</span><span class="code-line">    meta<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>
-</span><span class="code-line">    <span class="token spread operator">...</span>
-</span><span class="code-line">    <span class="token comment">// &#x3C;meta name="google-site-verification" content="verificationCode" /></span>
-</span><span class="code-line">    <span class="token comment">// &#x3C;meta name="naver-site-verification" content="verificationCode" /></span>
-</span><span class="code-line">
-</span><span class="code-line">    <span class="token punctuation">{</span>
-</span><span class="code-line">        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">google-site-verification</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-</span><span class="code-line">        <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">verificationCode</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token punctuation">{</span>
-</span><span class="code-line">        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">naver-site-verification</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-</span><span class="code-line">        <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">verificationCode</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token spread operator">...</span>
-</span></code></pre>
-<ul>
-<li>gatsby-starter-bee theme의 경우 helmet을 사용하여 html의 head 태그를 관리하기 때문에 위 모습과 동일하게 작성</li>
-<li>배포 후 개발자 도구등을 이용하여 head 태그에 적용이 된 것을 확인 후 구글 서치 콘솔 상 확인 버튼을 클릭하면 인증이 완료</li>
-<li>좌측 sitemaps 메뉴에 sitemap.xml을 제출하면 끝 !</li>
-</ul>
-<img width="1324" alt="스크린샷 2021-02-07 오후 6 01 11" src="https://user-images.githubusercontent.com/26461307/107141891-f7d23680-696e-11eb-8ff8-43d20cb4f1f4.png" />
-<pre><code class="language-robots.txt code-highlight"><span class="code-line">
-</span><span class="code-line">- 몇 시간 정도 후에 `site:www.hyesungoh.xyz`와 같이 검색
-</span><span class="code-line">
-</span><span class="code-line">## 네이버 검색 노출 등록
-</span><span class="code-line">
-</span><span class="code-line">- robots.txt 작성을 위해 플러그인을 설치
-</span><span class="code-line">
-</span><span class="code-line">```terminal
-</span><span class="code-line">yarn add gatsby-plugin-robots-txt
-</span><span class="code-line">or
-</span><span class="code-line">npm i gatsby-plugin-robots-txt
-</span><span class="code-line">```
-</span><span class="code-line">
-</span><span class="code-line">- `gatsby-config.js`에 플러그인 등록 후 모든 URL을 오픈하도록 설정, 제외하고 싶은 URL은 disallow에 추가
-</span><span class="code-line">
-</span><span class="code-line">```js
-</span><span class="code-line"> plugins: [
-</span><span class="code-line">...
-</span><span class="code-line">    {
-</span><span class="code-line">      resolve: 'gatsby-plugin-robots-txt',
-</span><span class="code-line">      options: {
-</span><span class="code-line">        host: 'https://dyjh-blog.netlify.app',
-</span><span class="code-line">        sitemap: 'https://dyjh-blog.netlify.app/sitemap.xml',
-</span><span class="code-line">        policy: [{
-</span><span class="code-line">          userAgent: '*',
-</span><span class="code-line">          allow: '/'
-</span><span class="code-line">        }]
-</span><span class="code-line">      }
-</span><span class="code-line">    },
-</span><span class="code-line">...
-</span><span class="code-line">  ]
-</span><span class="code-line">```
-</span><span class="code-line">
-</span><span class="code-line">- 'npm start' 후 /robots.txt 접속이 잘 된다면 배포
-</span><span class="code-line">- [네이버 웹 마스터](https://searchadvisor.naver.com/console/board) 접속 후 사이트 인증 진행
-</span><span class="code-line">- 위 구글 인증 방법과 동일하게 `helmet`에 추가
-</span><span class="code-line">- 배포, 확인 후 좌측 사이트맵 제출 클릭 후 `sitemap.xml` 제출
-</span><span class="code-line">
-</span><span class="code-line">&#x3C;img width="1111" alt="스크린샷 2021-02-07 오후 6 15 22" src="https://user-images.githubusercontent.com/26461307/107142238-c195b680-6970-11eb-84de-0bca5f3c8558.png" />
-</span><span class="code-line">
-</span><span class="code-line">- 좌측 검증 탭의 robots.txt 검증 및 수집요청
-</span><span class="code-line">
-</span><span class="code-line">&#x3C;img width="1064" alt="스크린샷 2021-02-07 오후 6 16 07" src="https://user-images.githubusercontent.com/26461307/107142239-c490a700-6970-11eb-978c-9e95f32bf996.png" />
-</span><span class="code-line">
-</span><span class="code-line">- 몇 시간 정도 후에 `site:{www.hyesungoh.xyz}`와 같이 검색
-</span><span class="code-line">- 끝 !!
-</span><span class="code-line">
-</span><span class="code-line">> 참고 : [dyih님 블로그](https://dyjh-blog.netlify.app/posts/2020-gatsby-blog-seo)
 </span></code></pre>]]>
     </content:encoded>
   </item><item>

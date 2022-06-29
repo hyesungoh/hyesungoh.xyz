@@ -1277,9 +1277,6 @@
     <loc>https://www.hyesungoh.xyz/visitor</loc>
   </url>
   <url>
-    <loc>https://www.hyesungoh.xyz/gatsby_starter_bee_seo</loc>
-  </url>
-  <url>
     <loc>https://www.hyesungoh.xyz/github_profile_make_up</loc>
   </url>
   <url>
@@ -1343,6 +1340,9 @@
     <loc>https://www.hyesungoh.xyz/reactI18nWithTs</loc>
   </url>
   <url>
+    <loc>https://www.hyesungoh.xyz/test-nextjs-head-with-mocking-router</loc>
+  </url>
+  <url>
     <loc>https://www.hyesungoh.xyz/typescriptPromptLocationType</loc>
   </url>
   <url>
@@ -1396,9 +1396,6 @@
   </url>
   <url>
     <loc>https://www.hyesungoh.xyz/DesignPattern</loc>
-  </url>
-  <url>
-    <loc>https://www.hyesungoh.xyz/Gatsby</loc>
   </url>
   <url>
     <loc>https://www.hyesungoh.xyz/Github</loc>
