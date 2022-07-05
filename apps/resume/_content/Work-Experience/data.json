@@ -50,9 +50,10 @@
           "which": [
             "동적이며 아름답게 보여짐과 동시에 관리에 용이할 것이라 판단하여 React와 Ink를 사용하였습니다.",
             "Shelljs를 이용해 git clone 후, fs 모듈을 이용해 파일을 수정하는 방법으로 개발하였습니다.",
-            "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다."
+            "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다.",
+            "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
-          "techStack": ["React", "Ink", "Shelljs", "Github actions"]
+          "techStack": ["React", "Ink", "Shelljs", "Webpack", "Github actions"]
         }
       ]
     },
