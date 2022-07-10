@@ -132,7 +132,7 @@ function generateSitemap() {
       .join('')}
     ${allCategories
       .map(category => {
-        return getSitemapTemplate(`/${category}`);
+        return getSitemapTemplate(`/category/${category}`);
       })
       .join('')}
   </urlset>
@@ -200,7 +200,7 @@ async function getPostsRssData() {
 async function generateRss() {
   const { postsRssData, lastPostDate } = await getPostsRssData();
 
-  const rssData = `<?xml version="1.0" encoding="UTF-8"?>
+  const rssData = `<?xml version="1.0" ?>
   <rss
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
