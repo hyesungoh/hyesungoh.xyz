@@ -22,8 +22,8 @@
       "position": "Contributor",
       "startDate": "2022.02",
       "endDate": "2022.02",
-      "description": "더미 데이터를 생성해주는 라이브러리에 한국어 정보를 추가, 잘못된 정보를 수정하여 기여하였습니다.",
-      "which": []
+      "description": "더미 데이터를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
+      "which": ["한국어 정보를 추가, 잘못된 정보를 수정하였습니다."]
     },
     {
       "title": {
@@ -36,6 +36,21 @@
       "endDate": "2022.02",
       "description": "Github Readme의 잘못된 Link를 수정하여 기여하였습니다.",
       "which": []
+    },
+    {
+      "title": {
+        "text": "React-player",
+        "githubLink": "https://github.com/cookpete/react-player",
+        "otherLink": null
+      },
+      "position": "Contributor",
+      "startDate": "2021.10",
+      "endDate": "2021.10",
+      "description": "동영상 플레이어를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
+      "which": [
+        "동영상 재생 중에 호출되는 callback인 onProgress의 Props에 대한 interface를 정의하였습니다.",
+        "WAVY 프로젝트에서 직접 사용하며 필요성을 느껴 기여하게 되었습니다."
+      ]
     },
     {
       "title": {
