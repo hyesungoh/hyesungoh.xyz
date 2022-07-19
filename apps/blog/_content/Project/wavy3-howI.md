@@ -173,7 +173,7 @@ Suspense와 함께 ErrorBoundary를 도입하여 에러와 로딩에 대한 핸�
 
 이를 위해 Recoil atom을 **callback ref** 형태로 사용하였습니다.
 
-> [callback ref에 대한 본인의 게시물 링크](https://www.hyesungoh.xyz/React/usisngIntersectionObserverMyWay/#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95)
+> [callback ref에 대한 본인의 게시물 링크](https://www.hyesungoh.xyz/usisngIntersectionObserverMyWay/#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95)
 
 덕분에 하나의 컨트롤러에서 callback ref 값에 따라 조작을 할 수 있었습니다.
 
