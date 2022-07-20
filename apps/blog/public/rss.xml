@@ -12,8 +12,37 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2022-07-04</lastBuildDate>
+        <lastBuildDate>2022-07-20</lastBuildDate>
         <item>
+    <title><![CDATA[2022 토스 커뮤니티 Frontend Meet-up 후기]]></title>
+    <link>https://www.hyesungoh.xyz/2022-toss-community-frontend-meetup</link>
+    <pubDate>2022-07-20</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/2022-toss-community-frontend-meetup</guid>
+    <description>
+    <![CDATA[2022-toss-community-frontend-meetup]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/180000528-9f8c1fb6-c0b0-4639-a6e3-a8e58c974b36.png" alt="2022 토스 프론트엔드 밋업 후기"></p>
+<p><img src="https://user-images.githubusercontent.com/26461307/180000915-6530d81c-b26b-4bfb-96d5-1f1bdd04636d.png" alt="초대 이메일"></p>
+<p><a href="https://toss.im/slash-22" target="_blank" rel="noopener noreferer">토스 SLASH22</a>가 끝나고 얼마 안되었을 때, 우연히 이런 이메일을 받을 수 있었어요.</p>
+<p>토스 인재풀에 등록한 인원 대상으로 SLASH22 연사분들과 토스에서 근무하시는 프론트엔드 개발자분들과의 온라인 밋업 초대였는데, 밋업을 통해 많은 인사이트를 얻을 수 있을 것이라고 생각함과 동시에 밋업은 처음이라 궁금함에 참여 신청을 하게 되었어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/180000545-a4b69e3d-b10b-4ec5-9d96-504966d85532.png" alt="토스 프론트엔드 밋업 슬라이드"></p>
+<p>밋업은 온라인으로 진행되었는데, SLASH22의 연사분들 그리고 토스 개발자분들을 포함해 약 60, 70명의 인원이 참여하셨어요.</p>
+<p>밋업의 대부분은 사전 Q&#x26;A와 라이브 Q&#x26;A 형태로 진행되었으며, 굉장히 즐거운? 재밌는? 분위기로 진행되었어요.</p>
+<p>저와 같은 참여자분들과 토스 개발자분들 모두 자유롭게 채팅으로 소통해주시면서 농담도 주고 받으시고 토스 개발자들간의 문화를 간접적으로나마 체험해 볼 수 있었던 경험이였어요.</p>
+<h2 id="qa" class="heading">Q&#x26;A</h2>
+<p>기술, 문화에 대한 질문이 대다수였지만 인재풀에 등록된 분들이 초대를 받으셨기 때문인지 주니어에 대한 질문들 또한 많았어요.</p>
+<p>그 중 기억에 남는 질문과 답변이 있는데, 주니어로써 부족하다고 생각되는데 어떤 역량을 키우면 좋을지에 대한 질문에
+SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 한재엽님께서 "무엇을 모르는 지를 알아야 된다"고 답변을 해주셨어요.</p>
+<p>질문과 답변을 많이 간추리긴 했지만, 어떻게 생각하면 당연한 것을 제가 잊고 있었다고 느꼈어요.</p>
+<p>그렇게 많은 질문과 답변이 오고가며 밋업에 참여하신 다른 개발자분들께서는 어떤 궁금함을 가지고 계신지 또한 인사이트가 되었어요. 그리고 이에 대해 토스에서 근무하시는 개발자분들께서 어떻게 고민하셨거나, 해결하셨다거나, 문화를 공유해주시는 것을 보며 애사심을 느낄 수 있었어요.</p>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>밋업은 약 2시간 동안 진행되었는데, 상당히 빨리 지나간 것처럼 느껴졌어요.</p>
+<p>질 좋은 질문들과 답변들로 이루어진 시간들이라 그렇게 느껴졌던 것 같고, 생각했던 것보다 자연스럽고 편안한 분위기에서 밋업이 진행된다는 걸 알 수 있었어요.</p>
+<p>첫 온라인 밋업은 성공적인 경험이였으니 다음에 기회가 됨다면 오프라인 밋업에도 참여해보고 싶은 생각이 듦과 동시에 나중에는 사내 혹은 단체의 컨퍼런스에 연사로써 서보고 싶다는 생각이 들었어요.</p>
+<p>내가 알게된 것을 공유하는 것 그리고 모르거나 궁금한 것을 질문하는 것이 주는 원초적인 감정을 다시 한 번 생각할 수 있었고 이를 통해 새롭게 동기부여 받을 수 있는 시간이였어요.</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[[create-comet-land] 첫 NPM 패키지 개발기]]></title>
     <link>https://www.hyesungoh.xyz/create-comet-land</link>
     <pubDate>2022-07-04</pubDate>
@@ -2296,7 +2325,7 @@
 <p><code>연습하기</code> 화면에서는 1가지의 동영상만을 조작하는 환경이였는데, 한 페이지 덕분에 한 개의 컴포넌트를 추가적으로 만드는 것보다 재사용할 수 있는 방향으로 개발하고 싶었습니다.</p>
 <p>이를 위해 Recoil atom을 <strong>callback ref</strong> 형태로 사용하였습니다.</p>
 <blockquote>
-<p><a href="https://www.hyesungoh.xyz/React/usisngIntersectionObserverMyWay/#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95" target="_blank" rel="noopener noreferer">callback ref에 대한 본인의 게시물 링크</a></p>
+<p><a href="https://www.hyesungoh.xyz/usisngIntersectionObserverMyWay/#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95" target="_blank" rel="noopener noreferer">callback ref에 대한 본인의 게시물 링크</a></p>
 </blockquote>
 <p>덕분에 하나의 컨트롤러에서 callback ref 값에 따라 조작을 할 수 있었습니다.</p>
 <hr>
