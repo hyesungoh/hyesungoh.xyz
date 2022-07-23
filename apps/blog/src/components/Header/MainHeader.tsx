@@ -15,6 +15,7 @@ function MainHeader() {
           <a dangerouslySetInnerHTML={{ __html: blogName }}></a>
         </Link>
       </H1>
+
       <ButtonWrapper>
         <ThemeSwitch />
         <KBarToggleButton />
@@ -31,6 +32,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 0.875rem;
+  word-break: break-word;
 `;
 
 const H1 = styled(Text)`

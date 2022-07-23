@@ -31,6 +31,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.25rem;
+  word-break: break-word;
 `;
 
 const H3 = styled(Text)`
