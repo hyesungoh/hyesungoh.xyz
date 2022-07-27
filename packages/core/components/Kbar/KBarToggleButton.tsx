@@ -17,6 +17,7 @@ export function KBarToggleButton() {
       css={{
         backgroundColor: theme?.colors.accents2.value,
         height: '32px',
+        width: '32px',
         borderRadius: theme?.radii.pill.value,
       }}
     />
