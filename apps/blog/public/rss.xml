@@ -12,8 +12,354 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2022-07-20</lastBuildDate>
+        <lastBuildDate>2022-07-24</lastBuildDate>
         <item>
+    <title><![CDATA[Webview app에서 이미지 저장 기능 개발기 w/ AWS s3]]></title>
+    <link>https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3</link>
+    <pubDate>2022-07-24</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3</guid>
+    <description>
+    <![CDATA[웹뷰 앱에서 이미지 저장 기능을 개발하며 겪은 과정을 공유합니다.]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/181038089-16ef6cc6-fff3-4a58-bba9-7a3076f1b3d1.png" alt="웹뷰 앱에서 이미지 저장 기능 개발기 프로필"></p>
+<p>안녕하세요.</p>
+<p>Webview 기반의 App 서비스에서 이미지 저장 기능을 개발하며 겪었던 과정들을 공유해, 비슷한 문제로 고생하시고 계시는 분들에게 도움이 되고자 개발기를 적어봅니다.</p>
+<h2 id="개발하게된-배경" class="heading">개발하게된 배경</h2>
+<p><a href="https://www.depromeet.com/" target="_blank" rel="noopener noreferer">'디프만'</a> 활동에서 개발, 운영하고 있는 <a href="https://www.notion.so/c363eee70970491f84d7d1f47c22e992" target="_blank" rel="noopener noreferer">'영감탱'</a> 서비스에 제목의 기능을 개발하게 되었는데요.</p>
+<p>기능 기획의 발단은 다음 사진에서 시작하게 되었어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181039126-0151cbd5-d137-424a-bf4b-b9f131bccbfa.png" alt="hotjar 컨텐츠 보기 히트맵"></p>
+<p>recording 기능을 이용한 사용자 행동 파악 및 heat map을 이유로 부착하고 있던 hotjar에서 위 이미지와 같은 지표를 얻게 된 것인데요.</p>
+<p>여러 가지 영감을 저장하고 보여주는 서비스이다 보니, 다른 서비스에서 제공하고 있는 <strong>이미지 클릭 시 전체보기가 되며, 저장이 가능한</strong> 행동을 사용자가 예상하고 있는 것으로 파악했어요.</p>
+<p>이렇게 작은 근거로 시작한 가설을 배경으로 해당 기능을 개발하기로 하였고 제가 맡게 되었어요.</p>
+<h2 id="첫-번째-접근" class="heading">첫 번째 접근</h2>
+<p>'영감탱'은 휴대폰 애플리케이션으로써, Next.js로 구성된 Web 애플리케이션을 React-native webview로 서빙하고 있어요.</p>
+<p>Webview 프로젝트는 이전에 간단하게 환경 구성만 해본 경험이 전부여서, 첫 번째 접근은 매우 간단하게 생각하고 말았어요.</p>
+<p>처음으로 생각한 방법은 <strong>"웹에서 저장이 되면 알아서 되려나?"</strong> 인데요.</p>
+<p>큰 리소스가 소모되진 않을 것으로 판단해, 먼저 개발해 본 후 직접 확인을 해보자고 생각했어요.</p>
+<h3 id="이미지-다운로드-at-web">이미지 다운로드 at Web</h3>
+<p>다운로드해야 될 이미지는 <code>AWS S3</code>의 URL로 제공되고 있었어요. 이를 다운로드하기 위해 S3의 cors 세팅을 해준 후 다음과 같은 순서로 적용해 나갔어요.</p>
+<ol>
+<li>S3 URL에 <code>fetch</code></li>
+<li>fetch된 response(이미지)를 <code>blob화</code></li>
+<li>blob화된 이미지를 <code>URL.createObjectURL</code>을 이용해 참조 URL을 만든 후</li>
+<li><code>createElement</code>로 생성한 <code>a</code> 태그를 <code>download</code> 옵션과 함께 클릭</li>
+<li>저장 완료</li>
+</ol>
+<p>이전에 비슷하게 구현한 경험이 있어서, 빠르게 구현할 수 있었지만 문제는 어김없이 찾아왔어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181049113-abd68780-826a-4b65-8182-565dec9c7212.png" alt="첫 번째 구현 에러"></p>
+<p>문제는 앱 내에서 저장하기 버튼을 눌렀을 때 동작하지 않는 것이었어요.</p>
+<p>방향을 잃어 팀원분들에게 도움을 요청했었는데, CORS 에러가 뜬다는 답변을 받게 되었어요.</p>
+<p>분명히 <code>AWS S3</code>의 CORS 설정을 하였고, 로컬에서 CORS 에러가 뜨지 않아 의아했는데 문제는 <strong>브라우저</strong>에 있었어요.</p>
+<h2 id="aws-s3-cors" class="heading">AWS S3 CORS</h2>
+<p><img src="https://user-images.githubusercontent.com/26461307/181049848-be850090-e2dc-4a17-ad9a-43e9bf031c7d.png" alt="AWS S3 CORS 정책"></p>
+<p><small>출처: <a href="https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/cors.html" target="_blank" rel="noopener noreferer">AWS S3 사용 설명서</a></small></p>
+<p>AWS S3의 경우 요청 헤더에 <code>Origin</code>이 포함되어 있어야, 응답 헤더에 <code>Access-Control-Allow-Origin</code>을 담아 응답을 해주는데,</p>
+<p>제가 사용하는 Firefox 브라우저는 <code>Origin</code>이 요청 헤더에 담기나, 다른 브라우저(Chrome, Safari)의 경우 Origin 담기지 않아 발생한 이슈였어요.</p>
+<h2 id="http-origin-header" class="heading">HTTP Origin header</h2>
+<p>확인해 본 결과 Chrome에서 <code>Origin</code>이 요청 헤더에 포함되지 않은 이유는 다음과 같아요.</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>저장할_이미지_URL<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</span></code></pre>
+<p>우선 사용자는 이미 위와 같은 <code>img</code> 태그에서 저장할 이미지를 요청한 경험이 있어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181074343-e11a21f1-de16-4a2a-8f32-ef7793d7b21d.png" alt="이미지 요청 시 no-cors"></p>
+<p><small>출처: <a href="https://stackoverflow.com/questions/42239643/when-do-browsers-send-the-origin-header-when-do-browsers-set-the-origin-to-null" target="_blank" rel="noopener noreferer">When do browsers send the Origin header - stackoverflow</a></small></p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181082288-92c73ccd-9f78-4dc9-82b7-94f878b9f5d2.png" alt="mdn img crossorigin"></p>
+<p><small>출처: <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img#attr-crossorigin" target="_blank" rel="noopener noreferer">MDN HTML img</a></small></p>
+<p>이때 이미지, 스타일시트와 같은 미디어 요소들은 <code>no-cors (anonymous)</code> 모드로 동작하고, no-cors로 요청한 값을 <code>Cache-Control</code>에 캐싱해요.</p>
+<blockquote>
+<p>no-cors 모드에서는 Accept, Accept-Language, Content-Language 등 제한된 헤더만 포함될 수 있으며, 자바스크립트가 결과 응답에 접근할 수 없는 특징을 가지고 있어요. 자세한 정보는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/mode#value" target="_blank" rel="noopener noreferer">다음 MDN 링크</a>를 확인하시면 좋을 것 같아요.</p>
+<p>언제 Origin이 서빙되는지는 <a href="https://wiki.mozilla.org/Security/Origin" target="_blank" rel="noopener noreferer">다음 mozilla wiki</a>에서 확인하실 수 있어요.</p>
+</blockquote>
+<p>그 후에 사용자가 <code>저장 버튼</code>을 누르게 되면 CORS 요청이 들어가게 되는데, <strong>응답 값은 캐싱된 것에서 오기 때문에</strong> CORS 확인에 실패하게 돼요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181085291-73ba974b-cc44-4725-a03d-159e709e17ea.png" alt="왜 Firefox는 성공했냐"></p>
+<p><small>출처: <a href="https://stackoverflow.com/questions/44800431/caching-effect-on-cors-no-access-control-allow-origin-header-is-present-on-th" target="_blank" rel="noopener noreferer">Caching effect on CORS stackoverflow</a></small></p>
+<p>그렇다면 왜 firefox는 요청 헤더에 Origin이 담겼을까요?</p>
+<p>이를 확인하기 위해 여러 방면으로 검색을 해보았으나, 관련된 답글은 위 스택오버플로우 게시물 밖에 찾을 수 없었어요.</p>
+<p>한 답변에서 크롬은 자격 증명 모드를 캐싱 키의 일부로 사용하고 있다고 해요. 그렇기 때문에 자격 증명이 없는 모드 (제 상황을 예로 들면 저장 버튼을 눌렀을 때) 자격 증명과 함께 보낸 요청과 캐싱이 적중하지 않아야 동작하는 것으로 파악을 했어요.</p>
+<p>하지만 Firefox는 Chrome처럼 동작하지 않다고 기술되어 있으니, 유추해보기론 자격 증명 모드를 캐싱 키의 일부로 사용하지 않는 다른 캐싱 로직이 있거나, 자격 증명과 비자격 증명을 따로 구분해 캐싱하는 등의 방법으로 구현되어 있는 것 같아요.</p>
+<blockquote>
+<p>왜 Firefox는 동작했는지 알고 계시는 분은 댓글 혹은 이메일 부탁드립니다.</p>
+</blockquote>
+<h3 id="해결-방법">해결 방법</h3>
+<p>오래 돌아온 것에 비해 해결 방법은 매우 간단했어요.</p>
+<p>문제는 캐싱에 있다는 것을 파악했으니, fetch 시 부분적으로 요청을 보내도록 <code>no-cache</code> 옵션을 사용해 해결할 수 있었어요.</p>
+<pre class="language-diff"><code class="language-diff code-highlight"><span class="code-line deleted"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> fetch('URL');
+</span></span></span><span class="code-line inserted"><span class="token deleted-sign deleted"><span class="token line"></span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> fetch('URL', {cache: 'no-cache'});
+</span></span></span></code></pre>
+<p><img src="https://user-images.githubusercontent.com/26461307/181088652-6f180dd1-5b9e-4deb-9829-123fd5ec0361.png" alt="mdn request cache"></p>
+<p><small>출처: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/cache" target="_blank" rel="noopener noreferer">mdn request cache</a></small></p>
+<p><code>cache: default</code>의 경우 <code>fresh</code>한 상태라면 캐싱된 값을 반환하지만, <code>no-cache</code>의 경우 fresh한 상태라도 조건부 요청을 보내기 때문에 문제 해결을 위한 최소 조건을 충족한다고 생각했고,</p>
+<p><code>cache: no-store</code>의 경우 캐싱된 값을 확인하지 않고 모든 정보를 요청하기 때문에 <code>no-cache</code>에 비해 송수신되는 데이터의 양이 많아 더욱 빠른 사용자 경험을 제공하는 데에 유리한 것은 <code>no-cache</code> 옵션이라 생각해 적용했어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">downloadImage</span><span class="token punctuation">(</span>href<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> imageResponse <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>href<span class="token punctuation">,</span> <span class="token punctuation">{</span> cache<span class="token operator">:</span> <span class="token string">'no-cache'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> imageBlob <span class="token operator">=</span> <span class="token keyword">await</span> imageResponse<span class="token punctuation">.</span><span class="token method function property-access">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> imageObjectUrl <span class="token operator">=</span> <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span><span class="token method function property-access">createObjectURL</span><span class="token punctuation">(</span>imageBlob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  element<span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> imageObjectUrl<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  element<span class="token punctuation">.</span><span class="token property-access">download</span> <span class="token operator">=</span> <span class="token function">getImageNameAndExtension</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  element<span class="token punctuation">.</span><span class="token method function property-access">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span><span class="token method function property-access">revokeObjectURL</span><span class="token punctuation">(</span>imageObjectUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>위 과정을 거쳐 작성하게된 코드는 위와 같아요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181089763-8f156657-e080-43bf-8e72-dfb90ffc3629.jpeg" alt="finish_it"></p>
+<p>웹에서는 저장이 잘되어 부푼 마음으로 시뮬레이터로 앱 환경을 확인해 보니 저장이 되고 있지 않았어요.</p>
+<p>웹뷰 브라우저에서 저장이 되는 것이 <em>알아서</em> 카메라롤(갤러리)에 저장이 될 생각을 하다니,,,</p>
+<h3 id="나만-이런-접근을-한건-아니구나">나만 이런 접근을 한건 아니구나</h3>
+<p>웹 애플리케이션에서 작업한 사항이 아쉬움과 동시에 다른 방법이 떠오르지 않아, 여러 가지 방법을 물색하던 중에 React-native-webview repo에서 Closed 됐지만 제 상황의 해결책같이 보이는 PR을 찾을 수 있었어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181093258-0dc2731e-f385-40f5-a44f-97224985a306.png" alt="onBlobFileDownload"></p>
+<p><small>출처: <a href="https://github.com/react-native-webview/react-native-webview/pull/1817" target="_blank" rel="noopener noreferer">react-native-webview#1817</a></small></p>
+<p>바로 <code>onBlobFileDownload</code>라는 이름의 새로운 api를 추가하는 PR 이였는데요.</p>
+<p>변경이 된 코드를 읽어보지 못하는 상태라 나눴던 코멘트만 읽어보니 인터페이스 그리고 지원하는 확장자 등의 기능이 부족해 merge되지 않은 것으로 보였어요.</p>
+<p>정확히 fit한 해결 방법은 찾을 수 없었지만, 코멘트 중에 키워드를 찾을 수 있었는데요.</p>
+<p>그것은 React-native-webview의 <code>onFileDownload</code> 인터페이스였어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181095030-76361900-3545-451f-80bb-b45c700ec1f0.png" alt="react-native-webview onFileDownload"></p>
+<p>파일이 저장될 때 트리거되는 callback을 이용해 저장되는 객체를 카메라롤에 저장되도록만 하면 될 것 같아 빠르게 API를 찾아보았지만, <code>iOS-only</code> 기능이었어요.</p>
+<p>'영감탱'의 경우 iOS, AOS 두 플랫폼으로 배포되고 있기 때문에 해결 방법이라는 생각은 들지 않았지만, <strong>'트리거된다'</strong>라는 키워드에서 새로운 방법을 생각해낼 수 있게 되었어요.</p>
+<h2 id="두-번째-접근" class="heading">두 번째 접근</h2>
+<p>두 번째 구현 방법은 앱 내에서 <code>AWS S3</code> URL로 접근 시 이동하는 것이 아닌, 카메라롤에 해당 URL의 이미지를 저장하는 로직이 <strong>트리거</strong>되게 개발하는 것이에요.</p>
+<p>큼지막한 구현 방법은 다음과 같아요.</p>
+<h3 id="web에서-useragent-확인해서-로직-분리">Web에서 userAgent 확인해서 로직 분리</h3>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">imageDownload</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// getMobileDetect는</span>
+</span><span class="code-line">  <span class="token comment">// location.userAgent와 정규 표현식을 이용해 값을 반환하는 유틸이예요.</span>
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token punctuation">{</span> isMobile <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getMobileDetect</span><span class="token punctuation">(</span><span class="token dom variable">navigator</span><span class="token punctuation">.</span><span class="token property-access">userAgent</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isMobile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">downloadImageWhenMobile</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">return</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">downloadImageWhenNotMobile</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">function</span> <span class="token function">downloadImageWhenMobile</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  element<span class="token punctuation">.</span><span class="token property-access">href</span> <span class="token operator">=</span> href<span class="token punctuation">;</span>
+</span><span class="code-line">  element<span class="token punctuation">.</span><span class="token method function property-access">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">downloadImageWhenNotMobile</span><span class="token punctuation">(</span><span class="token punctuation">{</span> href <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 첫 번째 접근에서 구현했던 코드</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>userAgent를 확인해 Web 환경에서는 첫 번째 접근으로 개발했던 유틸이 실행되도록 하고, 모바일 환경일 때는 <code>a</code> 태그의 src attr에 <code>AWS S3</code> url을 직접적으로 사용하도록 개발했어요.</p>
+<h3 id="webview-onnavigationstatechange">Webview onNavigationStateChange</h3>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token function-variable function">handleNavigate</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token maybe-class-name">WebViewNavigation</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">.</span><span class="token method function property-access">startsWith</span><span class="token punctuation">(</span><span class="token constant">AWS_S3_IMG_BUCKET_URI</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">imageDownload</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token spread operator">...</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Webview</span></span> <span class="token attr-name">source</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> uri <span class="token punctuation">}</span><span class="token punctuation">}</span></span> <span class="token attr-name">onNavigationStateChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleNavigate<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>트리거가 되는 행동이 <code>AWS S3 URL</code>을 방문하는 것이니, navigation 상태가 변경될 때 트리거되는 <code>onNavigationStateChange</code>의 callback에 단순히 <code>AWS S3</code>의 URL로 시작하는지 확인하는 조건문을 넣어 이미지 저장 로직이 실행되도록 했어요.</p>
+<h3 id="ios-이미지-저장">iOS 이미지 저장</h3>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token maybe-class-name">Cameraroll</span></span> <span class="token keyword">from</span> <span class="token string">'@react-native-community/cameraroll'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">imageDownload</span><span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token maybe-class-name">WebViewNavigation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token maybe-class-name">Cameraroll</span><span class="token punctuation">.</span><span class="token method function property-access">save</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>iOS의 이미지 저장 로직의 경우 <code>@react-native-community/cameraroll</code>을 이용해 직접적으로 url을 카메라롤에 저장해 iOS 환경에서 이미지를 저장할 수 있었어요.</p>
+<h3 id="aos-이미지-저장">AOS 이미지 저장</h3>
+<p><img src="https://user-images.githubusercontent.com/26461307/181209640-28808c4b-c51c-412c-9e6f-8ea341d8babf.png" alt="react native cameraroll save spec"></p>
+<p>AOS의 경우 <code>Cameraroll</code> 스펙을 읽어보니 로컬 이미지 혹은 비디오 URI 일 때만 저장이 된다고 기술되어 있었어요.</p>
+<blockquote>
+<p>iOS의경우 모든 이미지 URI가 가능하다고 기술되어 있어, 위와 같이 작성해도 동작했던 것이에요.</p>
+</blockquote>
+<p>이를 해결하기 위해 위의 웹 애플리케이션에서 동작했던 것과 비슷하게 구현하면 될 것이라 판단하였고, 찾아보니 <code>rn-fetch-blob</code>이라는 라이브러리를 찾을 수 있었어요.</p>
+<p><code>rn-fetch-blob</code>은 이를 간단하게 구현하는 데에 더해 AOS에서 저장 시 OS 단의 progress bar, notification을 보여주는 <code>다운로드 매니저</code>, 이미지 응답을 문자열로 변환하는 과정을 거치지 않고 직접 저장하는 기능을 제공하고 있어 fit한 해결 방법을 제공하는 라이브러리라고 생각했어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181214075-7a2ee0e6-33dc-472d-b4f7-9c59d7207b2d.png" alt="rn-fetch-blob download graph"></p>
+<p>rn-fetch-blob의 가장 최근의 업데이트가 3년 전이라 도입하는 것이 옳은 선택일지 고민이 되었어요.</p>
+<p>하지만 react-native의 설치 지표와 비교를 해보니 많은 수치를 보여주면서, 사용하는 곳이 한정적이라 추후에 걷어낼 일이 있을 때 소모되는 리소스보다 현재 빠르게 기능을 개발하는 것이 리소스가 더욱 적게 소모된다고 판단하여 적용하기로 판단했어요.</p>
+<p>그렇게 rn-fetch-blob을 사용하면서, iOS와 AOS 환경 모두 이미지를 다운로드할 수 있도록 개발한 유틸은 다음과 같은 모습이예요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token maybe-class-name">Cameraroll</span></span> <span class="token keyword">from</span> <span class="token string">'@react-native-community/cameraroll'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">PermissionsAndroid</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Platform</span> <span class="token punctuation">}</span></span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token imports"><span class="token maybe-class-name">RNFetchBlob</span></span> <span class="token keyword">from</span> <span class="token string">'rn-fetch-blob'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">hasAndroidPermission</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> permission <span class="token operator">=</span> <span class="token maybe-class-name">PermissionsAndroid</span><span class="token punctuation">.</span><span class="token constant">PERMISSIONS</span><span class="token punctuation">.</span><span class="token constant">WRITE_EXTERNAL_STORAGE</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">const</span> hasPermission <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token maybe-class-name">PermissionsAndroid</span><span class="token punctuation">.</span><span class="token method function property-access">check</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>hasPermission<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">const</span> status <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token maybe-class-name">PermissionsAndroid</span><span class="token punctuation">.</span><span class="token method function property-access">request</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> status <span class="token operator">===</span> <span class="token string">'granted'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">imageDownload</span><span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token maybe-class-name">WebViewNavigation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token maybe-class-name">Platform</span><span class="token punctuation">.</span><span class="token constant">OS</span> <span class="token operator">===</span> <span class="token string">'android'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">hasAndroidPermission</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line highlight-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token maybe-class-name">Platform</span><span class="token punctuation">.</span><span class="token constant">OS</span> <span class="token operator">===</span> <span class="token string">'android'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">    <span class="token maybe-class-name">RNFetchBlob</span><span class="token punctuation">.</span><span class="token method function property-access">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">      fileCache<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">      addAndroidDownloads<span class="token operator">:</span> <span class="token punctuation">{</span> useDownloadManager<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> notification<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">fetch</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">
+</span><span class="code-line highlight-line">    <span class="token keyword">return</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token maybe-class-name">Cameraroll</span><span class="token punctuation">.</span><span class="token method function property-access">save</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>AOS의 권한에 대한 확인과 함께 이미지 저장 로직을 수행하였고, 결과는 성공적이었어요!</p>
+<h2 id="웹에서-저장-상태-통신" class="heading">웹에서 저장 상태 통신</h2>
+<p>이미지 저장은 원활히 동작하지만, 뭔가 사용자 경험이 좋지 않다고 생각이 들었어요.</p>
+<p>그 이유는 저장이 성공했는지, 실패했는지 결과를 시각적 알려주지 않고 있기 때문이었어요.</p>
+<p>Web 애플리케이션에서 사용하고 있는 Toast 메세지를 띄우면 서비스적으로 통일감 있게 알려줄 수 있다고 판단하였고, 이를 위해서는 App에서 Web으로 저장 상태에 대한 통신이 이루어져야 했어요.</p>
+<h3 id="postmessage">postMessage</h3>
+<p>구현하기 앞서 구현체의 통일성을 높이기 위해 기존 프로젝트에 사용하고 있던 <code>react-native-webview</code>의 <code>postMessage</code> 구현체를 확인해 보았어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line">webViewRef<span class="token punctuation">.</span><span class="token property-access">current</span><span class="token punctuation">.</span><span class="token method function property-access">postMessage</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">    type<span class="token operator">:</span> <span class="token constant">SOME_CONSTANTS_TYPE</span><span class="token punctuation">,</span>
+</span><span class="code-line">    data<span class="token operator">:</span> someData<span class="token punctuation">,</span>
+</span><span class="code-line">    otherData<span class="token operator">:</span> someMoreData<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>'디프만'이라는 활동 기간이 정해져있는, 빠르게 기능을 개발했어야 했던 상황이라 그런지 사용하는 곳마다 개발자들이 자의적으로 <code>type</code>과 <code>data</code>가 포함되는 것을 인지하면서 구현이 되고 있었어요.</p>
+<p>이는 버스 팩터도 높일뿐더러, 안전하게 개발할 수 있는 환경이 아니라고 생각이 되어 리팩토링이 필요하다고 생각이 들었어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'~/constants/common'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">WebviewMessageTypeKey</span> <span class="token operator">=</span> <span class="token keyword">keyof</span> <span class="token keyword">typeof</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">interface</span> <span class="token class-name">PostMessageObjectInterface</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  type<span class="token operator">:</span> <span class="token keyword">typeof</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">[</span><span class="token maybe-class-name">WebviewMessageTypeKey</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  data<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getStringPostMessageObject</span><span class="token punctuation">(</span>object<span class="token operator">:</span> <span class="token maybe-class-name">PostMessageObjectInterface</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 사용하는 곳에서는</span>
+</span><span class="code-line">webViewRef<span class="token punctuation">.</span><span class="token property-access">current</span><span class="token punctuation">.</span><span class="token method function property-access">postMessage</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token function">getStringPostMessageObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">    type<span class="token operator">:</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">.</span><span class="token constant">SOME_CONSTANTS_TYPE</span><span class="token punctuation">,</span>
+</span><span class="code-line">    data<span class="token operator">:</span> someData<span class="token punctuation">,</span>
+</span><span class="code-line">    otherData<span class="token operator">:</span> someMoreData<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이를 위와 같은 구현체를 만들어 개발자가 직접적으로 인지해야 하는 것을 1개로 낮춰보았어요.</p>
+<p>개발자가 알아야 하는 것은 <code>postMessage</code>를 사용할 때 위 <code>getStringPostMessageObject</code>를 사용해야 한다는 것이며, 기존 인터페이스가 개발자들의 머리 혹은 Web 애플리케이션에 정의가 되어있었다면 이를 직접적으로 정의해 매번 찾아볼 일이 없도록 했어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token maybe-class-name">Cameraroll</span><span class="token punctuation">.</span><span class="token method function property-access">save</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">const</span> stringMessageObject <span class="token operator">=</span> <span class="token function">getStringPostMessageObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">      type<span class="token operator">:</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">.</span><span class="token constant">SEND_TOAST_MESSAGE</span><span class="token punctuation">,</span>
+</span><span class="code-line">      data<span class="token operator">:</span> <span class="token constant">SUCCESS_IMAGE_DOWNLOAD_MESSAGE</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    webViewRef<span class="token punctuation">.</span><span class="token property-access">current</span><span class="token operator">?.</span><span class="token method function property-access">postMessage</span><span class="token punctuation">(</span>stringMessageObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">const</span> stringMessageObject <span class="token operator">=</span> <span class="token function">getStringPostMessageObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">      type<span class="token operator">:</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">.</span><span class="token constant">SEND_TOAST_MESSAGE</span><span class="token punctuation">,</span>
+</span><span class="code-line">      data<span class="token operator">:</span> <span class="token constant">FAILED_IMAGE_DOWNLOAD_MESSAGE</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    webViewRef<span class="token punctuation">.</span><span class="token property-access">current</span><span class="token operator">?.</span><span class="token method function property-access">postMessage</span><span class="token punctuation">(</span>stringMessageObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>이를 적용해 Web으로 송신하는 것을 포함한 이미지 저장 유틸은 위와 같이 <code>then</code>, <code>catch</code>를 이용해 간단히 적용할 수 있었어요.</p>
+<h3 id="웹에서-수신">웹에서 수신</h3>
+<p>Web 애플리케이션에서 수신에 대한 부분은 <code>useAppMessage</code>라는 hook으로 유틸화가 되어 있었어요.</p>
+<p>이는 <code>handler</code>를 주입받아 Listening 시작 혹은 중지를 하는 동작을 보이고 있었는데요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">AppMessageData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  action<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line">  data<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">AppMessageArgs</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token punctuation">(</span>type<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> data<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">useAppMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> handler <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">AppMessageArgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> listener <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token punctuation">{</span> data<span class="token operator">:</span> rawData <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">MessageEvent</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span>rawData<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token maybe-class-name">AppMessageData</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">handler</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">[</span>handler<span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>그중 type과 data 외의 인터페이스를 받을 수 있도록 확장이 필요해 보였고, 내가 Listening 하고자 하는 type인지 확인하는 로직까지 추상화할 수 있을 것이라 생각했어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">WebviewMessageTypeKey</span> <span class="token operator">=</span> <span class="token keyword">keyof</span> <span class="token keyword">typeof</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">AppMessageData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  type<span class="token operator">:</span> <span class="token keyword">typeof</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">[</span><span class="token maybe-class-name">WebviewMessageTypeKey</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  data<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">AppMessageArgs</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  targetType<span class="token operator">:</span> <span class="token keyword">typeof</span> <span class="token constant">WEBVIEW_MESSAGE_TYPE</span><span class="token punctuation">[</span><span class="token maybe-class-name">WebviewMessageTypeKey</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token spread operator">...</span>rest <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">AppMessageData</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">useAppMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> targetType<span class="token punctuation">,</span> handler <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">AppMessageArgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> listener <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token punctuation">{</span> data<span class="token operator">:</span> rawData <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token maybe-class-name">MessageEvent</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token spread operator">...</span>rest <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span>rawData<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token maybe-class-name">AppMessageData</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line highlight-line">        <span class="token comment">// NOTE: 목표로하는 타입의 postMessage가 아닐 시 반환</span>
+</span><span class="code-line highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>targetType <span class="token operator">!==</span> type<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">,</span> data<span class="token punctuation">,</span> rest <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">[</span>handler<span class="token punctuation">,</span> targetType<span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>위는 적용한 결과물로써, App에서 적용한 것과 동일한 인터페이스를 사용하면서 Listening 하고자 하는 type인 <code>targetType</code> 인터페이스를 추가해 <code>handler</code>에서 매번 type을 확인하지 않아도 되도록 개발했어요.</p>
+<pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line"><span class="token function">useAppMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  targetType <span class="token operator">=</span> <span class="token string">'SOME_CONSTANTS_TYPE'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">fireToast</span><span class="token punctuation">(</span><span class="token punctuation">{</span> content<span class="token operator">:</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>위처럼 리팩토링한 <code>useAppMessage</code>를 사용해 저장 상태에 대한 값을 Web에서 Toast 메세지로 보여줄 수 있도록 적용을 마쳤어요.</p>
+<blockquote>
+<p>사실 '영감탱' 프로젝트에서는 <code>AppMessageListener</code>라는 컴포넌트로 <code>useAppMessage</code> hook이 한 번 더 wrapping이 되어있긴 하나, Life cycle에 대한 접근만 하고 있기 때문에 설명을 드리지 않아도 충분히 이해하실 것이라 생각해요.</p>
+</blockquote>
+<h2 id="결과물" class="heading">결과물</h2>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/26461307/181241903-2ffa159c-db36-4790-b6ed-b3f04f298187.gif" alt="" width="50%" />
+</div>
+<p>위 Gif를 통해 성공적으로 이미지 저장이 완료된 후 Toast 메세지가 발송되고, 휴대폰 카메라롤에 저장이 되는 모습을 확인하실 수 있어요.</p>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>대단한 기능은 아니지만, HTTP와 fetch 스펙에 대해 더 자세히 알 수 있었고 React-native 환경에서 postMessage를 이용해 Web과 App의 통신을 처음으로 개발해 볼 수 있었던 점에서 재밌었던 경험이라고 생각해요.</p>
+<p>다만, 글 재주가 없어 읽으시는 분들에게 피로감을 드렸을까 걱정이네요.</p>
+<p>디프만 활동은 끝났지만, 과정 이후에도 열심히 업데이트, 운영해나가고 있으니 영감을 기록하는 것에 관심이 있으신 분들은 아래 영감탱 소개 링크 방문을 부탁드리며 글을 맞춰보겠습니다.</p>
+<p>긴 글 읽어주셔서 감사합니다.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/181249281-c8f51502-3dce-4d72-a362-3a813f2831c2.png" alt="Thunbnail"></p>
+<ul>
+<li><a href="https://gifted-puffin-352.notion.site/c363eee70970491f84d7d1f47c22e992" target="_blank" rel="noopener noreferer">영감탱 서비스 소개</a></li>
+<li><a href="https://github.com/depromeet/ygtang-client/pull/474" target="_blank" rel="noopener noreferer">본 글에서 소개했던 내용 PR - Web</a></li>
+<li><a href="https://github.com/depromeet/ygtang-app/pull/119" target="_blank" rel="noopener noreferer">본 글에서 소개했던 내용 PR - App</a></li>
+<li><a href="https://www.behance.net/gallery/147207859/TANG-Inspiration-Archiving-App" target="_blank" rel="noopener noreferer">영감탱 behance</a></li>
+</ul>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[2022 토스 커뮤니티 Frontend Meet-up 후기]]></title>
     <link>https://www.hyesungoh.xyz/2022-toss-community-frontend-meetup</link>
     <pubDate>2022-07-20</pubDate>
