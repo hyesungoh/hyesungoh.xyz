@@ -10,6 +10,7 @@ export const lightTheme = createTheme({
       selection: getColor(lightSelection, theme.colors.selection.value),
       code: getColor(lightCode, theme.colors.code.value),
       codeLight: getColor(lightCodeLight, theme.colors.codeLight.value),
+      primaryShadow: getColor(lightPrimary, theme.colors.primary.value),
     },
   },
 });

@@ -1,11 +1,12 @@
 type ColorType = string | null;
 
-export const lightPrimary: ColorType = null;
-export const lightSelection: ColorType = null;
-export const lightCode: ColorType = null;
-export const lightCodeLight: ColorType = null;
+export const lightPrimary: ColorType = '#4b6ea0';
+export const lightSelection: ColorType = '#6FA4ED';
+export const lightCode: ColorType = '#344C6E';
+export const lightCodeLight: ColorType = '#B7CDED';
 
-export const darkPrimary: ColorType = null;
-export const darkSelection: ColorType = '#0070F3';
-export const darkCode: ColorType = '#6cc0e1';
-export const darkCodeLight: ColorType = '#16272e';
+export const darkPrimary: ColorType = '#4b6ea0';
+export const darkSelection: ColorType = '#344C6E';
+export const darkCode: ColorType = '#B7CDED';
+export const darkCodeLight: ColorType = '#344C6E';
+export const darkBackground: ColorType = '#202021';

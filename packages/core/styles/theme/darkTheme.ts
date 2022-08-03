@@ -1,5 +1,5 @@
 import { createTheme, theme } from '@nextui-org/react';
-import { darkCode, darkCodeLight, darkPrimary, darkSelection } from '../../constants';
+import { darkBackground, darkCode, darkCodeLight, darkPrimary, darkSelection } from '../../constants';
 import { getColor } from './getColor';
 
 export const darkTheme = createTheme({
@@ -10,6 +10,8 @@ export const darkTheme = createTheme({
       selection: getColor(darkSelection, theme.colors.selection.value),
       code: getColor(darkCode, theme.colors.code.value),
       codeLight: getColor(darkCodeLight, theme.colors.codeLight.value),
+      primaryShadow: getColor(darkPrimary, theme.colors.primary.value),
+      background: getColor(darkBackground, theme.colors.background.value),
     },
   },
 });

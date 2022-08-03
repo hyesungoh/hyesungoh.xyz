@@ -5,7 +5,7 @@ export const codeHighlight = css`
   pre[class*='language-'] {
     color: #f8f8f2;
     background: none;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -31,11 +31,11 @@ export const codeHighlight = css`
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: #282a36;
+    background: #2e3440;
   }
 
   /* Inline code */
-  :not(pre) > code {
+  :not(pre) > code[class*='language-'] {
     padding: 0.1em;
     border-radius: 0.3em;
     white-space: normal;
@@ -45,11 +45,11 @@ export const codeHighlight = css`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #6272a4;
+    color: #636f88;
   }
 
   .token.punctuation {
-    color: #f8f8f2;
+    color: #81a1c1;
   }
 
   .namespace {
@@ -61,12 +61,15 @@ export const codeHighlight = css`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: #ff79c6;
+    color: #81a1c1;
   }
 
-  .token.boolean,
   .token.number {
-    color: #bd93f9;
+    color: #b48ead;
+  }
+
+  .token.boolean {
+    color: #81a1c1;
   }
 
   .token.selector,
@@ -75,7 +78,7 @@ export const codeHighlight = css`
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: #50fa7b;
+    color: #a3be8c;
   }
 
   .token.operator,
@@ -84,23 +87,23 @@ export const codeHighlight = css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-    color: #f8f8f2;
+    color: #81a1c1;
   }
 
   .token.atrule,
   .token.attr-value,
   .token.function,
   .token.class-name {
-    color: #f1fa8c;
+    color: #88c0d0;
   }
 
   .token.keyword {
-    color: #8be9fd;
+    color: #81a1c1;
   }
 
   .token.regex,
   .token.important {
-    color: #ffb86c;
+    color: #ebcb8b;
   }
 
   .token.important,
@@ -115,7 +118,6 @@ export const codeHighlight = css`
   .token.entity {
     cursor: help;
   }
-
   /**
    * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
    * 1. Make the element just wide enough to fit its content.
@@ -148,9 +150,12 @@ export const codeHighlight = css`
   .highlight-line {
     margin-left: -18px;
     margin-right: -16px;
-    background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+    /* background-color: rgba(55, 65, 81, 0.5); */
+    background-color: rgba(163, 190, 140, 0.1); /* Set highlight bg color */
+
     border-left-width: 4px;
-    border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
+    /* border-left-color: rgb(59, 130, 246); */
+    border-left-color: #8eca59;
   }
 
   .line-number::before {
