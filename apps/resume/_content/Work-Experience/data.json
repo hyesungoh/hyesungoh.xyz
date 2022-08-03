@@ -2,6 +2,52 @@
   "title": "프로젝트 경험",
   "list": [
     {
+      "name": "Google developer student clubs",
+      "position": "Lead",
+      "startDate": "2022.08",
+      "endDate": null,
+      "description": "Google로부터 개발과 리더십 능력을 키울 수 있도록 지원받는 프로그램입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "Lead 활동",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "교내 최고의 개발 커뮤니티를 구성하는 것을 목표로 활동하고 있습니다.",
+          "startDate": "2022.08",
+          "endDate": null,
+          "which": [
+            "교내에 파편화되어 있는 개발 커뮤니티를 한곳으로 모아 더욱 많은 학우들이 지식을 나눌 수 있는 환경을 구성하는 것이 목표입니다.",
+            "재학 중인 성공회대학교에서 최초로 GDSC lead에 선발되었습니다.",
+            "동아리 회칙, 운영 방안을 계획하고 실천하고 있습니다."
+          ],
+          "techStack": null
+        },
+        {
+          "title": {
+            "text": "gdsc-skhu.com",
+            "githubLink": "https://github.com/GDSC-at-SKHU/www.gdsc-skhu.com/",
+            "otherLink": "https://www.gdsc-skhu.com/"
+          },
+          "description": "GDSC 소개와 모집을 위한 랜딩 페이지를 개발하였습니다.",
+          "startDate": "2022.08",
+          "endDate": null,
+          "which": ["3D와 부드러운 인터렉션을 통해 깊은 인상을 남기고자 하였습니다."],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "Three.js",
+            "React-three-fiber",
+            "GA",
+            "Vercel"
+          ]
+        }
+      ]
+    },
+    {
       "name": "블로그, 이력서 템플릿",
       "position": "오픈소스 프로젝트",
       "startDate": "2022.03",
@@ -26,6 +72,7 @@
           ],
           "techStack": [
             "Next.js",
+            "TypeScript",
             "NextUI",
             "Turborepo",
             "KBar",
@@ -53,7 +100,7 @@
             "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다.",
             "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
-          "techStack": ["React", "Ink", "Shelljs", "Webpack", "Github actions"]
+          "techStack": ["React", "TypeScript", "Ink", "Shelljs", "Webpack", "Github actions"]
         }
       ]
     },
@@ -195,7 +242,7 @@
       "projects": [
         {
           "title": {
-            "text": "랜딩 페이지",
+            "text": "dogvelopers.com",
             "githubLink": "https://github.com/dogVelopers/dogVelopers",
             "otherLink": "https://www.dogvelopers.com/"
           },
