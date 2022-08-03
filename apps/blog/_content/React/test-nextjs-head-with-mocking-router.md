@@ -5,7 +5,7 @@ date: 2022-06-30 00:02:00
 category: 'React'
 ---
 
-![header image](https://user-images.githubusercontent.com/26461307/176507342-2589ed89-ad0e-44b1-8d58-fe734f0ff622.png)
+![Next.js Head 테스트 작성하기](https://user-images.githubusercontent.com/26461307/182628713-5064455b-2acf-4062-b4ce-864a0079344b.png)
 
 `jest`, `react-testing-library`를 이용해 Next.js Head안의 meta 태그들을 테스트했던 방법을 공유합니다.
 

@@ -5,7 +5,7 @@ category: 'Review'
 draft: false
 ---
 
-![2022 토스 프론트엔드 밋업 후기](https://user-images.githubusercontent.com/26461307/180000528-9f8c1fb6-c0b0-4639-a6e3-a8e58c974b36.png)
+![Toss frontend meet-up 후기](https://user-images.githubusercontent.com/26461307/182628631-aad75a0f-bcf8-4542-b7ad-d6322f2c376f.png)
 
 ![초대 이메일](https://user-images.githubusercontent.com/26461307/180000915-6530d81c-b26b-4bfb-96d5-1f1bdd04636d.png)
 

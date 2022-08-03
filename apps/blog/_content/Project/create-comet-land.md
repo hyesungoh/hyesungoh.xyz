@@ -5,7 +5,7 @@ date: 2022-07-04 00:02:00
 category: 'Project'
 ---
 
-![header](https://user-images.githubusercontent.com/26461307/177149799-97f13f56-359c-489f-af22-c92b703ba081.png)
+![첫 NPM 패키지 개발기](https://user-images.githubusercontent.com/26461307/182628694-58821332-6bfe-4541-8612-8e1f2bec7a71.png)
 
 ![create-comet-land gif](https://user-images.githubusercontent.com/26461307/174654540-4f2ab425-8d94-40b0-aa0d-89ddd026c1f9.gif)
 

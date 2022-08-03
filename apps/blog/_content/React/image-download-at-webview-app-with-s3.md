@@ -5,7 +5,7 @@ date: 2022-07-24 00:02:00
 category: 'React'
 ---
 
-![웹뷰 앱에서 이미지 저장 기능 개발기 프로필](https://user-images.githubusercontent.com/26461307/181038089-16ef6cc6-fff3-4a58-bba9-7a3076f1b3d1.png)
+![webview app에서 이미지 저장 기능 개발기](https://user-images.githubusercontent.com/26461307/182628549-0f261753-7f94-480b-a9e1-0d0b2f3135d3.png)
 
 안녕하세요.
 
