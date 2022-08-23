@@ -26,7 +26,7 @@
         },
         {
           "title": {
-            "text": "gdsc-skhu.com",
+            "text": "www.gdsc-skhu.com",
             "githubLink": "https://github.com/GDSC-at-SKHU/www.gdsc-skhu.com/",
             "otherLink": "https://www.gdsc-skhu.com/"
           },
@@ -106,11 +106,28 @@
     },
     {
       "name": "디프만",
-      "position": "11기",
+      "position": "11기, 12기 운영진",
       "startDate": "2022.03",
       "endDate": null,
       "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
       "projects": [
+        {
+          "title": {
+            "text": "www.depromeet.com",
+            "githubLink": "https://github.com/depromeet/www.depromeet.com",
+            "otherLink": "https://www.depromeet.com"
+          },
+          "description": "디프만의 공식 랜딩 페이지입니다.",
+          "startDate": "2022.08",
+          "endDate": null,
+          "which": [
+            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터렉티브하게 만들고자 노력하였습니다.",
+            "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
+            "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
+            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
+          ],
+          "techStack": ["Next.js", "TypeScript", "Emotion", "Framer-motion", "Github actions", "GA", "Hotjar", "Vercel"]
+        },
         {
           "title": {
             "text": "영감탱",
