@@ -34,6 +34,8 @@ yarn add @next/bundle-analyzer -D
 
 ```js
 // next.config.js
+
+// 환경변수 ANALYZE가 true일 시에
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -69,7 +71,6 @@ yarn add next-compose-plugins -D
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 
-const { withSentryConfig } = require('@sentry/nextjs');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -81,18 +82,10 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
-const moduleExports = {
-  nextConfig,
-};
-
-const sentryWebpackPluginOptions = {
-  silent: true,
-};
-
 module.exports = withPlugins(
   [
-    withSentryConfig(moduleExports, sentryWebpackPluginOptions),
-    withBundleAnalyzer({}),
+    withBundleAnalyzer,
+    withFooPlugin,
     // 추가적인 Plugin들을 작성해주시면 됩니다.
   ],
   nextConfig
@@ -122,7 +115,7 @@ yarn add compression-webpack-plugin -D
 ```js
 // next.config.js
 const withPlugins = require('next-compose-plugins');
-const { withSentryConfig } = require('@sentry/nextjs');
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -132,27 +125,18 @@ const CompressionPlugin = require('compression-webpack-plugin');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-};
-
-const moduleExports = {
-  nextConfig,
-};
-
-const sentryWebpackPluginOptions = {
-  silent: true,
+  webpack: config => {
+    config.plugins.push(new CompressionPlugin());
+    return config;
+  },
 };
 
 module.exports = withPlugins(
   [
-    withSentryConfig(moduleExports, sentryWebpackPluginOptions),
     withBundleAnalyzer({
       compress: true,
-      webpack(config) {
-        const plugins = [...config.plugins, new CompressionPlugin()];
-
-        return { ...config, plugins };
-      },
     }),
+    withFooPlugin,
   ],
   nextConfig
 );
