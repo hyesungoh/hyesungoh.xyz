@@ -12,8 +12,197 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2022-07-24</lastBuildDate>
+        <lastBuildDate>2022-08-26</lastBuildDate>
         <item>
+    <title><![CDATA[그래서 자바스크립트는 어떻게 쓰레기를 수거하나요?]]></title>
+    <link>https://www.hyesungoh.xyz/how-to-collect-garbage-in-js</link>
+    <pubDate>2022-08-26</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/how-to-collect-garbage-in-js</guid>
+    <description>
+    <![CDATA[자바스크립트(V8)는 어떻게 메모리를 관리하고 있는지 공유합니다.]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/186742188-520a8f7b-15a8-4805-85a9-95444049fcc9.png" alt="그래서 자바스크립트는 어떻게 쓰레기를 수거하나요"></p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferer">MDN의 자바스크립트의 메모리 관리</a>를 읽어보면 자바스크립트가 어떤 알고리즘으로 메모리를 관리하고 있는지에 대해 알 수 있습니다.</p>
+<p>이를 조금 더 자세히 알고 싶다는 궁금증에 시작해, 구글의 자바스크립트 엔진 <code>V8</code>은 어떻게 메모리를 관리하고 있는지 알아본 내용을 공유합니다.</p>
+<h2 id="메모리와-가비지-콜렉션" class="heading">메모리와 가비지 콜렉션</h2>
+<blockquote>
+<p>위 MDN 문서를 읽어보신 분은 skip하셔도 좋은 내용이에요.</p>
+</blockquote>
+<p>C 언어와 같은 저수준 언어는 개발자가 의도적으로 메모리 해제를 할 수 있어요.
+하지만, 자바스크립트의 경우 메모리 할당부터 해제(가비지 콜렉션)까지 자동으로 관리를 하고 있는데요.</p>
+<p>간단한 메모리의 Life cycle은 다음과 같아요.</p>
+<ol>
+<li>메모리가 필요할 때 할당</li>
+<li>할당된 메모리를 사용</li>
+<li><strong>더 이상 필요하지 않으면 해제</strong></li>
+</ol>
+<p>여기서 중요한 부분이 <strong>더 이상 필요하지 않을 때를 판별하는 방법</strong>입니다.</p>
+<p>위에서 언급했던 것처럼 저수준 언어는 메모리의 필요성을 개발자가 직접 결정하지만, 자바스크립트와 같은 고수준의 언어들은 <strong>가비지 콜렉션(GC)</strong>라는 자동 메모리 관리 방법을 사용해요.</p>
+<blockquote>
+<p>그렇다고 가비지 콜렉션이 무조건적으로 좋은 방법은 아니에요. 왜냐하면 어떤 메모리의 필요성에 대해 판단하는 것은 <a href="https://en.wikipedia.org/wiki/Decidability_%28logic%29" target="_blank" rel="noopener noreferer">비결정적</a>인 문제이기 때문이에요.</p>
+</blockquote>
+<h3 id="reference-counting-가비지-콜렉션">Reference counting 가비지 콜렉션</h3>
+<p>Reference counting(참조 세기) 알고리즘은 <strong>더 이상 필요 없는 오브젝트</strong>를 <strong>어떤 다른 오브젝트도 참조하지 않는 오브젝트</strong>라고 정의하는 알고리즘이에요.</p>
+<p>즉, A라는 오브젝트를 참조하는 다른 오브젝트가 하나도 없을 경우 <strong>가비지</strong>로 판단해 수집(메모리 해제)해요.</p>
+<h4 id="reference-counting의-한계">Reference counting의 한계</h4>
+<p>Reference counting 알고리즘은 적절한 해결 방법이라고 생각되지만, 사실 한계가 존재해요.</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  a<span class="token punctuation">.</span><span class="token property-access">bar</span> <span class="token operator">=</span> b<span class="token punctuation">;</span>
+</span><span class="code-line">  b<span class="token punctuation">.</span><span class="token property-access">baz</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword control-flow">return</span> <span class="token string">'clear'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>위 경우에서 함수 호출이 완료되면 <code>a</code>와 <code>b</code> 객체는 스코프를 벗어나기 때문에 불필요한, 그러니까 회수되어야 하는 메모리가 됩니다.</p>
+<p>하지만 두 객체가 서로를 참조하고 있기 때문에, Reference counting 알고리즘은 둘 다 가비지 컬렉션의 대상으로 판단하지 못해 메모리 누수의 원인이 됩니다.</p>
+<blockquote>
+<p>실제로 IE 6과 7의 경우 DOM 오브젝트에 대해 Reference counting 알고리즘으로 가비지 콜렉션을 수행했었어요. 자세한 예제는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management#%EC%B0%B8%EC%A1%B0-%EC%84%B8%EA%B8%B0reference-counting_%EA%B0%80%EB%B9%84%EC%A7%80_%EC%BD%9C%EB%A0%89%EC%85%98" target="_blank" rel="noopener noreferer">MDN 게시물</a>을 참고하시면 좋을 거 같아요.</p>
+</blockquote>
+<h3 id="mark-and-sweep-알고리즘">Mark and sweep 알고리즘</h3>
+<p>Mark and sweep(표시하고 쓸기) 알고리즘의 경우 <strong>닿을 수 없는 오브젝트</strong>를 <strong>더 이상 필요 없는 오브젝트</strong>로 정의하는 알고리즘이에요.</p>
+<p>이 알고리즘의 동작 방법은 다음과 같아요.</p>
+<ol>
+<li><code>roots</code>라는 오브젝트의 집합을 가지고 있어요.</li>
+<li>주기적으로 가비지 콜렉터는 roots부터 roots가 참조하는 오브젝트, roots가 참조하는 오브젝트가 참조하는 오브젝트들 ... 을 닿을 수 있는 오브젝트로 판단해요.</li>
+<li>닿을 수 있는 오브젝트가 아닌 <strong>닿을 수 없는 오브젝트</strong>에 대해 가비지 콜렉션을 수행해요.</li>
+</ol>
+<p>이 알고리즘은 Reference counting 알고리즘보다 효율적인데,
+Reference counting이 판단하는 <strong>참조되지 않는 오브젝트</strong>는 모두 Mark and sweep이 판단하는 <strong>닿을 수 없는 오브젝트</strong>이지만
+<strong>닿을 수 없는 오브젝트</strong>가 모두 <strong>참조되지 않는 오브젝트</strong>는 아니기 때문이에요.</p>
+<p>위에서 설명했던 순환 참조로 풀어서 설명하자면 다음과 같아요.</p>
+<pre class="language-diff"><code class="language-diff code-highlight"><span class="code-line">function foo() {
+</span><span class="code-line"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> var a = {};
+</span></span></span><span class="code-line"><span class="token unchanged"><span class="token line"></span><span class="token prefix unchanged"> </span><span class="token line"> var b = {};
+</span></span></span><span class="code-line"><span class="token unchanged"><span class="token line"></span></span>
+</span><span class="code-line"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> a.bar = b;
+</span></span></span><span class="code-line"><span class="token unchanged"><span class="token line"></span><span class="token prefix unchanged"> </span><span class="token line"> b.baz = a;
+</span></span></span><span class="code-line"><span class="token unchanged"><span class="token line"></span></span>
+</span><span class="code-line"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> return 'clear';
+</span></span></span><span class="code-line"><span class="token unchanged"><span class="token line"></span></span>}
+</span><span class="code-line">
+</span><span class="code-line deleted"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">// a와 b는 Reference counting 알고리즘에서 참조되는 오브젝트
+</span></span></span><span class="code-line inserted"><span class="token deleted-sign deleted"><span class="token line"></span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">// 하지만 Mark and sweep 알고리즘에서 닿을 수 없는 오브젝트
+</span></span></span></code></pre>
+<h2 id="이게-끝" class="heading">이게 끝?</h2>
+<blockquote>
+<p>서론에서 언급한 MDN 문서를 읽으신 분들은 여기부터 읽어보시면 돼요.</p>
+</blockquote>
+<p>많은 분들이 어떤 알고리즘을 사용하는지는 알게 되었으나, 수박의 겉을 핥은 수준이라고 생각되어 더욱 자세히 알아보고 싶으실 거 같아요.</p>
+<p>저 또한 더욱 궁금함이 생겨 가장 대중적으로 사용되고 있는 자바스크립트 엔진 <code>V8</code>은 어떻게 가비지 콜렉션을 하고 있는지 검색해 보았어요.</p>
+<p>제가 검색해 알게 되고 공부한 내용을 공유드릴게요.</p>
+<h2 id="메모리-구조" class="heading">메모리 구조</h2>
+<p>우선 "어떻게 메모리를 해제하나" 알기 위해서는 "어떤 메모리가 있나"를 알아야 될 것 같아요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/186716665-01f8d21b-df60-4522-b159-c6e7ae6a9d9c.png" alt="v8메모리구조"></p>
+<small>
+출처 : https://deepu.tech/memory-management-in-v8/
+</small>
+<p>가장 크게 구분을 하자면 <code>stack</code>과 <code>heap</code>으로 나뉠 수 있어요.</p>
+<h3 id="stack">Stack</h3>
+<p>흔히 <code>호출 스택</code>으로 불리는 stack 형태의 메모리로써, 정적 값을 저장하며 기본적으로 프로그램 상에서 어디에 있는지를 기록해요.</p>
+<p>만약 함수를 실행한다면, 해당 함수를 호출 스택의 최상단에 위치하고 함수가 종료될 때 (반환할 때) 해당 함수를 호출 스택에서 제거해요.</p>
+<p>이에 대한 설명은 <a href="https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine/" target="_blank" rel="noopener noreferer">캡틴판교님께서 그림과 함께 설명해 주신 아티클</a>을 참고해 보시면 좋을 거 같아요.</p>
+<p>추가적으로 정적인 변수의 경우도 호출 스택에 저장되는데, 다음 예시를 보시면 이해가 빠르실 거예요.</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token string">'string'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 호출 스택</span>
+</span><span class="code-line">a <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">[</span>메모리 주소<span class="token operator">:</span> aaaa<span class="token punctuation">,</span> <span class="token literal-property property">값</span><span class="token operator">:</span> <span class="token number">123</span><span class="token punctuation">]</span>
+</span><span class="code-line">b <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">[</span>메모리 주소<span class="token operator">:</span> bbbb<span class="token punctuation">,</span> <span class="token literal-property property">값</span><span class="token operator">:</span> <span class="token string">'string'</span><span class="token punctuation">]</span>
+</span><span class="code-line">c <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">[</span>메모리 주소<span class="token operator">:</span> cccc<span class="token punctuation">,</span> <span class="token literal-property property">값</span><span class="token operator">:</span> zzzz<span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 힙</span>
+</span><span class="code-line"><span class="token punctuation">[</span>메모리 주소<span class="token operator">:</span> zzzz<span class="token punctuation">,</span> <span class="token literal-property property">값</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</span></code></pre>
+<p>즉 숫자와 문자열 같은 정적 값의 경우 호출 스택의 순서대로 추가되고, <strong>객체 값은 힙 메모리에 저장되며 힙 메모리의 주소를 스택에 푸시</strong>되는 것을 알 수 있어요.</p>
+<p>이것이 일반적으로 스택과 힙이 작업을 나누는 방식이라고 하며, 더욱 자세히 알고 싶으신 분들은 다음 자료를 확인해 보시면 좋을 거 같아요. <a href="https://speakerdeck.com/deepu105/v8-memory-usage-stack-and-heap" target="_blank" rel="noopener noreferer">V8 Memory usage</a></p>
+<h3 id="heap">Heap</h3>
+<p>호출 스택의 경우 메모리의 해제가 반환과 함께 이루어지기 때문에 일반적으로 가비지 콜렉터가 필요하지 않아요.</p>
+<p>하지만 힙의 경우 동적 데이터를 저장하고, 데이터를 서로 참조할 수 있기 때문에 가비지 콜렉터가 필요하고, 동작하는 방식이 위 MDN 문서에서 알 수 있었던 Mark and sweep 알고리즘이에요.</p>
+<p>이제 어떤 메모리에 가비지 콜렉터가 필요한지 알게 되었고, 언제 더욱 자세히 어떻게 가비지 콜렉터가 동작하는지 알아볼 수 있게 되었어요.</p>
+<h2 id="v8의-가비지-콜렉션" class="heading">V8의 가비지 콜렉션</h2>
+<p><img src="https://user-images.githubusercontent.com/26461307/186722466-e0c04b55-1064-4028-a0e9-ec131d8ddf06.png" alt="v8-orinoco"></p>
+<p>V8은 <code>Orinoco</code>라는 이름의 가비지 콜렉터를 사용하고, <code>major</code> 가비지 콜렉터와 <code>minor</code> 가비지 콜렉터로 나뉘어 있어요.</p>
+<h2 id="major-가비지-콜렉터" class="heading">Major 가비지 콜렉터</h2>
+<p>V8의 Major 가비지 콜렉터는 위에서 설명한 Mark and sweep 알고리즘으로 동작하며, <strong>모든 오브젝트</strong>의 참조를 따라가며 표시해요.</p>
+<p>이때 Mark and sweep 알고리즘의 동작을 <code>마킹 (Mark)</code>, <code>스위핑 (Sweep)</code>, <code>적용 (Compact+Update)</code>으로 나누었을 때 모든 동작을 메인 스레드에서 동작하게 되면 상당히 오랜 기간 동안 가비지 콜렉팅에 시간이 소요되어 다른 동작이 상당 시간 실행되지 않을 수도 있어요.</p>
+<p><img src="https://v8.dev/_img/trash-talk/01.svg" alt="v8 major GC main thread"></p>
+<small>
+출처 : https://v8.dev/blog/trash-talk
+</small>
+<p>이렇게 싱글 스레드 언어인 자바스크립트에서, 가비지 콜렉션을 위해 메인 스레드를 독점하지 않기 위해 <code>Orinoco</code>는 3가지 방법을 가지고 있어요.</p>
+<p>이는 <code>병렬 (Parallel)</code>, <code>증분 (Incremental)</code>, <code>동시성 (Concurrent)</code>이며 자세한 설명은 <a href="https://v8.dev/blog/trash-talk#orinoco" target="_blank" rel="noopener noreferer">다음 링크</a>에서 확인하실 수 있고, 여기에서는 이중 사용하는 방법에 대해서만 다뤄볼게요.</p>
+<h2 id="그래서-major-가비지-콜렉터는" class="heading">그래서 Major 가비지 콜렉터는</h2>
+<p>Major 가비지 콜렉터는 힙이 동적으로 계산된 제한에 가까워지면 시작되면 위에서 언급한 3가지 방법 중 동시성을 이용해 <code>마킹</code>하는 것으로 시작해요.</p>
+<p><code>마킹</code>은 메인 스레드가 다른 일을 처리하는 동안 전적으로 백그라운드에서 발생하고, <code>마킹</code>이 끝나거나 동적 할당 제한에 도달할 시 메인 스레드에서 메모리를 해제(<code>적용</code>)하고, 이때 메인 스레드의 작업이 일시 중지돼요.</p>
+<p>자세히는 메모리 해제만을 하는 것이 아닌, 다시 스캔하여 오브젝트를 확인도 하며 동시에 병렬적으로 <code>스위핑</code> 한다고 해요.</p>
+<p>아래 이미지를 함께 보시면 이해에 도움이 되실 거 같아요.</p>
+<p><img src="https://v8.dev/_img/trash-talk/09.svg" alt="v8 major gc"></p>
+<small>
+출처 : https://v8.dev/blog/trash-talk
+</small>
+<h2 id="minor-가비지-콜렉터" class="heading">Minor 가비지 콜렉터</h2>
+<p>위의 메모리 구조 이미지를 다시 보면, 단순히 이름만 보고서는 유추가 힘든 부분이 있을 거에요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/186716665-01f8d21b-df60-4522-b159-c6e7ae6a9d9c.png" alt="v8메모리구조"></p>
+<p>설명드리고자 한 부분은 <code>New space(Young generation)</code>과 <code>Old space(Old generation)</code>이예요.</p>
+<p>이는 가비지 콜렉션의 <code>세대적 가설</code>을 적용하기 위해 힙 메모리의 영역을 분리해둔 것이에요.</p>
+<h2 id="세대적-가설" class="heading">세대적 가설</h2>
+<p>세대적 가설이란 V8, 자바스크립트뿐만 아니라 대부분의 고수준 언어에서 적용되는 개념으로써,</p>
+<p><strong>해제될 메모리의 대부분은 할당된 지 얼마 되지 않은 메모리인 것을 의미해요.</strong></p>
+<p>V8에서는 이 가설을 적용하기 위해 설계되었으며, 가비지 콜렉션에서 살아남은 오브젝트를 복사해 <code>Old space(Old generation)</code>로 이동하도록 동작하고 있어요.</p>
+<blockquote>
+<p>객체를 복사하는 것은 비용이 많이 드는 것을 사실이나, 세대적 가설에 따르면 가비지 콜렉션에서 살아남는 객체는 극히 일부에 불과하다고 해요.</p>
+</blockquote>
+<h2 id="그래서-minor-가비지-콜렉터는" class="heading">그래서 Minor 가비지 콜렉터는</h2>
+<p>Minor 가비지 콜렉터(Scavenger라고도 표현)는 세대적 가설을 기반으로 <code>New space(Young generation)</code> 영역에서만 가비지 콜렉션을 실행해요.</p>
+<p>이때도 Mark and sweep 알고리즘을 사용하며, 살아남은 오브젝트들을 복사하기 위해 메모리를 <code>To-Space</code>, <code>From-Space</code>라는 이름으로 절반씩 나누어 사용하는데요. 절반으로 나눈 이유는 최악의 경우 모든 객체를 복사해야 하기 때문이에요.</p>
+<p>살아남은 오브젝트를 <code>To-Space</code>로 옮긴 후 <code>From-Space</code>를 비우고 역할을 반전시켜 사용해요.</p>
+<blockquote>
+<p>해제된 메모리로 남겨진 간격을 제거하기 위해 To-Space로 옮겨지는 오브젝트들은 연속적인 메모리에 이동해요.</p>
+</blockquote>
+<p>이후 두 번째 가비지 콜렉션에서 살아남은 오브젝트들을 <code>Old space(Old generation)</code>로 이동시키고, 마지막으로 이동 전의 오브젝트를 참조하는 포인터를 이동된 새 메모리 주소를 가리키도록 업데이트하며 Minor 가비지 콜렉터가 동작해요.</p>
+<blockquote>
+<p>Minor 가비지 콜렉터의 <code>마킹</code>, <code>비우기</code>, <code>포인터 업데이트</code>는 개별 단계가 아니라 <a href="https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EB%A6%AC_%EC%9D%B8%ED%84%B0%EB%A6%AC%EB%B9%99" target="_blank" rel="noopener noreferer">인터리브</a> 방식으로 동작해요.</p>
+</blockquote>
+<h3 id="현실-세계의-minor-가비지-콜렉터">현실 세계의 Minor 가비지 콜렉터</h3>
+<p>Minor 가비지 콜렉터는 <code>Orinoco</code>의 <code>병렬</code> 기능을 통해 작업을 분산해요.</p>
+<p>병렬적으로 동작하기 때문에 다른 스레드가 동일한 오브젝트를 발견하고 이동을 시도했을 수도 있는데요.</p>
+<p>이는 이동의 성공 여부와 상관없이 포인터를 업데이트하고, 다른 스레드가 포인터를 찾을 때 업데이트할 수 있도록 전달 포인터를 남기며 살아남은 오브젝트의 빠른 할당을 위해 Minor 가비지 콜렉터는 TLAB(Thread Local Allocation Buffers)를 사용해요.</p>
+<p><img src="https://v8.dev/_img/trash-talk/08.svg" alt="v8 minor GC"></p>
+<small>
+출처 : https://v8.dev/blog/trash-talk
+</small>
+<h2 id="idle-time-가비지-콜렉션" class="heading">Idle time 가비지 콜렉션</h2>
+<p>가비지 콜렉터를 직접 호출할 수 없지만, V8의 경우 사용자가 가비지 콜렉션을 트리거 할 수 있는 데, 이것이 <code>Idle time(여유 시간) 가비지 콜렉션</code>이예요.</p>
+<p>Idle time 가비지 콜렉션은 여유 시간에 가비지 콜렉션을 할 수 있도록 하는 것인데,</p>
+<p>예로 Chrome의 경우 애니메이션의 각 프레임을 렌더링 하는 중에 작업이 일찍 완료되면 가비지 콜렉션을 하는 형식이에요.</p>
+<p><img src="https://v8.dev/_img/trash-talk/10.svg" alt="idle time GC"></p>
+<small>
+출처 : https://v8.dev/blog/trash-talk
+</small>
+<blockquote>
+<p>Idle time 가비지 콜렉션을 통해 Gmail의 경우 힙 메모리를 45%까지 줄일 수 있었다고 해요.</p>
+</blockquote>
+<h2 id="현실-세계에-적용하기" class="heading">현실 세계에 적용하기</h2>
+<p>자바스크립트 개발의 대부분이 GC에 대해 생각할 필요가 없지만, 오늘 소개한 내용을 기반으로 메모리 사용량에 유리한 패턴을 생각하는 데 도움이 될 수 있는데요.</p>
+<p>주로 참고한 아티클의 작성자분께서는 V8 minor 가비지 콜렉션을 생각하여 상대적으로 비용이 적은, 수명이 짧은 오브젝트를 사용하도록 개발을 하는 방법으로 내부 구현을 이용해 메모리 비용을 절약하는 방식을 적용할 수 있다고 하였으며 이는 많은 고수준 언어에서 통하는 방법이라고 기술하였습니다.</p>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>MDN에서 소개하고 있는 자바스크립트의 일반적인 가비지 콜렉션 알고리즘부터, V8이 어떻게 가비지 콜렉션을 하고 있는지 알아보았는데요.</p>
+<p>이를 설명드리는 과정에서 제 부족한 이해도와 함께 영어 독해 실력이 좋지 않아 이질감이 많이 드실까 걱정입니다. 부디 양해 부탁드리며 잘못된 부분이 있을 시 댓글 부탁드릴게요.</p>
+<p>추가적으로 많은 부분 <code>V8</code>의 블로그를 참고했으니, 더욱 자세히 알고 싶으신 분들은 아래 참고 링크 확인을 부탁드리겠습니다. 감사합니다.</p>
+<h2 id="참고" class="heading">참고</h2>
+<ul>
+<li><a href="https://v8.dev/blog/trash-talk#orinoco" target="_blank" rel="noopener noreferer">v8 trash talk</a></li>
+<li><a href="https://deepu.tech/memory-management-in-v8/" target="_blank" rel="noopener noreferer">Visualizing memory management in V8 Engine</a></li>
+<li><a href="https://dev.to/jennieji/memory-management-in-v8-garbage-collection-and-improvements-18e6" target="_blank" rel="noopener noreferer">Memory management in V8, garbage collection and improvements</a></li>
+</ul>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[Webview app에서 이미지 저장 기능 개발기 w/ AWS s3]]></title>
     <link>https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3</link>
     <pubDate>2022-07-24</pubDate>
@@ -1460,6 +1649,8 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 </span></code></pre>
 <p>우선 설치를 진행해준 후,</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 환경변수 ANALYZE가 true일 시에</span>
 </span><span class="code-line"><span class="token keyword">const</span> withBundleAnalyzer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@next/bundle-analyzer'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token literal-property property">enabled</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">ANALYZE</span> <span class="token operator">===</span> <span class="token string">'true'</span><span class="token punctuation">,</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1482,7 +1673,6 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
 </span><span class="code-line"><span class="token keyword">const</span> withPlugins <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'next-compose-plugins'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> withSentryConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sentry/nextjs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token keyword">const</span> withBundleAnalyzer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@next/bundle-analyzer'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token literal-property property">enabled</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">ANALYZE</span> <span class="token operator">===</span> <span class="token string">'true'</span><span class="token punctuation">,</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1494,18 +1684,10 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 </span><span class="code-line">  <span class="token literal-property property">reactStrictMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> moduleExports <span class="token operator">=</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  nextConfig<span class="token punctuation">,</span>
-</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> sentryWebpackPluginOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  <span class="token literal-property property">silent</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
 </span><span class="code-line">module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token function">withPlugins</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token punctuation">[</span>
-</span><span class="code-line">    <span class="token function">withSentryConfig</span><span class="token punctuation">(</span>moduleExports<span class="token punctuation">,</span> sentryWebpackPluginOptions<span class="token punctuation">)</span><span class="token punctuation">,</span>
-</span><span class="code-line">    <span class="token function">withBundleAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    withBundleAnalyzer<span class="token punctuation">,</span>
+</span><span class="code-line">    withFooPlugin<span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token comment">// 추가적인 Plugin들을 작성해주시면 됩니다.</span>
 </span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">,</span>
 </span><span class="code-line">  nextConfig
@@ -1526,7 +1708,7 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 <p>설치 후 다음과 같은 형태로 <code>next.config.js</code> 파일을 작성하실 수 있습니다.</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
 </span><span class="code-line"><span class="token keyword">const</span> withPlugins <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'next-compose-plugins'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> withSentryConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sentry/nextjs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
 </span><span class="code-line"><span class="token keyword">const</span> withBundleAnalyzer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@next/bundle-analyzer'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token literal-property property">enabled</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">ANALYZE</span> <span class="token operator">===</span> <span class="token string">'true'</span><span class="token punctuation">,</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1536,27 +1718,18 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 </span><span class="code-line"><span class="token doc-comment comment">/** <span class="token keyword">@type</span> <span class="token class-name"><span class="token punctuation">{</span><span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'next'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>NextConfig<span class="token punctuation">}</span></span> */</span>
 </span><span class="code-line"><span class="token keyword">const</span> nextConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token literal-property property">reactStrictMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> moduleExports <span class="token operator">=</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  nextConfig<span class="token punctuation">,</span>
-</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> sentryWebpackPluginOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  <span class="token literal-property property">silent</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token function-variable function">webpack</span><span class="token operator">:</span> <span class="token parameter">config</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    config<span class="token punctuation">.</span><span class="token property-access">plugins</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword control-flow">return</span> config<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line">module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token function">withPlugins</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token punctuation">[</span>
-</span><span class="code-line">    <span class="token function">withSentryConfig</span><span class="token punctuation">(</span>moduleExports<span class="token punctuation">,</span> sentryWebpackPluginOptions<span class="token punctuation">)</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token function">withBundleAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 </span><span class="code-line">      <span class="token literal-property property">compress</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-</span><span class="code-line">      <span class="token function">webpack</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line">        <span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token spread operator">...</span>config<span class="token punctuation">.</span><span class="token property-access">plugins</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line">        <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span> <span class="token spread operator">...</span>config<span class="token punctuation">,</span> plugins <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    withFooPlugin<span class="token punctuation">,</span>
 </span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">,</span>
 </span><span class="code-line">  nextConfig
 </span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
