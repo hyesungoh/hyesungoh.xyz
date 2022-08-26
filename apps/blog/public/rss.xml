@@ -23,9 +23,9 @@
     </description>
     <content:encoded>
       <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/186742188-520a8f7b-15a8-4805-85a9-95444049fcc9.png" alt="그래서 자바스크립트는 어떻게 쓰레기를 수거하나요"></p>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferer">MDN의 자바스크립트의 메모리 관리</a>를 읽어보면 자바스크립트가 어떤 알고리즘으로 메모리를 관리하고 있는지에 대해 알 수 있습니다.</p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferer">MDN의 '자바스크립트의 메모리 관리'</a>를 읽어보면 자바스크립트가 어떤 알고리즘으로 메모리를 관리하고 있는지에 대해 알 수 있습니다.</p>
 <p>이를 조금 더 자세히 알고 싶다는 궁금증에 시작해, 구글의 자바스크립트 엔진 <code>V8</code>은 어떻게 메모리를 관리하고 있는지 알아본 내용을 공유합니다.</p>
-<h2 id="메모리와-가비지-콜렉션" class="heading">메모리와 가비지 콜렉션</h2>
+<h2 id="자바스크립트의-가비지-콜렉션" class="heading">자바스크립트의 가비지 콜렉션</h2>
 <blockquote>
 <p>위 MDN 문서를 읽어보신 분은 skip하셔도 좋은 내용이에요.</p>
 </blockquote>
@@ -125,7 +125,7 @@ Reference counting이 판단하는 <strong>참조되지 않는 오브젝트</str
 <p>호출 스택의 경우 메모리의 해제가 반환과 함께 이루어지기 때문에 일반적으로 가비지 콜렉터가 필요하지 않아요.</p>
 <p>하지만 힙의 경우 동적 데이터를 저장하고, 데이터를 서로 참조할 수 있기 때문에 가비지 콜렉터가 필요하고, 동작하는 방식이 위 MDN 문서에서 알 수 있었던 Mark and sweep 알고리즘이에요.</p>
 <p>이제 어떤 메모리에 가비지 콜렉터가 필요한지 알게 되었고, 언제 더욱 자세히 어떻게 가비지 콜렉터가 동작하는지 알아볼 수 있게 되었어요.</p>
-<h2 id="v8의-가비지-콜렉션" class="heading">V8의 가비지 콜렉션</h2>
+<h2 id="v8의-가비지-콜렉터" class="heading">V8의 가비지 콜렉터</h2>
 <p><img src="https://user-images.githubusercontent.com/26461307/186722466-e0c04b55-1064-4028-a0e9-ec131d8ddf06.png" alt="v8-orinoco"></p>
 <p>V8은 <code>Orinoco</code>라는 이름의 가비지 콜렉터를 사용하고, <code>major</code> 가비지 콜렉터와 <code>minor</code> 가비지 콜렉터로 나뉘어 있어요.</p>
 <h2 id="major-가비지-콜렉터" class="heading">Major 가비지 콜렉터</h2>

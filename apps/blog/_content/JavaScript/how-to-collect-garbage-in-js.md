@@ -7,11 +7,11 @@ category: 'JavaScript'
 
 ![그래서 자바스크립트는 어떻게 쓰레기를 수거하나요](https://user-images.githubusercontent.com/26461307/186742188-520a8f7b-15a8-4805-85a9-95444049fcc9.png)
 
-[MDN의 자바스크립트의 메모리 관리](https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management)를 읽어보면 자바스크립트가 어떤 알고리즘으로 메모리를 관리하고 있는지에 대해 알 수 있습니다.
+[MDN의 '자바스크립트의 메모리 관리'](https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_Management)를 읽어보면 자바스크립트가 어떤 알고리즘으로 메모리를 관리하고 있는지에 대해 알 수 있습니다.
 
 이를 조금 더 자세히 알고 싶다는 궁금증에 시작해, 구글의 자바스크립트 엔진 `V8`은 어떻게 메모리를 관리하고 있는지 알아본 내용을 공유합니다.
 
-## 메모리와 가비지 콜렉션
+## 자바스크립트의 가비지 콜렉션
 
 > 위 MDN 문서를 읽어보신 분은 skip하셔도 좋은 내용이에요.
 
@@ -148,7 +148,7 @@ c -> [메모리 주소: cccc, 값: zzzz]
 
 이제 어떤 메모리에 가비지 콜렉터가 필요한지 알게 되었고, 언제 더욱 자세히 어떻게 가비지 콜렉터가 동작하는지 알아볼 수 있게 되었어요.
 
-## V8의 가비지 콜렉션
+## V8의 가비지 콜렉터
 
 ![v8-orinoco](https://user-images.githubusercontent.com/26461307/186722466-e0c04b55-1064-4028-a0e9-ec131d8ddf06.png)
 
