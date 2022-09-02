@@ -142,6 +142,7 @@
             "Web 어플리케이션의 스캐폴딩을 담당하였습니다.",
             "공용 컴포넌트와 Hook을 개발하였습니다.",
             "홈 화면과 온보딩 화면을 개발하였습니다.",
+            "사용자 회원가입 시 데이터를 기반으로 회원가입 플로우의 리뉴얼을 리드하였습니다.",
             "Lint, Codecov, Cypress 등의 CI 적용을 전담하였습니다.",
             "커스컴 Eslint rule 개발을 전담하였습니다.",
             "기억에 남는 구현은 <a href='https://github.com/depromeet/11th_7team_web/pull/174' target='_blank' rel='noopener noreferrer'>LoadingHandler</a>와 <a href='https://github.com/depromeet/11th_7team_web/pull/242' target='_blank' rel='noopener noreferrer'>SnapCarousel</a> 컴포넌트입니다."
