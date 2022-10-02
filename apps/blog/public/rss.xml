@@ -14,19 +14,124 @@
         <language>en</language>
         <lastBuildDate>2022-10-02</lastBuildDate>
         <item>
-    <title><![CDATA[Next.js CI 단계에서 bundle 사이즈 확인하기]]></title>
-    <link>https://www.hyesungoh.xyz/check-bundle-size-with-github-action</link>
+    <title><![CDATA[Next.js CI 단계에서 번들 사이즈 확인하기]]></title>
+    <link>https://www.hyesungoh.xyz/check-bundle-size-with-github-actions</link>
     <pubDate>2022-10-02</pubDate>
-    <guid isPermaLink="false">https://www.hyesungoh.xyz/check-bundle-size-with-github-action</guid>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/check-bundle-size-with-github-actions</guid>
     <description>
-    <![CDATA[Github actions을 이용해 PR 코멘트와 이슈에서 route별 번들 사이즈를 확인하는 법을 공유합니다.]]>
+    <![CDATA[Github actions를 이용해 PR 코멘트와 이슈에서 route 별 번들 사이즈를 확인하는 법을 공유합니다.]]>
     </description>
     <content:encoded>
-      <![CDATA[<p>ㅁㄴㅇㄹ
-ㅁㄴㅇㄹㅁㄴㅇ
-ㄹㅁ</p>
-<p>ㅁㄴㅇㄹㅁㄴㅇ</p>
-<p>ㅁㄴㅇㄹㅁㄴㅇㄹF</p>]]>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/193454578-a8cc96b2-8f89-4cf7-8df0-01454f7b965b.png" alt="Next.js CI 단계에서 번들 사이즈 확인하기"></p>
+<p>Next.js 환경에서 각 Route 별 번들 사이즈를 Github PR 코멘트, 이슈에서 확인할 수 있는 방법을 공유합니다.</p>
+<h2 id="번들-사이즈란" class="heading">번들 사이즈란?</h2>
+<p>우리가 만든 서비스의 번들 사이즈를 확인하기 전에, 번들 사이즈는 무엇일까요?</p>
+<p>우리가 만든 서비스가 더욱 빠르고, 원활하게 사용자가 사용할 수 있게 하기 위한 지표 중 하나로써 <code>자바스크립트 코드의 크기</code>를 뜻해요.</p>
+<blockquote>
+<p>즉 코드의 크기(용량)가 작을수록 사용자가 다운로드받아야 할 용량이 줄어들어 빠르게 실행될 수 있는 것이에요.</p>
+</blockquote>
+<p>물론 성능을 논할 때 번들 사이즈 외에도 중요한 것은 많이 있어요. 관련해 더욱 알아보고 싶으신 분들은 <a href="https://yceffort.kr/2021/02/javascript-performance-bundle-size" target="_blank" rel="noopener noreferer">yceffort님의 글</a>을 추천해 드려요.</p>
+<h2 id="번들-사이즈를-확인하는-방법" class="heading">번들 사이즈를 확인하는 방법</h2>
+<p>Webpack을 사용하는 환경에서는 <a href="https://github.com/webpack-contrib/webpack-bundle-analyzer" target="_blank" rel="noopener noreferer">webpack-bundle-analyzer</a>를 사용해 번들 사이즈를 확인할 수 있어요.</p>
+<p>그리고 Next.js 환경에서는 webpack-bundle-analyzer를 이용한 <a href="https://www.npmjs.com/package/@next/bundle-analyzer" target="_blank" rel="noopener noreferer">@next/bundle-analyzer</a>를 사용해 번들 사이즈를 확인할 수 있어요.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif" alt="bundle analyzer"></p>
+<p><small> 출처 : <a href="https://github.com/josselinbuils/next-bundle-analyzer" target="_blank" rel="noopener noreferer">https://github.com/josselinbuils/next-bundle-analyzer</a> </small></p>
+<p>위 방법을 이용해 모든 청크들을 어떤 모듈들로 구성되어 있는지 확인할 수 있어요.</p>
+<p>자세히 보기 위해서는 좋은 방법이지만, 따로 커맨드로 실행해서 브라우저에서 확인해야 한다는 점이 번거로울 수도 있다고 생각되었어요.</p>
+<h2 id="ci-단계에서-확인하기" class="heading">CI 단계에서 확인하기</h2>
+<p>이런 번거로움을 Pull request 시에 번들 사이즈가 얼마나 달라졌으며, 현재 main 브랜치의 번들 사이즈가 얼마인지 Github의 Issue로 보여주는 방법으로 덜어주는 Github actions 도구가 있는데요.</p>
+<p>이름은 <a href="https://github.com/transferwise/actions-next-bundle-analyzer" target="_blank" rel="noopener noreferer">actions-next-bundle-analyzer</a>에요.</p>
+<p>Next.js 환경의 build 결과물을 통해 <code>next-bundle-analyzer</code>를 사용해 계산한 값을 아래와 같이 보여줘요.</p>
+<h4 id="pull-request에서">Pull request에서</h4>
+<p><img src="https://user-images.githubusercontent.com/614392/123790589-69872e80-d8d6-11eb-9dec-0686e0bba760.png" alt="actions-next-bundle-analyzer PR"></p>
+<h4 id="issue에서-base-branch-값">Issue에서 (base branch 값)</h4>
+<p><img src="https://user-images.githubusercontent.com/52004409/156007377-3e6bbb4c-f721-4b42-a363-4559b2ea55df.png" alt="actions-next-bundle-analyzer Issue"></p>
+<h2 id="적용하는-방법" class="heading">적용하는 방법</h2>
+<p>Github actions를 이용해 간단히 적용할 수 있고, 방법은 아래와 같아요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">name</span><span class="token punctuation">:</span> CI
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> main
+</span><span class="code-line">  <span class="token key atrule">pull_request</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">brances</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> main
+</span><span class="code-line">      <span class="token punctuation">-</span> something
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">run-bundle-analysis</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout
+</span><span class="code-line">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install dependencies
+</span><span class="code-line">        <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build
+</span><span class="code-line">        <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn build
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Analyze bundle sizes
+</span><span class="code-line">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> transferwise/actions<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bundle<span class="token punctuation">-</span>analyzer@master
+</span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">          <span class="token key atrule">workflow-id</span><span class="token punctuation">:</span> CI.yml
+</span><span class="code-line">          <span class="token key atrule">base-branch</span><span class="token punctuation">:</span> main
+</span><span class="code-line">        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">          <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>dependency 파일들과 build 결과물을 캐싱하여 다른 job 들의 속도를 높일 수 있겠지만, 가장 간단한 형태는 위의 모습이 될 거 같아요.</p>
+<p>기본적인 작성 방법은 <a href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferer">Github의 공식 문서</a>를 확인해 주시는 것이 더욱 정확할 것이라 생각해, <code>actions-next-bundle-analyzer</code> 작성 부분을 설명드리며 글을 마쳐보려 해요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Analyze bundle sizes
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> transferwise/actions<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bundle<span class="token punctuation">-</span>analyzer@master
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">workflow-id</span><span class="token punctuation">:</span> CI.yml
+</span><span class="code-line">    <span class="token key atrule">base-branch</span><span class="token punctuation">:</span> main
+</span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>작성하는 workflow의 파일명을 작성해 주시면 돼요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Analyze bundle sizes
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> transferwise/actions<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bundle<span class="token punctuation">-</span>analyzer@master
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">workflow-id</span><span class="token punctuation">:</span> CI.yml
+</span><span class="code-line highlight-line">    <span class="token key atrule">base-branch</span><span class="token punctuation">:</span> main
+</span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>optional 값으로써, base branch 이름을 적어주시면 돼요. default 값은 master예요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Analyze bundle sizes
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> transferwise/actions<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bundle<span class="token punctuation">-</span>analyzer@master
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">workflow-id</span><span class="token punctuation">:</span> CI.yml
+</span><span class="code-line">    <span class="token key atrule">base-branch</span><span class="token punctuation">:</span> main
+</span><span class="code-line highlight-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>Github PR에 코멘트를 남기고, Issue를 생성하기 위한 Token을 전달하는 과정으로 따로 <code>Github Secrets</code>에 값을 작성해 주시지 않아도 돼요.</p>
+<p>추가적으로 사용하지 않은 옵션이 하나 더 있는데요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Analyze bundle sizes
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> transferwise/actions<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bundle<span class="token punctuation">-</span>analyzer@master
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">workflow-id</span><span class="token punctuation">:</span> CI.yml
+</span><span class="code-line">    <span class="token key atrule">base-branch</span><span class="token punctuation">:</span> main
+</span><span class="code-line highlight-line">    <span class="token key atrule">working-directory</span><span class="token punctuation">:</span> /packages/something
+</span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>빌드 결과물을 찾을 위치를 지정하는 옵션이에요. 기본값은 <code>cwd</code>로써 모노레포와 같은 환경에서 사용할 수 있을 것 같은 옵션이에요.</p>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>위 도구를 적용해 Route 별 번들 사이즈를 간편하게 확인할 수 있었고, Dynamic import를 한 부분도 따로 알려주어 추가적인 인사이트를 얻을 수 있게 되었어요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/193453180-9734e05d-d7ba-4236-9ad3-4b19c7c8e245.png" alt="적용 결과물"></p>
+<p>번들 사이즈가 지나치게 큰 Route는 없는지 간단하게 확인 후 <code>bundle-analyzer</code>를 이용해 자세히 확인하는 방법 등을 통해 번들 사이즈 다이어트에 다들 성공하시기 바라는 마음으로 글을 맞춰보도록 할게요.</p>
+<p>읽어주셔서 감사합니다.</p>
+<blockquote>
+<p>저는 <a href="https://github.com/kooku0" target="_blank" rel="noopener noreferer">kooku</a> 님의 적용 사례를 보고 해당 도구를 알게 되었어요. 많은 인사이트를 주신 kooku 님에게 감사 인사드려요!</p>
+</blockquote>
+<h2 id="부록-라이브러리-번들-사이즈-확인하기" class="heading">부록, 라이브러리 번들 사이즈 확인하기</h2>
+<p>번들 사이즈에 많은 영향을 끼치는 것이 라이브러리의 크기인데요.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/193454231-0cc9f673-9c4a-43c9-917a-6db7f0cec140.png" alt="bundlephobia"></p>
+<p><a href="https://bundlephobia.com/" target="_blank" rel="noopener noreferer">bundlephobia</a>에서 라이브러리 이름과 버전에 따른 번들 사이즈를 확인할 수 있으니 라이브러리 선택의 지표 중 하나로 사용하실 수 있어요.</p>]]>
     </content:encoded>
   </item><item>
     <title><![CDATA[그래서 자바스크립트는 어떻게 쓰레기를 수거하나요?]]></title>
