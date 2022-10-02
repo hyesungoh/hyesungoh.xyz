@@ -12,8 +12,23 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2022-08-26</lastBuildDate>
+        <lastBuildDate>2022-10-02</lastBuildDate>
         <item>
+    <title><![CDATA[Next.js CI 단계에서 bundle 사이즈 확인하기]]></title>
+    <link>https://www.hyesungoh.xyz/check-bundle-size-with-github-action</link>
+    <pubDate>2022-10-02</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/check-bundle-size-with-github-action</guid>
+    <description>
+    <![CDATA[Github actions을 이용해 PR 코멘트와 이슈에서 route별 번들 사이즈를 확인하는 법을 공유합니다.]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>ㅁㄴㅇㄹ
+ㅁㄴㅇㄹㅁㄴㅇ
+ㄹㅁ</p>
+<p>ㅁㄴㅇㄹㅁㄴㅇ</p>
+<p>ㅁㄴㅇㄹㅁㄴㅇㄹF</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[그래서 자바스크립트는 어떻게 쓰레기를 수거하나요?]]></title>
     <link>https://www.hyesungoh.xyz/how-to-collect-garbage-in-js</link>
     <pubDate>2022-08-26</pubDate>
