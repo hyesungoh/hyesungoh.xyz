@@ -22,7 +22,7 @@
     <![CDATA[Github actions를 이용해 PR 코멘트와 이슈에서 route 별 번들 사이즈를 확인하는 법을 공유합니다.]]>
     </description>
     <content:encoded>
-      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/193454578-a8cc96b2-8f89-4cf7-8df0-01454f7b965b.png" alt="Next.js CI 단계에서 번들 사이즈 확인하기"></p>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/193455442-df639e3e-9153-4513-80c7-80743d1a7811.png" alt="Next.js CI 단계에서 번들 사이즈 확인하기"></p>
 <p>Next.js 환경에서 각 Route 별 번들 사이즈를 Github PR 코멘트, 이슈에서 확인할 수 있는 방법을 공유합니다.</p>
 <h2 id="번들-사이즈란" class="heading">번들 사이즈란?</h2>
 <p>우리가 만든 서비스의 번들 사이즈를 확인하기 전에, 번들 사이즈는 무엇일까요?</p>

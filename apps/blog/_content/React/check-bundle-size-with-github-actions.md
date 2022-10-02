@@ -5,7 +5,7 @@ date: 2022-10-02 20:24:00
 category: 'React'
 ---
 
-![Next.js CI 단계에서 번들 사이즈 확인하기](https://user-images.githubusercontent.com/26461307/193454578-a8cc96b2-8f89-4cf7-8df0-01454f7b965b.png)
+![Next.js CI 단계에서 번들 사이즈 확인하기](https://user-images.githubusercontent.com/26461307/193455442-df639e3e-9153-4513-80c7-80743d1a7811.png)
 
 Next.js 환경에서 각 Route 별 번들 사이즈를 Github PR 코멘트, 이슈에서 확인할 수 있는 방법을 공유합니다.
 
