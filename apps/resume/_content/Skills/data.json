@@ -33,7 +33,7 @@
       "name": "비동기",
       "descriptions": [
         "Async Await 문법에 익숙합니다.",
-        "Data caching, revalidate를 이유로 Data fetching 라이브러리 React-query, SWR을 사용한 경험이 있습니다."
+        "Data caching, revalidate를 이유로 Data fetching 라이브러리 TanStack Query, SWR을 사용한 경험이 있습니다."
       ]
     },
     {

@@ -153,7 +153,7 @@
             "TypeScript",
             "Emotion",
             "Framer-motion",
-            "React-Query",
+            "TanStack Query",
             "Recoil",
             "Jest",
             "React Testing Library",
