@@ -2,6 +2,111 @@
   "title": "프로젝트 경험",
   "list": [
     {
+      "name": "디프만",
+      "position": "11기, 12기 운영진",
+      "startDate": "2022.03",
+      "endDate": null,
+      "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "아맞다",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2022.10",
+          "endDate": null,
+          "which": ["개발 중에 있습니다."],
+          "techStack": [
+            "Next.js",
+            "React-Native",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "Recoil",
+            "Tanstack Query",
+            "Jest",
+            "React Testing Library",
+            "Codecov",
+            "Cypress",
+            "Github actions",
+            "Husky",
+            "GA",
+            "Hotjar",
+            "Cloudflare Pages"
+          ]
+        },
+        {
+          "title": {
+            "text": "www.depromeet.com",
+            "githubLink": "https://github.com/depromeet/www.depromeet.com",
+            "otherLink": "https://www.depromeet.com"
+          },
+          "description": "디프만의 공식 랜딩 페이지입니다.",
+          "startDate": "2022.08",
+          "endDate": null,
+          "which": [
+            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터렉티브하게 만들고자 노력하였습니다.",
+            "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
+            "클라이언트 사이드에서 다이내믹 라우팅되던 페이지들에 SSG를 적용해 TTI를 0.4초, LCP를 1.5초 감소시켰습니다.",
+            "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
+            "next-sitemap을 도입해 동적으로 sitemap이 생성되도록 하였습니다.",
+            "Google Search Console과 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "Github actions",
+            "next-sitemap",
+            "GA",
+            "Hotjar",
+            "Vercel"
+          ]
+        },
+        {
+          "title": {
+            "text": "영감탱",
+            "githubLink": "https://github.com/depromeet/11th_7team_web",
+            "otherLink": "https://litt.ly/ygtang"
+          },
+          "description": "영감을 기록하는 모든 이들을 위한, 아카이빙 서비스입니다.",
+          "startDate": "2022.03",
+          "endDate": null,
+          "which": [
+            "10인 프로젝트, 4인의 프론트엔드 파트에서 파트 리드를 맡고 있습니다.",
+            "Web 어플리케이션의 스캐폴딩을 담당하였습니다.",
+            "공용 컴포넌트와 Hook을 개발하였습니다.",
+            "홈 화면과 온보딩 화면을 개발하였습니다.",
+            "사용자 회원가입 시 데이터를 기반으로 회원가입 플로우의 리뉴얼을 리드하였습니다.",
+            "Lint, Codecov, Cypress 등의 CI 구현을 전담하였습니다.",
+            "커스컴 Eslint rule 개발을 전담하였습니다.",
+            "기억에 남는 구현은 <a href='https://github.com/depromeet/11th_7team_web/pull/174' target='_blank' rel='noopener noreferrer'>LoadingHandler</a>와 <a href='https://github.com/depromeet/11th_7team_web/pull/242' target='_blank' rel='noopener noreferrer'>SnapCarousel</a> 컴포넌트입니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "React-Native",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "TanStack Query",
+            "Recoil",
+            "Jest",
+            "React Testing Library",
+            "Codecov",
+            "Cypress",
+            "Github actions",
+            "GA",
+            "Hotjar",
+            "Sentry",
+            "Cloudflare Pages"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Google developer student clubs",
       "position": "Lead",
       "startDate": "2022.08",
@@ -101,69 +206,6 @@
             "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
           "techStack": ["React", "TypeScript", "Ink", "Shelljs", "Webpack", "Github actions"]
-        }
-      ]
-    },
-    {
-      "name": "디프만",
-      "position": "11기, 12기 운영진",
-      "startDate": "2022.03",
-      "endDate": null,
-      "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
-      "projects": [
-        {
-          "title": {
-            "text": "www.depromeet.com",
-            "githubLink": "https://github.com/depromeet/www.depromeet.com",
-            "otherLink": "https://www.depromeet.com"
-          },
-          "description": "디프만의 공식 랜딩 페이지입니다.",
-          "startDate": "2022.08",
-          "endDate": null,
-          "which": [
-            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터렉티브하게 만들고자 노력하였습니다.",
-            "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
-            "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
-            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
-          ],
-          "techStack": ["Next.js", "TypeScript", "Emotion", "Framer-motion", "Github actions", "GA", "Hotjar", "Vercel"]
-        },
-        {
-          "title": {
-            "text": "영감탱",
-            "githubLink": "https://github.com/depromeet/11th_7team_web",
-            "otherLink": "https://litt.ly/ygtang"
-          },
-          "description": "영감을 기록하는 모든 이들을 위한, 아카이빙 서비스입니다.",
-          "startDate": "2022.03",
-          "endDate": null,
-          "which": [
-            "10인 프로젝트, 4인의 프론트엔드 파트에서 파트 리드를 맡고 있습니다.",
-            "Web 어플리케이션의 스캐폴딩을 담당하였습니다.",
-            "공용 컴포넌트와 Hook을 개발하였습니다.",
-            "홈 화면과 온보딩 화면을 개발하였습니다.",
-            "사용자 회원가입 시 데이터를 기반으로 회원가입 플로우의 리뉴얼을 리드하였습니다.",
-            "Lint, Codecov, Cypress 등의 CI 구현을 전담하였습니다.",
-            "커스컴 Eslint rule 개발을 전담하였습니다.",
-            "기억에 남는 구현은 <a href='https://github.com/depromeet/11th_7team_web/pull/174' target='_blank' rel='noopener noreferrer'>LoadingHandler</a>와 <a href='https://github.com/depromeet/11th_7team_web/pull/242' target='_blank' rel='noopener noreferrer'>SnapCarousel</a> 컴포넌트입니다."
-          ],
-          "techStack": [
-            "Next.js",
-            "React-Native",
-            "TypeScript",
-            "Emotion",
-            "Framer-motion",
-            "TanStack Query",
-            "Recoil",
-            "Jest",
-            "React Testing Library",
-            "Cypress",
-            "Github actions",
-            "GA",
-            "Hotjar",
-            "Sentry",
-            "Cloudflare Pages"
-          ]
         }
       ]
     },
