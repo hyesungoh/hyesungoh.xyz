@@ -3,6 +3,18 @@
   "list": [
     {
       "title": {
+        "text": "toss/slash",
+        "githubLink": "https://github.com/toss/slash",
+        "otherLink": null
+      },
+      "position": "Contributor",
+      "startDate": "2022.10",
+      "endDate": "2022.10",
+      "description": "@toss/sentry 문서를 수정하여 기여하였습니다.",
+      "which": []
+    },
+    {
+      "title": {
         "text": "Software Maestro Expert",
         "githubLink": null,
         "otherLink": null
