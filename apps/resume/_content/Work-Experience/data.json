@@ -63,6 +63,7 @@
             "next-sitemap",
             "GA",
             "Hotjar",
+            "Husky",
             "Vercel"
           ]
         },
@@ -101,6 +102,7 @@
             "GA",
             "Hotjar",
             "Sentry",
+            "Husky",
             "Cloudflare Pages"
           ]
         }
