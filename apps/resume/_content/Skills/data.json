@@ -4,6 +4,7 @@
     {
       "name": "의사소통",
       "descriptions": [
+        "함께 일하고 싶은 사람은 신뢰에서 나온다고 믿으며, 이를 위해 빠른 실행력과 근거 기반의 의사소통을 위해 노력합니다.",
         "많고 편한 의사소통이 갈등을 방지할 수 있다고 믿습니다.",
         "내가 모르는 것은 솔직하게 모른다고 말할 수 있는 용기를 위해 노력합니다.",
         "백문이 불여일견을 믿어, 다양한 도구와 방법으로 의사소통하는 것을 좋아합니다."
@@ -33,7 +34,7 @@
       "name": "비동기",
       "descriptions": [
         "Async Await 문법에 익숙합니다.",
-        "Data caching, revalidate를 이유로 Data fetching 라이브러리 TanStack Query, SWR을 사용한 경험이 있습니다."
+        "Data caching, revalidate를 이유로 Data fetching 라이브러리 TanStack/React Query, SWR을 사용한 경험이 있습니다."
       ]
     },
     {
@@ -41,7 +42,7 @@
       "descriptions": [
         "함수 컴포넌트와 Hooks를 사용하는 것에 익숙합니다.",
         "Suspense와 Error Boundary를 사용해본 경험이 있습니다.",
-        "SSR, SSG를 위해 Next.js를 사용해본 경험이 있습니다.",
+        "프레임워크로써 Next.js 환경을 선호합니다.",
         "Recoil을 이용해 전역 상태를 관리한 경험이 있습니다.",
         "Redux를 이용한 경험은 부족합니다."
       ]
@@ -57,8 +58,8 @@
       "name": "DevOps",
       "descriptions": [
         "자동화를 통해 생산성을 높히는 것을 좋아합니다.",
-        "Github actions를 이용한 테스트와 배포 자동화 경험이 있습니다.",
-        "간단한 AWS IAM 설정, S3, CF, EC2 사용 경험이 있습니다."
+        "Github actions를 이용한 테스트와 배포 자동화등의 경험이 있습니다.",
+        "간단한 AWS IAM 설정, S3, CloudFront, EC2 사용 경험이 있습니다."
       ]
     }
   ]
