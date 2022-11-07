@@ -17,7 +17,7 @@
           "description": "",
           "startDate": "2022.10",
           "endDate": null,
-          "which": ["개발 중에 있습니다."],
+          "which": ["10인 프로젝트, 4인의 프론트엔드 파트에서 파트 리드를 맡고 있습니다.", "개발 중에 있습니다."],
           "techStack": [
             "Next.js",
             "React-Native",
@@ -52,7 +52,7 @@
             "클라이언트 사이드에서 다이내믹 라우팅되던 페이지들에 SSG를 적용해 TTI를 0.4초, LCP를 1.5초 감소시켰습니다.",
             "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
             "next-sitemap을 도입해 동적으로 sitemap이 생성되도록 하였습니다.",
-            "Google Search Console과 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
+            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
           ],
           "techStack": [
             "Next.js",
@@ -73,7 +73,7 @@
             "githubLink": "https://github.com/depromeet/11th_7team_web",
             "otherLink": "https://litt.ly/ygtang"
           },
-          "description": "영감을 기록하는 모든 이들을 위한, 아카이빙 서비스입니다.",
+          "description": "영감을 기록하는 모든 이들을 위한 아카이빙 서비스입니다.",
           "startDate": "2022.03",
           "endDate": null,
           "which": [
@@ -173,9 +173,9 @@
           "which": [
             "Next.js의 'getStaticProps', 'getStaticPaths'를 이용해 SSG로써 구현하였습니다.",
             "Unified, Rehype를 이용해 Markdown을 컴파일하였습니다.",
-            "robots.txt, sitemap.xml과 같은 정적 파일 생성을 자동화하였습니다.",
+            "robots.txt, sitemap.xml과 같은 <a href='https://github.com/hyesungoh/comet-land/blob/f58f27480391b50adea2f3a3b944dd87318852ee/apps/blog/scripts/generate-static-files.mjs' target='_blank' rel='noreferrer'>정적 파일 생성을 자동화</a>하였습니다.",
             "블로그와 이력서 간 동일한 설정, 컴포넌트를 재사용하기 위해 Turborepo를 사용해 모노레포를 구성하였습니다.",
-            "회고는 <a href='https://www.hyesungoh.xyz/comet-land-0-intro/'>다음 링크</a>에서 확인하실 수 있습니다."
+            "회고는 <a href='https://www.hyesungoh.xyz/comet-land-0-intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
           "techStack": [
             "Next.js",
@@ -205,7 +205,7 @@
             "동적이며 아름답게 보여짐과 동시에 관리에 용이할 것이라 판단하여 React와 Ink를 사용하였습니다.",
             "Shelljs를 이용해 git clone 후, fs 모듈을 이용해 파일을 수정하는 방법으로 개발하였습니다.",
             "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다.",
-            "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land'>다음 링크</a>에서 확인하실 수 있습니다."
+            "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
           "techStack": ["React", "TypeScript", "Ink", "Shelljs", "Webpack", "Github actions"]
         }
@@ -232,7 +232,7 @@
             "Interactive한 서비스가 되기 위해 노력하였습니다.",
             "Github actions를 사용하여 배포 자동화를 적용하였습니다.",
             "에러 모니터링, 사용자 경험 추적을 위해 GA와 Sentry를 적용하였습니다.",
-            "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/'>다음 링크</a>에서 확인하실 수 있습니다."
+            "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
           "techStack": [
             "React",
