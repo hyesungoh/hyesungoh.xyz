@@ -1,0 +1,17 @@
+{
+  "title": "기타",
+  "list": [
+    {
+      "name": "학력",
+      "descriptions": ["성공회대학교 소프트웨어공학과 3학년 2학기 재학중", "한국게임과학고등학교 프로그래밍학과 졸업"]
+    },
+    {
+      "name": "링크",
+      "descriptions": [
+        "Github : <a href='https://github.com/hyesungoh' target='_blank' rel='noreferrer'>github.com/hyesungoh</a>",
+        "Blog: <a href='https://www.hyesungoh.xyz/' target='_blank' rel='noreferrer'>www.hyesungoh.xyz</a>",
+        "LinkedIn: <a href='https://www.linkedin.com/in/hyesungoh414/' target='_blank' rel='noreferrer'>www.linkedin.com/in/hyesungoh414</a>"
+      ]
+    }
+  ]
+}

@@ -11,9 +11,7 @@ function Skill({ name, descriptions }: ISkill) {
       <h3>{name}</h3>
       <ul>
         {descriptions.map((description, index) => (
-          <Li key={index} theme={theme}>
-            {description}
-          </Li>
+          <Li key={index} theme={theme} dangerouslySetInnerHTML={{ __html: description }} />
         ))}
       </ul>
     </Div>

@@ -1,3 +1,4 @@
+import { data as etcData, IEtc } from '../../_content/Etc';
 import { data as headerData, IHeader } from '../../_content/Header';
 import { data as otherExperienceDate, IOtherExperience } from '../../_content/Other-Experience';
 import { data as skillsData, ISkills } from '../../_content/Skills';
@@ -12,15 +13,17 @@ interface Props {
   workExperience: IWorkExperience;
   otherExperience: IOtherExperience;
   skills: ISkills;
+  etc: IEtc;
 }
 
-function Resume({ header, workExperience, otherExperience, skills }: Props) {
+function Resume({ header, workExperience, otherExperience, skills, etc }: Props) {
   return (
     <main>
       <Header {...header} />
       <WorkExperienceSection {...workExperience} />
       <OtherExperienceSection {...otherExperience} />
       <SkillsSection {...skills} />
+      <SkillsSection {...etc} />
     </main>
   );
 }
@@ -34,6 +37,7 @@ export async function getStaticProps() {
       workExperience: workExperienceData,
       otherExperience: otherExperienceDate,
       skills: skillsData,
+      etc: etcData,
     },
   };
 }
