@@ -151,7 +151,7 @@ return (
 }
 ```
 
-_전체 코드는 [다음 링크](https://github.com/hyesungoh/create-comet-land/blob/main/source/3_Configuration.tsx)에서 확인하실 수 있습니다._
+_전체 코드는 [다음 링크](https://github.com/hyesungoh/create-comet-land/blob/639acce08f8ddc762b3167582fa879450f248111/source/4_Configuration.tsx)에서 확인하실 수 있습니다._
 
 ## v1.0.x 배포 그리고 자동화
 
