@@ -29,12 +29,13 @@
             "Jest",
             "React Testing Library",
             "Codecov",
-            "Cypress",
+            "Playwright",
             "Github actions",
             "CodeQL",
             "Husky",
             "GA",
             "Hotjar",
+            "Mixpanel",
             "Cloudflare Pages"
           ]
         },
@@ -102,6 +103,7 @@
             "Github actions",
             "GA",
             "Hotjar",
+            "Mixpanel",
             "Sentry",
             "Husky",
             "Cloudflare Pages"
