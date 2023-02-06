@@ -28,7 +28,10 @@
     },
     {
       "name": "TypeScript",
-      "descriptions": ["JavaScript보다 TypeScript 개발환경에 익숙합니다.", "Type Safe하게 개발하는 것을 지향합니다."]
+      "descriptions": [
+        "JavaScript보다 TypeScript 개발환경에 익숙합니다.",
+        "Type Safe하게 개발하는 것을 지향합니다."
+      ]
     },
     {
       "name": "비동기",
@@ -51,7 +54,7 @@
       "name": "Test",
       "descriptions": [
         "Jest와 React Testing Library를 이용해 테스트 코드를 작성한 경험이 있습니다.",
-        "Cypress를 이용해 E2E 테스트 코드를 작성한 경험이 있습니다."
+        "Cypress, Playwright을 이용해 E2E 테스트 코드를 작성한 경험이 있습니다."
       ]
     },
     {
