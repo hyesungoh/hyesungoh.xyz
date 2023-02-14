@@ -23,7 +23,9 @@
       "startDate": "2022.06",
       "endDate": "2022.12",
       "description": "연수생이 보다 개발에 몰입할 수 있도록 조언과 도움을 주는 활동에 참여하였습니다.",
-      "which": ["2개의 팀에 참여해 출시까지의 과정을 도왔습니다."]
+      "which": [
+        "2개의 팀에 참여해 출시까지의 과정을 도왔습니다."
+      ]
     },
     {
       "title": {
@@ -35,7 +37,9 @@
       "startDate": "2022.02",
       "endDate": "2022.02",
       "description": "더미 데이터를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
-      "which": ["한국어 정보를 추가, 잘못된 정보를 수정하였습니다."]
+      "which": [
+        "한국어 정보를 추가, 잘못된 정보를 수정하였습니다."
+      ]
     },
     {
       "title": {
@@ -81,6 +85,20 @@
     },
     {
       "title": {
+        "text": "학과 TA",
+        "githubLink": null,
+        "otherLink": null
+      },
+      "position": null,
+      "startDate": "2021.3",
+      "endDate": "2023.6",
+      "description": "21년도 1학기와 23년도 1학기에 학과 TA를 맡았습니다.",
+      "which": [
+        "<a href='https://github.com/hyesungoh/BOJ_grading_automation' target='_blank' rel='noreferrer'/>백준 온라인 저지 채점을 자동화하는 스크립트를 개발</a>해 업무를 자동화하였고 후배 TA도 사용할 수 있도록 인계하였습니다."
+      ]
+    },
+    {
+      "title": {
         "text": "엘리스 아카데미 외주",
         "githubLink": null,
         "otherLink": "https://academy.elice.io/courses/18841/info"
@@ -113,7 +131,9 @@
       "startDate": "2016.06",
       "endDate": "2016.08",
       "description": "고용노동부와 전라북도에서 지원하는 청년창업 과정에서 우수상을 수상하였습니다.",
-      "which": ["치매 예방 기능성 게임을 개발하여 창업하였습니다."]
+      "which": [
+        "치매 예방 기능성 게임을 개발하여 창업하였습니다."
+      ]
     },
     {
       "title": {

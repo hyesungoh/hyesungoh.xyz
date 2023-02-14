@@ -19,9 +19,7 @@ function Experience({ title, position, startDate, endDate, description, which }:
       {which.length > 0 && (
         <ul>
           {which.map((each, index) => (
-            <Li key={index} theme={theme}>
-              {each}
-            </Li>
+            <Li key={index} theme={theme} dangerouslySetInnerHTML={{ __html: each }} />
           ))}
         </ul>
       )}
