@@ -125,15 +125,17 @@
           "title": {
             "text": "Lead 활동",
             "githubLink": null,
-            "otherLink": null
+            "otherLink": "https://gdsc.community.dev/sungkonghoe-university/"
           },
           "description": "교내 최고의 개발 커뮤니티를 구성하는 것을 목표로 활동하고 있습니다.",
           "startDate": "2022.08",
           "endDate": null,
           "which": [
             "교내에 파편화되어 있는 개발 커뮤니티를 한곳으로 모아 더욱 많은 학우들이 지식을 나눌 수 있는 환경을 구성하는 것이 목표입니다.",
-            "재학 중인 성공회대학교에서 최초로 GDSC lead에 선발되었습니다.",
-            "커뮤니티의 비전, 방향, 원칙, 운영 방안을 계획하고 실천하고 있습니다."
+            "커뮤니티의 비전, 방향, 원칙, 운영 방안을 계획하고 실천하고 있습니다.",
+            "개발자로써의 성장과 함께 재미를 느낄 수 있도록 해커톤, 미니 프로젝트, 솔루션 챌린지 등 행사를 개최하고 운영하였습니다.",
+            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-gdsc-skhu-web-study-04/' target='_blank' rel='noreferrer'>웹 개발이 낯선 멤버를 대상으로 JavaScript, React, TypeScript, Next.js 등을 강의하였습니다.</a>",
+            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-some-tips-for-developer/' target='_blank' rel='noreferrer'>전체 멤버를 대상으로 '개발자로써 성장을 위해 노력했던 경험', '프로젝트 경험' 등을 공유해</a> 제가 겪은 시행착오를 겪지 않아도 되도록 노력했습니다."
           ],
           "techStack": null
         },
