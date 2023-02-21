@@ -19,7 +19,8 @@
           "endDate": null,
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
-            "PM으로써 회의를 진행하며 지표를 근거로 우선순위를 정하고 있습니다."
+            "PM으로써 회의를 진행하며 지표를 근거로 우선순위를 정하고 있습니다.",
+            "모바일 플랫폼으로써 <a href='https://github.com/depromeet/ahmatda-app' target='_blank' rel='noopener noreferrer'>웹뷰 형태의 RN 어플리케이션</a> 개발을 주도했습니다."
           ],
           "techStack": [
             "Next.js",
