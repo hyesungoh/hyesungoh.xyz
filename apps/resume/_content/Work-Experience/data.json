@@ -40,6 +40,7 @@
             "GA",
             "Hotjar",
             "Mixpanel",
+            "Sentry",
             "Cloudflare Pages"
           ]
         },
@@ -84,7 +85,6 @@
           "endDate": null,
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
-            "Web 어플리케이션의 스캐폴딩을 담당하였습니다.",
             "공용 컴포넌트와 Hook을 개발하였습니다.",
             "홈 화면과 온보딩 화면을 개발하였습니다.",
             "사용자 회원가입 시 데이터를 기반으로 회원가입 플로우의 리뉴얼을 리드하였습니다.",
@@ -105,6 +105,7 @@
             "Codecov",
             "Cypress",
             "Github actions",
+            "CodeQL",
             "GA",
             "Hotjar",
             "Mixpanel",
@@ -122,6 +123,28 @@
       "endDate": null,
       "description": "Google로부터 개발과 리더십 능력을 키울 수 있도록 지원받는 프로그램입니다.",
       "projects": [
+        {
+          "title": {
+            "text": "바꾸",
+            "githubLink": "https://github.com/GDSC-SKHU/Bakku-Web",
+            "otherLink": null
+          },
+          "description": "2023 Google Solution Challenge 출품을 위한 서비스입니다.",
+          "startDate": "2023.02",
+          "endDate": null,
+          "which": [
+            "현재 개발중에 있습니다.",
+            "Google의 기술을 쓸수록 이점이 있으며, 새로운 경험을 할 수 있을 것이라 판단해 Angular를 채택하였습니다.",
+            "iOS 플랫폼에 웹뷰로 제공하기 위해 <a href='https://github.com/GDSC-SKHU/Bakku-Flutter' target='_blank' rel='noreferrer'>Flutter 어플리케이션</a> 개발을 담당하고 있습니다."
+          ],
+          "techStack": [
+            "Angular",
+            "TypeScript",
+            "Sass",
+            "GA",
+            "Firebase"
+          ]
+        },
         {
           "title": {
             "text": "Lead 활동",
