@@ -12,8 +12,114 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-03-08</lastBuildDate>
+        <lastBuildDate>2023-03-12</lastBuildDate>
         <item>
+    <title><![CDATA[E2E 테스트 시 API mocking이 필요할까?]]></title>
+    <link>https://www.hyesungoh.xyz/is-api-mocking-need-for-e2e-test</link>
+    <pubDate>2023-03-12</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/is-api-mocking-need-for-e2e-test</guid>
+    <description>
+    <![CDATA[종단간 테스트에서 API mocking의 필요성에 대한 고민의 결과와 배경을 공유합니다.]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://user-images.githubusercontent.com/26461307/224543639-cda3e16f-064d-4c1d-8a15-c0e0b8c86531.png" alt="E2E 테스트 시 API mocking이 필요할까? w/ 영감탱"></p>
+<p>종단간(이하 E2E) 테스트에서 API mocking이 필요할까? 에 대한 고민의 결과와 배경을 공유합니다.</p>
+<h2 id="api-mocking" class="heading">API mocking?</h2>
+<p>배경을 설명하기 전에</p>
+<p>본문에서 다루는 <code>API mocking</code>은 <a href="https://github.com/mswjs/msw" target="_blank" rel="noopener noreferer">MSW</a>나 <a href="https://docs.cypress.io/api/commands/intercept" target="_blank" rel="noopener noreferer">Cypress의 intercept</a> 등을 이용해 네트워크 리퀘스트를 가로채어 API가 반환하는 값을 사용하는 것이 아닌 클라이언트 개발자 정한 값을 반환하도록 하는 행위를 뜻한다.</p>
+<br />
+<h2 id="배경" class="heading">배경</h2>
+<p><a href="https://www.depromeet.com/" target="_blank" rel="noopener noreferer">디프만</a> 과정에서 개발하고, 과정이 끝난 후 약 1년이 지난 지금까지 운영, 개발하고 있는 <a href="https://litt.ly/ygtang" target="_blank" rel="noopener noreferer">영감탱</a> 프로젝트에서 발생한 문제가 고민을 떠올린 배경이다.</p>
+<blockquote>
+<p>영감탱에는 Cypress를 사용한 E2E 테스트 케이스가 존재한다.</p>
+</blockquote>
+<h3 id="배경의-배경">배경의 배경</h3>
+<p>영감탱을 지속적으로 운영할 수 있었던 이유 중에 하나가 사용자의 관심인데, 우연치 않게 바이럴이 되어 (내 기준에서) 많은 사용자들이 사용하는 것을 우리 모두가 알게 되었다.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/224539732-c8ad868e-8d0c-4e40-9c4b-f9a49549692f.png" alt="영감탱 사용자 지표"></p>
+<p>이것과 함께 신년 버프(?)가 도화선이 되어 미뤄두었던 대대적인 개선을 진행하게 되었다.</p>
+<p>많은 개선 지점 중의 하나가 프로덕션 환경과 개발 환경의 API 분리였는데, 질문의 배경은 이때 떠오르게 되었다.</p>
+<h3 id="api-의존">API 의존</h3>
+<p><img src="https://user-images.githubusercontent.com/26461307/224540043-cbac4ba9-0ac0-4623-b3ac-550f1c2bcbb2.png" alt="E2E 테스트 케이스 실패"></p>
+<p>API 이중화가 완료된 이후 클라이언트의 CI에서 통과하지 못하는 E2E 테스트 케이스가 생겼다.</p>
+<p>확인한 결과 개발 서버가 잠시 내려간 상태여서 발생한 이슈였고</p>
+<p>이 지점에서 API mocking을 할까? 라는 생각이 떠올랐다.</p>
+<br />
+<h2 id="장단점" class="heading">장단점</h2>
+<p>물론 서버의 의존성을 갖는 것이 부정적이기만 하다면, 그냥 mocking을 하면 된다.</p>
+<p>하지만 트레이드오프가 있는 선택이라고 생각되었기에 그 자리에서 떠오른 장단점을 팀원들과 의논해 보았다.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/224540195-7fcb1f70-8a30-4533-be42-07932cf0ddfb.png" alt="영감탱 슬랙 스레드"></p>
+<p>팀원들과 의논하고, 여러 가지 검색해 본 결과를 정리하자면 다음과 같다.</p>
+<h3 id="api-mocking의-장점">API mocking의 장점</h3>
+<ul>
+<li><code>서버 상태에 의존하지 않는다.</code></li>
+</ul>
+<p>이후 단점으로도 기술하겠지만, 장점의 측면만 보자면 의존하지 않아 테스트 케이스의 신뢰도가 전적으로 클라이언트에 있게 되는 것이다.</p>
+<p>좋은 테스트 케이스를 판단하는 지표 중 하나가 신뢰도라고 생각되는데, 그 신뢰도가 클라이언트에 집중되어 있으면 테스트 케이스가 통과하지 못하였을 때 확인과 변경에 쉽게 대처할 수 있을 것이라 생각되었다.</p>
+<ul>
+<li><code>빠르다.</code></li>
+</ul>
+<p><a href="https://docs.cypress.io/guides/guides/network-requests" target="_blank" rel="noopener noreferer">Cypress 공식 문서</a>에서 소개하는 것처럼 API를 mocking하게 되면 실제 서버의 응답을 기다릴 필요가 없어 테스트 케이스가 더욱 빨리 실행되게 된다.</p>
+<ul>
+<li><code>데이터베이스가 오염되지 않는다.</code></li>
+</ul>
+<p>만약 E2E 테스트에서 글을 작성하거나, 삭제하는 등의 데이터베이스 조작이 존재한다면, 테스트가 실행될 때마다 필요 없는 데이터들이 적재되게 된다.</p>
+<p>하지만 API mocking 시에는 필요 없는 데이터들이 적재되지 않는다.</p>
+<h3 id="api-mocking의-단점">API mocking의 단점</h3>
+<ul>
+<li><code>서버 상태에 의존하지 않는다.</code></li>
+</ul>
+<p>장점과 동일하게 단점으로도 작용되며, 가장 큰 단점이라고 생각되었다.</p>
+<p>의존하지 않는다는 것을 다른 말로 풀어보자면 <code>'실제 API와 일치한다는 보장이 없다.'</code> 이기 때문이다.</p>
+<p>E2E 테스트가 의미하는 최종 사용자의 행위를 테스트한다는 것에 반하는 단점이라 생각되었다.</p>
+<ul>
+<li><code>변경에 대응할 지점이 늘어난다.</code></li>
+</ul>
+<p>만약 API 인터페이스에 변경이 생겼다면, 해당 API를 mocking한 코드에도 변경이 필요해진다.</p>
+<p>API 인터페이스에 변경이 생겼을 때부터 클라이언트에 변경이 필요해지는 것은 맞지만, 변경에 대응해야 할 지점이 늘어나는 것은 추가적인 리소스의 소모라고 생각되었다.</p>
+<ul>
+<li><code>상대적으로 빠르지 않고, 데이터베이스가 오염된다.</code></li>
+</ul>
+<p>위 장점에서 언급한 것과 정확히 반대의 이유이다.</p>
+<br />
+<h2 id="선택" class="heading">선택</h2>
+<p>팀원들의 다양한 경험과 의견을 바탕으로 의논한 결과 우리는 <code>mocking을 하지 않기</code>로 결정했다.</p>
+<p>선택의 이유는 다음과 같다.</p>
+<h3 id="e2e-테스트의-이유">E2E 테스트의 이유</h3>
+<p>우리가 E2E 테스트를 사용하는 이유는 '최종 사용자의 행위를 점검한다'라는 것에 있는데, API를 mocking하게 되면 그 이유가 퇴색된다고 판단하였다.</p>
+<p>그렇기에 서버 상태에 의존하면서 실제 API를 사용하는 것이 더욱 최종 사용자와 비슷한 행위를 테스트할 수 있는 방법이라 생각되었다.</p>
+<h3 id="이중화">이중화</h3>
+<p>테스트 환경에서 프로덕션 API를 사용하는 것이 아닌, 개발 API를 사용함으로써</p>
+<p>API mocking의 장점으로 꼽았던 '데이터베이스의 오염'이 우리 애플리케이션에서는 필요한 장점이라 생각되지 않았다.</p>
+<blockquote>
+<p>물론 개발 API를 사용하는 것이 위에서 꼽은 이유에 반하는 선택이라고 생각할 수 있을 것 같다.</p>
+<p>하지만 실제 최종 사용자의 행위의 비슷함과 트레이드오프를 고려했을 때 최적의 선택이라고 판단하였다.</p>
+</blockquote>
+<h3 id="리소스">리소스</h3>
+<p>해당 고민의 결과를 반영해야 하는 '영감탱'은 사이드 프로젝트로써,</p>
+<p>나를 포함한 모든 개발자, 디자이너분들이 풀타임으로 참여하는 것이 아닌 여가 시간을 활용해서 운영하고 있다.</p>
+<p>이런 상황에서 변경에 대응해야 할 지점을 늘려 추가적인 리소스가 소모되는 방향은 지양하는 것이 좋을 것 같다고 의견이 모아졌다.</p>
+<br />
+<h2 id="하지만" class="heading">하지만</h2>
+<p>설계, 기술의 도입 등 소프트웨어를 다루는 많은 부분에서 트레이드오프를 고려해야 하듯</p>
+<p>API mocking을 도입하지 않는 것이 꼭 좋은 선택은 아니라고 생각된다.</p>
+<p>참조한 문서들에서 부분적으로 도입하는 것도 제시하며, 분명히 필요한 상황이 있을 것이라 생각되기 때문에</p>
+<p>이 글을 읽는 분들에게 본인의 상황에 맞는 방향을 선택하길 추천하고 싶다.</p>
+<br />
+<h2 id="참조" class="heading">참조</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/71969081/should-i-mock-apis-in-end-to-end-testing" target="_blank" rel="noopener noreferer">Should I mock APIs in end-to-end testing? - stackoverflow</a></li>
+<li><a href="https://docs.cypress.io/guides/guides/network-requests" target="_blank" rel="noopener noreferer">Cypress Network Requests</a></li>
+</ul>
+<br />
+<h2 id="부록---playwright" class="heading">부록 - Playwright</h2>
+<p>다른 사이드 프로젝트인 <a href="https://github.com/depromeet/ahmatda-web" target="_blank" rel="noopener noreferer">아맞다</a>에서 사용하고 있는 <a href="https://playwright.dev/" target="_blank" rel="noopener noreferer">Playwright</a>가 <a href="https://playwright.dev/docs/codegen-intro" target="_blank" rel="noopener noreferer">test generator</a>를 통해 상당한 DX를 제공하고, Cypress에 비해 상당히 빠른 실행 시간을 보여주어 마이그레이션을 고민하고 있었다.</p>
+<p>원래는 위 장점들에 비해 Cypress의 장점을 체감하지 못했는데, 이번 고민의 과정에서 돌이켜 생각해 본 결과</p>
+<p>다소 무겁긴 하지만 Cypress가 제공하는 CI와 플랫폼이 강력하다는 것을 체감하게 되었다.</p>
+<p><img src="https://user-images.githubusercontent.com/26461307/224543228-fd6268ab-9bd6-4dc5-813c-67f7724b2e54.png" alt="cypress 동영상 녹화 기능"></p>
+<p>그중에서 테스트 케이스의 실행 동영상을 제공해 주어 시각적으로 어떤 부분이 잘못되었는지 확인할 수 있는 것이 크게 장점으로 생각되었다.</p>
+<p>느린 실행 속도는 <a href="https://sorry-cypress.dev/" target="_blank" rel="noopener noreferer">Sorry cypress</a>라는 cypress의 유료 기능을 제공하는 도구가 있어 부분적으로 해결할 수 있을 것이라고도 생각되니 도입 혹은 마이그레이션을 생각하고 있는 분들에게 도움이 되길 바란다.</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA['해커와 화가'를 읽고]]></title>
     <link>https://www.hyesungoh.xyz/해커와-화가</link>
     <pubDate>2023-03-08</pubDate>
