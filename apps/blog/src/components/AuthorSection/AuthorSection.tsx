@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import styled from '@emotion/styled';
 import { Avatar, Link } from '@nextui-org/react';
 import { KBarToggleButton } from 'core';
@@ -18,7 +19,7 @@ function AuthorSection({ marginBottom = '3.5rem', hasKbarButton = false }: Props
         <TextWrapper>
           <H2>
             Personal blog by{' '}
-            <Link href={defaultUrl} target="_blank" rel="noreferrer" color="primary">
+            <Link as={NextLink} href={defaultUrl} target="_blank" rel="noreferrer" color="primary">
               {authorName}
             </Link>
             .

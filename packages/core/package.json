@@ -5,11 +5,11 @@
   "types": "./index.tsx",
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@nextui-org/react": "^1.0.0-beta.9",
-    "kbar": "^0.1.0-beta.33",
-    "next-themes": "^0.2.0"
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@nextui-org/react": "^1.0.0-beta.12",
+    "kbar": "^0.1.0-beta.40",
+    "next-themes": "^0.2.1"
   },
   "devDependencies": {
     "config": "*",

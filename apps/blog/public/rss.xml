@@ -2652,7 +2652,7 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 <h3 id="nextjs에서-적용-방법">Next.js에서 적용 방법</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> @next/bundle-analyzer --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @next/bundle-analyzer -D
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @next/bundle-analyzer <span class="token parameter variable">-D</span>
 </span></code></pre>
 <p>우선 설치를 진행해준 후,</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -2674,7 +2674,7 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 <p>위 문서를 확인하셨다면 아시겠지만, <strong>next-compose-plugins</strong>를 사용하여 다른 plugin들과 함께 <code>next.config.js</code> 파일을 더욱 깔끔히 관리할 수 있습니다.</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> next-compose-plugins --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> next-compose-plugins -D
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> next-compose-plugins <span class="token parameter variable">-D</span>
 </span></code></pre>
 <p>설치 후 다음과 같은 형태로 <code>next.config.js</code> 파일을 작성하실 수 있습니다.</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -2710,7 +2710,7 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 <h3 id="nextjs에서-적용-방법-1">Next.js에서 적용 방법</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> compression-webpack-plugin --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> compression-webpack-plugin -D
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> compression-webpack-plugin <span class="token parameter variable">-D</span>
 </span></code></pre>
 <p>설치 후 다음과 같은 형태로 <code>next.config.js</code> 파일을 작성하실 수 있습니다.</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// next.config.js</span>
@@ -4105,8 +4105,8 @@ SLASH22의 연사이시자 토스 페이먼츠의 개발자이신 <a href="https
 </span></code></pre>
 <h4 id="해결-방법">해결 방법</h4>
 <p>해결 방법은 다음과 같습니다.</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> i @types/webpack-env @types/node -D <span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @types/webpack-env @types/node -D
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> i @types/webpack-env @types/node <span class="token parameter variable">-D</span> <span class="token comment"># or</span>
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> @types/webpack-env @types/node <span class="token parameter variable">-D</span>
 </span></code></pre>
 <p><code>@types/webpack-env</code>는 webpack에 대한 type 정의가 포함된 <a href="https://www.npmjs.com/package/@types/webpack-env" target="_blank" rel="noopener noreferer">패키지</a>이며,</p>
 <p><code>@types/node</code>는 Node.js에 대한 type 정의가 포함된 <a href="https://www.npmjs.com/package/@types/node" target="_blank" rel="noopener noreferer">패키지</a>입니다.</p>
@@ -6900,7 +6900,7 @@ Directory일 경우 해당 디렉터리의 각 엔트리에 대해서 accept 메
 <p>일반 텍스트를 사용해서 문서를 구축하고 결과를 String으로 반환한다.</p>
 <h3 id="htmlbuilder-클래스">HTMLBuilder 클래스</h3>
 <pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token comment">// Java</span>
-</span><span class="code-line"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HTMLBuilder</span> <span class="token keyword">extends</span> <span class="token class-name">Builder</span> <span class="token punctuation">{</span>
 </span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">String</span> filename<span class="token punctuation">;</span>
@@ -7846,7 +7846,7 @@ Facade 패턴의 Facade 역할은 내부 모듈을 조합해 단순한 인터페
 <h2 id="해결-방법" class="heading">해결 방법</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> i sass --save-dev
 </span><span class="code-line"><span class="token comment"># or</span>
-</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> sass -D
+</span><span class="code-line"><span class="token function">yarn</span> <span class="token function">add</span> sass <span class="token parameter variable">-D</span>
 </span></code></pre>]]>
     </content:encoded>
   </item><item>

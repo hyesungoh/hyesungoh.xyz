@@ -1,3 +1,4 @@
+import { Children } from 'react';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
 import { Footer, GlobalStyle, Layout } from 'core';
@@ -9,6 +10,14 @@ function isValid(value: any) {
 }
 
 export default class BlogDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return {
+      ...initialProps,
+      styles: Children.toArray([initialProps.styles]),
+    };
+  }
+
   render() {
     return (
       <Html lang="ko">
