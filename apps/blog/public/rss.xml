@@ -127,7 +127,7 @@
 <p><code>13기</code> 랜딩 페이지를 개발하는 인력에 나를 포함해 <code>12기</code> 랜딩 페이지를 개발한 운영진이 2명이 있었으며,</p>
 <p>다소 일반적이라고 생각되는 구조를 사용했기에 다른 개발자분들께서도 무리가 없을 것이라고 판단하였다.</p>
 <br />
-<p><img src="https://user-images.githubusercontent.com/26461307/225934221-1dc48798-cdff-4b29-88a3-1f69ab8d0221.png" alt="디프만 13기 리뉴얼 시작"></p>
+<p><img src="https://user-images.githubusercontent.com/26461307/225934228-c0d31452-6d21-4096-9106-3d84bd08154e.png" alt="디프만 13기 리뉴얼 시작"></p>
 <p>물론 무리는 아니지만, 적응이 힘들 수도 있다고 생각되었기 때문에 리뉴얼 베이스 브랜치를 <a href="https://github.com/depromeet/www.depromeet.com/pull/191" target="_blank" rel="noopener noreferer">드래프트로 띄운 PR</a>에 작업 시에 궁금할 만한 혹은 사용했던 것들을 적음으로써 해소하고자 노력했다.</p>
 <br />
 <h3 id="부분적-재활용">부분적 재활용</h3>
@@ -135,7 +135,7 @@
 <p>그렇게 한 이유는 랜딩 페이지의 특성상 기능이 있는 컴포넌트는 거의 없으며,</p>
 <p>기존에 디자인이 비슷한 컴포넌트가 존재하더라도 수정하는 행위보다 새로 만드는 행위가 리소스가 덜 들것이라고 판단하였기 때문이다.</p>
 <br />
-<p><img src="https://user-images.githubusercontent.com/26461307/225934228-c0d31452-6d21-4096-9106-3d84bd08154e.png" alt="이전 에셋 확인 방법 PR"></p>
+<p><img src="https://user-images.githubusercontent.com/26461307/225934221-1dc48798-cdff-4b29-88a3-1f69ab8d0221.png" alt="이전 에셋 확인 방법 PR"></p>
 <p>물론 아예 삭제하지는 않고,따로 디렉토리를 분리하고 <code>tsconfig</code>, <code>eslint</code> 세팅을 통해 빌드 과정에서 제외시켜 참고할 수 있도록 하였다.</p>
 <br />
 <p>그렇게 이전의 것을 유지하는게 효과적인 것은 유지하며,</p>

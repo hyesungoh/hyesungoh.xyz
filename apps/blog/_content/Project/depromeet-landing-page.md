@@ -197,7 +197,7 @@ Next.js 환경이였기에 이는 페이지별로 정적으로 생성될 수 있
 
 <br />
 
-![디프만 13기 리뉴얼 시작](https://user-images.githubusercontent.com/26461307/225934221-1dc48798-cdff-4b29-88a3-1f69ab8d0221.png)
+![디프만 13기 리뉴얼 시작](https://user-images.githubusercontent.com/26461307/225934228-c0d31452-6d21-4096-9106-3d84bd08154e.png)
 
 물론 무리는 아니지만, 적응이 힘들 수도 있다고 생각되었기 때문에 리뉴얼 베이스 브랜치를 [드래프트로 띄운 PR](https://github.com/depromeet/www.depromeet.com/pull/191)에 작업 시에 궁금할 만한 혹은 사용했던 것들을 적음으로써 해소하고자 노력했다.
 
@@ -213,7 +213,7 @@ Next.js 환경이였기에 이는 페이지별로 정적으로 생성될 수 있
 
 <br />
 
-![이전 에셋 확인 방법 PR](https://user-images.githubusercontent.com/26461307/225934228-c0d31452-6d21-4096-9106-3d84bd08154e.png)
+![이전 에셋 확인 방법 PR](https://user-images.githubusercontent.com/26461307/225934221-1dc48798-cdff-4b29-88a3-1f69ab8d0221.png)
 
 물론 아예 삭제하지는 않고,따로 디렉토리를 분리하고 `tsconfig`, `eslint` 세팅을 통해 빌드 과정에서 제외시켜 참고할 수 있도록 하였다.
 
