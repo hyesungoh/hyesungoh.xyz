@@ -15,8 +15,6 @@ category: 'Project'
 
 본문에서 다루는 `API mocking`은 [MSW](https://github.com/mswjs/msw)나 [Cypress의 intercept](https://docs.cypress.io/api/commands/intercept) 등을 이용해 네트워크 리퀘스트를 가로채어 API가 반환하는 값을 사용하는 것이 아닌 클라이언트 개발자 정한 값을 반환하도록 하는 행위를 뜻한다.
 
-<br />
-
 ## 배경
 
 [디프만](https://www.depromeet.com/) 과정에서 개발하고, 과정이 끝난 후 약 1년이 지난 지금까지 운영, 개발하고 있는 [영감탱](https://litt.ly/ygtang) 프로젝트에서 발생한 문제가 고민을 떠올린 배경이다.
@@ -42,8 +40,6 @@ API 이중화가 완료된 이후 클라이언트의 CI에서 통과하지 못�
 확인한 결과 개발 서버가 잠시 내려간 상태여서 발생한 이슈였고
 
 이 지점에서 API mocking을 할까? 라는 생각이 떠올랐다.
-
-<br />
 
 ## 장단점
 
@@ -93,8 +89,6 @@ API 인터페이스에 변경이 생겼을 때부터 클라이언트에 변경�
 
 위 장점에서 언급한 것과 정확히 반대의 이유이다.
 
-<br />
-
 ## 선택
 
 팀원들의 다양한 경험과 의견을 바탕으로 의논한 결과 우리는 `mocking을 하지 않기`로 결정했다.
@@ -125,8 +119,6 @@ API mocking의 장점으로 꼽았던 '데이터베이스의 오염'이 우리 �
 
 이런 상황에서 변경에 대응해야 할 지점을 늘려 추가적인 리소스가 소모되는 방향은 지양하는 것이 좋을 것 같다고 의견이 모아졌다.
 
-<br />
-
 ## 하지만
 
 설계, 기술의 도입 등 소프트웨어를 다루는 많은 부분에서 트레이드오프를 고려해야 하듯
@@ -137,14 +129,10 @@ API mocking을 도입하지 않는 것이 꼭 좋은 선택은 아니라고 생�
 
 이 글을 읽는 분들에게 본인의 상황에 맞는 방향을 선택하길 추천하고 싶다.
 
-<br />
-
 ## 참조
 
 - [Should I mock APIs in end-to-end testing? - stackoverflow](https://stackoverflow.com/questions/71969081/should-i-mock-apis-in-end-to-end-testing)
 - [Cypress Network Requests](https://docs.cypress.io/guides/guides/network-requests)
-
-<br />
 
 ## 부록 - Playwright
 

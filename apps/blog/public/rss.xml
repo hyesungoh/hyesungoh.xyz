@@ -26,49 +26,40 @@
 <p>디프만은 <code>디자이너와 프로그래머가 만났을 때</code>의 줄임말로, 직장인과 대학생을 대상으로 서비스 개발과 성장을 목표로 진행하는 동아리다.</p>
 <p>운이 좋게도 11기에 참여할 수 있게 되었고 22년 하반기부터 시작된 <code>12기</code>와 23년도 상반기에 시작될 예정인 <code>13기</code>의 운영진을 맡게 되었다.</p>
 <p>운영진으로써 참여하는 이유들 중 웹 개발자와 디자이너 직군에게는 큰 매리트(일 수도 있는)가 하나 있는데, 바로 오늘 동아리의 랜딩 페이지를 리브랜딩하고 개발하는 것이다.</p>
-<br />
 <p>나 또한 개발자로써 사이드 프로젝트 중 가장 많은 사용자를 접할 것이라 생각했기에 기대하며 운영진으로써 참여하였고</p>
 <p>두 기수의 랜딩 페이지를 개발하며 겪은 점을 공유하고자 한다.</p>
-<br />
 <h2 id="스캐폴딩" class="heading">스캐폴딩</h2>
 <p>12기의 랜딩 페이지를 개발할 때 가장 먼저 고민한 점은 <code>기존의 구조</code>를 따라갈지, 혹은 <code>새로 스캐폴딩</code>할지 였다.</p>
 <p>기존의 구조는 그때 당시 접해보지 않았던 앵귤러의 모듈 기반과 비슷한 구조였어서 흥미로웠지만, 결과론적으로 새로 스캐폴딩하는 선택을 하였고 이유는 다음과 같다.</p>
-<br />
 <h3 id="랜딩-페이지의-특성">랜딩 페이지의 특성</h3>
 <p>엄청나게 많은 경험이 있지는 않지만, 외주 개발을 하였을 때 상당수가 랜딩 페이지 개발이였다.</p>
 <p>그렇기에 비즈니스 로직이 거의 없다시피한 랜딩 페이지에 기존의 구조와 코드 스타일을 따르는 것은 소모되는 리소스에 비해 이점이 없다고 생각되었다.</p>
 <br />
 <p>또한 리브랜딩이 되어 모든 디자인과 구성이 달라져, 이전의 구조가 이번 기수의 랜딩 페이지에도 적합할 지는 장담할 수 없었다.</p>
-<br />
 <h3 id="마감-기간">마감 기간</h3>
 <p>많은 지원자들과의 약속인 모집 기간 일정에 맞추어 개발이 진행해야 되었고,</p>
 <p>디자인에 소모되는 일정을 파악하지 못했던 우리에게 주어진 개발 기간은 채 4일이 되지 않았다.</p>
 <p>본업으로써 개발을 하는 것이 아닌 모두가 여가 시간을 활용해서 개발을 진행해야 되었기 때문에 굉장히 촉박한 일정이라 생각되었고</p>
 <p>이러한 이유로 이전 구조에 맞추어 개발하는 것보다 새롭게, 우리가 편한 방식대로 개발하는 것이 일정을 맞출 수 있는 유일한 방법이라 판단하였다.</p>
-<br />
 <h2 id="유산" class="heading">유산</h2>
 <p>새롭게 프로젝트를 구성하지만 <code>서비스 정보</code>는 이전의 프로젝트에서 가져와 사용하였다.</p>
 <blockquote>
 <p>여기서 말하는 <code>서비스 정보</code>는 이전 기수에서 개발한 서비스들의 이미지와 설명, 개발자명과 같은 정보들이다.</p>
 <p>이전 기수가 적지 않으며 연락할 수 있는 채널이 따로 존재하지 않기에 재사용은 피할 수 없는 선택이였다.</p>
 </blockquote>
-<br />
 <h3 id="이미지-형식">이미지 형식</h3>
 <p>이전 기수의 정보들을 확인하며 이상한 점이 한 개 존재하였는데, 서비스의 로고가 아닌 이미지들도 <code>svg</code> 파일로 관리되고 있었다.</p>
 <blockquote>
 <p>svg의 경우 화려할 수록 (요소가 많을 수록) 파일의 크기가 커진다.</p>
 </blockquote>
 <p>확인해 본 결과 이미지의 크기가 메가바이트 단위였고, 그로 인해 이미지 로드에 굉장한 시간이 소모되었다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225908912-34b0682d-2491-4b3a-bb7d-710b7689b632.png" alt="11기 프로젝트 페이지 라이트하우스"></p>
 <p>물론 이미지 파일이 굉장히 많았지만, 이는 필히 언젠가는 수정해야할 과제라고 생각되어 약 150개의 이미지를 svg에서 png로 변환하였다.</p>
 <blockquote>
 <p>당시에는 webp와 같은 최신 포맷을 알지 못했다.</p>
 </blockquote>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225909928-6f2abc57-683e-42dd-88b4-bb2981829f9e.png" alt="12기 프로젝트 페이지 라이트하우스"></p>
 <p>이를 통해 많은 지표를 개선할 수 있었고, 노가다성이 짙은 작업이였지만 동아리와 동아리에 관심이 있는 많은 사람들에게 기여한 것 같아 기억에 남는다.</p>
-<br />
 <h3 id="정적-사이트">정적 사이트</h3>
 <p>이미지를 포함한 서비스들의 정보는 상수로써 관리되고 있었다.</p>
 <p>Next.js 환경이였기에 이는 페이지별로 정적으로 생성될 수 있음을 의미하지만 그렇지 않았고, 클라이언트 사이드에서 처리되고 있었다.</p>
@@ -80,19 +71,15 @@
 <blockquote>
 <p>관련한 지표를 이미지로 남겨두진 않았지만, TTI를 0.4초, LCP를 1.5초 감소시킬 수 있었다.</p>
 </blockquote>
-<br />
 <h2 id="모니터링" class="heading">모니터링</h2>
 <p>위에서 언급했듯이 동아리 랜딩 페이지를 개발을 하고 싶었던 이유는 많은 사용자를 접한다는 것이다.</p>
 <p>하지만 얼마나 많은 사용자가 접하는 지, 검색 키워드는 무엇인지 알 수 있는 도구들이 부착되어 있지 않았다.</p>
 <p>이는 굉장히 많은 지표의 손실과 더불어 '지표가 없는 개선은 나침반없는 항해'라는 말에 공감하는 나에게는 필히 부착이 필요하다고 생각되었다.</p>
-<br />
 <h3 id="사용자-모니터링">사용자 모니터링</h3>
 <p>종합적인 사용자 지표 확인을 이유로 <a href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener noreferer">GA</a>를 부착하였고,</p>
 <p>히트맵과 녹화 등 더욱 세부적인 사용자 지표 확인을 이유로 <a href="https://www.hotjar.com/" target="_blank" rel="noopener noreferer">Hotjar</a>를 부착하였다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225918518-7ba50d79-f177-49ad-b021-76ff517cf217.png" alt="디프만 hotjar"></p>
 <p>부착 이후 쌓인 지표를 사용해 모집 기간 마감 이후 기능 추가를 계획하는 등, 동아리 운영에 기여할 수 있었어서 기억에 남는 경험이 되었다.</p>
-<br />
 <h3 id="서치-콘솔">서치 콘솔</h3>
 <p>지금 구글에 '디프만'을 검색하면 가장 위에 랜딩 페이지가 위치한다.</p>
 <p>물론 CTR<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref aria-describedby="footnote-label">1</a></sup>이 높아서 그렇겠지만 이렇게 디프만을 찾는 사람들은 얼마나 있는지,</p>
@@ -101,73 +88,58 @@
 <br />
 <p>등록은 GA 부착을 선행하였기에 쉽게 할 수 있었지만, 사이트맵이 존재하지 않아 메인이 아닌 많은 페이지들이 검색 엔진에 노출되고 있지 않았다.</p>
 <p>이를 해소하고자 Next.js의 SSG로 만든 사이트들의 사이트맵 생성을 자동화해주는 <a href="https://www.npmjs.com/package/next-sitemap" target="_blank" rel="noopener noreferer">next sitemap</a>을 사용해 서치 콘솔에 제출하였다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225923482-bf819974-d7f9-4544-bdbe-702d559f0f1a.png" alt="디프만 서치 콘솔"></p>
 <p>사실 SSG 사용과 서치 콘솔을 리드한 가장 큰 이유가 위 사진 때문인데,</p>
 <p>위 사진처럼 디프만에서 개발된 서비스를 검색했을 때 <code>디프만</code>이 노출되게 하고 싶었다.</p>
 <br />
 <p>검색 엔진이 늘 그렇듯 즉각적으로 효과를 볼 수 있진 않았지만, 약 반년이 지난 지금은 게재 순위가 1위인 서비스도 있고 이를 통해 노출과 클릭이 되고 있어 뿌듯한 감정이 크다.</p>
-<br />
 <h2 id="인터랙티브" class="heading">인터랙티브</h2>
 <p>내가 동아리 랜딩 페이지를 개발하며 가장 넣고 싶었던 것이 <code>인터랙션</code>이다.</p>
 <p>인터랙티브함으로써 사용자에게 더욱 큰 인상을 남길 수 있을 것이라 생각하였고, 무엇보다 내가 인터랙티브한 서비스를 좋아하기 때문이다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225927090-178d6404-89f2-47d1-ae23-4a7382b64a38.gif" alt="디프만 12기 인터랙션"></p>
 <p>다른 사이드 프로젝트에서 경험했듯이, 인터랙션까지 디자인을 받진 않았지만 내가 보기에 디자인과 잘어울리는 방향으로 추가하였고 다행히 디자이너분들에게 긍정적인 피드백을 받을 수 있었다.</p>
 <br />
 <p>물론 인터랙션을 넣어 지표로써 긍정적인 영향을 미쳤는지는 확인할 수 없지만 더욱 내 마음에 드는 랜딩 페이지를 만들 수 있으면서 인터랙티브 디자이너(?)로써 인정받을 수 있었던 경험이라 기억에 남는다.</p>
-<br />
 <h2 id="스캐폴딩-two" class="heading">스캐폴딩 two</h2>
 <p>위 내용까지가 <code>12기</code> 랜딩 페이지를 개발하면서 겪은 경험이고, 지금부터는 그나마 최근인 <code>13기</code> 랜딩 페이지를 개발하며 겪은 경험을 공유하려 한다.</p>
 <br />
 <p>이번에도 동일하게 새로운 브랜딩으로 개발이 진행되어야 했고 똑같이 <code>스캐폴딩</code>을 할지 고민이 되었다.</p>
 <p>결과부터 말하자면 기존 12기의 구조를 선택하게 되었는데 이유는 다음과 같다.</p>
-<br />
 <h3 id="인력과-일반적">인력과 일반적</h3>
 <p><code>13기</code> 랜딩 페이지를 개발하는 인력에 나를 포함해 <code>12기</code> 랜딩 페이지를 개발한 운영진이 2명이 있었으며,</p>
 <p>다소 일반적이라고 생각되는 구조를 사용했기에 다른 개발자분들께서도 무리가 없을 것이라고 판단하였다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225934228-c0d31452-6d21-4096-9106-3d84bd08154e.png" alt="디프만 13기 리뉴얼 시작"></p>
 <p>물론 무리는 아니지만, 적응이 힘들 수도 있다고 생각되었기 때문에 리뉴얼 베이스 브랜치를 <a href="https://github.com/depromeet/www.depromeet.com/pull/191" target="_blank" rel="noopener noreferer">드래프트로 띄운 PR</a>에 작업 시에 궁금할 만한 혹은 사용했던 것들을 적음으로써 해소하고자 노력했다.</p>
-<br />
 <h3 id="부분적-재활용">부분적 재활용</h3>
 <p>스캐폴딩을 새로하진 않았지만, 랜딩 페이지의 주가 되는 퍼블리싱은 새롭게 작업하였다.</p>
 <p>그렇게 한 이유는 랜딩 페이지의 특성상 기능이 있는 컴포넌트는 거의 없으며,</p>
 <p>기존에 디자인이 비슷한 컴포넌트가 존재하더라도 수정하는 행위보다 새로 만드는 행위가 리소스가 덜 들것이라고 판단하였기 때문이다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225934221-1dc48798-cdff-4b29-88a3-1f69ab8d0221.png" alt="이전 에셋 확인 방법 PR"></p>
 <p>물론 아예 삭제하지는 않고,따로 디렉토리를 분리하고 <code>tsconfig</code>, <code>eslint</code> 세팅을 통해 빌드 과정에서 제외시켜 참고할 수 있도록 하였다.</p>
 <br />
 <p>그렇게 이전의 것을 유지하는게 효과적인 것은 유지하며,</p>
 <p>새롭게 만드는 것이 효과적이면 새롭게 만들 수 있도록 환경을 구성했다.(고 믿는다)</p>
-<br />
 <h2 id="성능" class="heading">성능</h2>
 <p><img src="https://user-images.githubusercontent.com/26461307/225938276-fe4f5b91-ec89-4c4b-b6d9-c70f8a26368b.png" alt="디프만 12기 지표"></p>
 <p><small>12기 홈</small></p>
-<br />
 <p>위의 <code>12기</code> 라이트하우스 지표 또한 만족스럽지 못하다고 생각한 사람들이 많을 것이다.</p>
 <p>물론 나 또한 그럤고, 이를 해결하고 싶었다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225938458-86ce1282-4902-41fe-9094-6ef344b2fdba.png" alt="디프만 12기 이미지 로드"></p>
 <p><small>12기 성능 측정</small></p>
 <p>성능 측정을 한 결과 이미지 로드에서 굉장한 시간이 소모되고 있었고 랜딩 페이지 특성상 이미지가 아니면 성능을 잡아먹는 요소도 없었기에 이것만 해결된다면 상당 부분 개선될 것이라 생각하였다.</p>
 <br />
 <p>개선 방법은 위에서도 언급한 적이 있는 <code>webp</code> 포맷을 사용하는 것이라 생각되었는데,</p>
 <p>실제로 피그마에서 동일한 이미지를 내보내기 했을 때 용량 크기가 6배에 가까웠기 때문이다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225940328-8ee39432-9e04-4b95-b908-23e3a09c3435.png" alt="스크린샷 2023-03-17 오후 11 46 12"></p>
 <p><small>13기 측정 결과</small></p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225939745-0329b820-e47c-4bdd-9f38-351742785489.png" alt="스크린샷 2023-03-17 오후 11 39 11"></p>
 <p><small>13기 홈</small></p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225939728-75d8bcec-2c0d-4dd8-a33c-c8b9ae3bdde5.png" alt="스크린샷 2023-03-17 오후 11 38 34"></p>
 <p><small>13기 프로젝트</small></p>
 <p>절대적인 크기가 감소했기에 그에 비례하게 요청 응답 시간이 감소했고 여러 방면에서 이전에 몰랐던 것들, 미처 신경을 쓰지 못했던 것들을 적용해 전체적인 지표를 개선할 수 있었다.</p>
 <blockquote>
 <p>코드로써의 성능 개선을 위해 Next.js의 dynamic import, Framer-motion의 lazyMotion 등을 사용했다.</p>
 </blockquote>
-<br />
 <h2 id="인터랙티브-two" class="heading">인터랙티브 two</h2>
 <p><code>13기</code> 랜딩 페이지를 확인한 분들은 이전보다 인터랙티브하지 않다고 생각할 것이다.</p>
 <p>이것은 현재의 디자인에 어울리지 않으며, 내가 너무 인터랙티브한 것이 촌스럽다는 생각으로 바뀌었기 때문이다.</p>
@@ -175,16 +147,12 @@
 <p>트렌드의 영향인지, 과유불급을 깨달은 것인지 정확한 이유는 모르겠다.</p>
 </blockquote>
 <p><img src="https://user-images.githubusercontent.com/26461307/225945194-2328a2b4-9fc6-4c88-9dda-206f1702a0ca.png" alt="디프만 13기 디자인"></p>
-<br />
 <p>개발 초기에는 <code>12기</code>때 사용했던 화면에 잡힐 때 애니메이션이 재생되는 방식을 사용했으나 개인적으로 <code>13기</code> 디자인에는 안어울리는 방법이라 판단되었다.</p>
 <br />
 <p>하지만 여전히 인터랙티브한 웹이 되었으면 좋겠다고 생각하여 적용한 것이 배경이 투명한 이미지와 함께 스크롤이 트리거가 되는 애니메이션을 사용하는 것이다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225966367-237ee831-15f2-494b-8e49-d2f9ea18331b.gif" alt="디프만 13기 인터랙션"></p>
-<br />
 <p>개인적으로 많이 고민해서 덜어내고, 적용한 인터랙션이라 기억에 남으며</p>
 <p>소프트웨어 설계에서 항상 언급하는 중용과 상황에 따라 다른 것을 디자인에서도 체감할 수 있었던 경험이였다.</p>
-<br />
 <h2 id="커스텀-커서" class="heading">커스텀 커서</h2>
 <p><code>13기</code> 랜딩 페이지에는 <code>커스텀 커서</code>가 들어가는데,</p>
 <p>이 커스텀 커서가 상태에 따라 크기가 변경되어야 하는 요구사항이 있었다.</p>
@@ -195,7 +163,6 @@
 <p>그렇기에 적용한 방법이 기본 커서를 숨기며</p>
 <p>마우스 이벤트에 따라 이동하는 컴포넌트를 두고, 전역 상태로써 커서의 상태를 관리하는 것이다.</p>
 <p>커서의 상태가 변할 때 transition을 걸어 자연스럽게 커서의 크기를 변경할 수 있었다.</p>
-<br />
 <h3 id="마우스-이동">마우스 이동</h3>
 <p>마우스 이벤트에 따라 위치를 바꾸는 것을 어떤 방법으로 할지 고민이 되었는데 방법은 크게 2가지이다.</p>
 <ul>
@@ -211,11 +178,9 @@
 <p><code>무수히 많은 state 변경 요청</code>보다 <code>무수히 많은 리페인트</code>가 성능상 이점이 있을 것이라 판단한 것이다.</p>
 <br />
 <p>물론 정확하게 확인할 방법이 떠오르지 않기에 확인을 못하여 내 판단이 옳은지 지금도 알지 못한다.</p>
-<br />
 <h3 id="커서의-상태">커서의 상태</h3>
 <p>커서의 상태를 다루기 위해 전역 상태가 필요하다고 생각되었고 context api를 적용할 시 clickable(구독하고 있는)한 요소가 많아 불필요한 렌더링이 발생할 것이라 생각되었다.</p>
 <p>이를 해소하기 위한 도구로 <code>recoil</code>, <code>zustand</code>, <code>jotai</code>를 고민하였는데 결과부터 말하자면 도입하게 된 것은 <code>jotai</code>이다.</p>
-<br />
 <p><img src="https://user-images.githubusercontent.com/26461307/225953265-902a7cbe-d447-4d1c-a0a8-a155df93ec10.png" alt="jotai 도입 과정"></p>
 <p>이미 글이 길어져 피로감을 느끼실 수 있기에 jotai 도입 과정은 이미지와 <a href="https://github.com/depromeet/www.depromeet.com/pull/197" target="_blank" rel="noopener noreferer">PR 주소</a>를 남긴다.</p>
 <br />
@@ -224,7 +189,6 @@
 <br />
 <p>처음 맞닥뜨린 성격의 요구사항이라 확실하지 않은 추측들로 구현되었다.</p>
 <p>그렇기에 제일 기억에 남는 경험임과 동시에 가장 공유하고 피드백을 듣고 싶은 경험이다.</p>
-<br />
 <h2 id="마치며" class="heading">마치며</h2>
 <p>이 개발기를 통해 가장 전달하고 싶은 점은 엄청나고 숨겨진 개발 방법은 없다는 것이다.</p>
 <br />
@@ -263,7 +227,6 @@
 <h2 id="api-mocking" class="heading">API mocking?</h2>
 <p>배경을 설명하기 전에</p>
 <p>본문에서 다루는 <code>API mocking</code>은 <a href="https://github.com/mswjs/msw" target="_blank" rel="noopener noreferer">MSW</a>나 <a href="https://docs.cypress.io/api/commands/intercept" target="_blank" rel="noopener noreferer">Cypress의 intercept</a> 등을 이용해 네트워크 리퀘스트를 가로채어 API가 반환하는 값을 사용하는 것이 아닌 클라이언트 개발자 정한 값을 반환하도록 하는 행위를 뜻한다.</p>
-<br />
 <h2 id="배경" class="heading">배경</h2>
 <p><a href="https://www.depromeet.com/" target="_blank" rel="noopener noreferer">디프만</a> 과정에서 개발하고, 과정이 끝난 후 약 1년이 지난 지금까지 운영, 개발하고 있는 <a href="https://litt.ly/ygtang" target="_blank" rel="noopener noreferer">영감탱</a> 프로젝트에서 발생한 문제가 고민을 떠올린 배경이다.</p>
 <blockquote>
@@ -279,7 +242,6 @@
 <p>API 이중화가 완료된 이후 클라이언트의 CI에서 통과하지 못하는 E2E 테스트 케이스가 생겼다.</p>
 <p>확인한 결과 개발 서버가 잠시 내려간 상태여서 발생한 이슈였고</p>
 <p>이 지점에서 API mocking을 할까? 라는 생각이 떠올랐다.</p>
-<br />
 <h2 id="장단점" class="heading">장단점</h2>
 <p>물론 서버의 의존성을 갖는 것이 부정적이기만 하다면, 그냥 mocking을 하면 된다.</p>
 <p>하지만 트레이드오프가 있는 선택이라고 생각되었기에 그 자리에서 떠오른 장단점을 팀원들과 의논해 보았다.</p>
@@ -316,7 +278,6 @@
 <li><code>상대적으로 빠르지 않고, 데이터베이스가 오염된다.</code></li>
 </ul>
 <p>위 장점에서 언급한 것과 정확히 반대의 이유이다.</p>
-<br />
 <h2 id="선택" class="heading">선택</h2>
 <p>팀원들의 다양한 경험과 의견을 바탕으로 의논한 결과 우리는 <code>mocking을 하지 않기</code>로 결정했다.</p>
 <p>선택의 이유는 다음과 같다.</p>
@@ -334,19 +295,16 @@
 <p>해당 고민의 결과를 반영해야 하는 '영감탱'은 사이드 프로젝트로써,</p>
 <p>나를 포함한 모든 개발자, 디자이너분들이 풀타임으로 참여하는 것이 아닌 여가 시간을 활용해서 운영하고 있다.</p>
 <p>이런 상황에서 변경에 대응해야 할 지점을 늘려 추가적인 리소스가 소모되는 방향은 지양하는 것이 좋을 것 같다고 의견이 모아졌다.</p>
-<br />
 <h2 id="하지만" class="heading">하지만</h2>
 <p>설계, 기술의 도입 등 소프트웨어를 다루는 많은 부분에서 트레이드오프를 고려해야 하듯</p>
 <p>API mocking을 도입하지 않는 것이 꼭 좋은 선택은 아니라고 생각된다.</p>
 <p>참조한 문서들에서 부분적으로 도입하는 것도 제시하며, 분명히 필요한 상황이 있을 것이라 생각되기 때문에</p>
 <p>이 글을 읽는 분들에게 본인의 상황에 맞는 방향을 선택하길 추천하고 싶다.</p>
-<br />
 <h2 id="참조" class="heading">참조</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/71969081/should-i-mock-apis-in-end-to-end-testing" target="_blank" rel="noopener noreferer">Should I mock APIs in end-to-end testing? - stackoverflow</a></li>
 <li><a href="https://docs.cypress.io/guides/guides/network-requests" target="_blank" rel="noopener noreferer">Cypress Network Requests</a></li>
 </ul>
-<br />
 <h2 id="부록---playwright" class="heading">부록 - Playwright</h2>
 <p>다른 사이드 프로젝트인 <a href="https://github.com/depromeet/ahmatda-web" target="_blank" rel="noopener noreferer">아맞다</a>에서 사용하고 있는 <a href="https://playwright.dev/" target="_blank" rel="noopener noreferer">Playwright</a>가 <a href="https://playwright.dev/docs/codegen-intro" target="_blank" rel="noopener noreferer">test generator</a>를 통해 상당한 DX를 제공하고, Cypress에 비해 상당히 빠른 실행 시간을 보여주어 마이그레이션을 고민하고 있었다.</p>
 <p>원래는 위 장점들에 비해 Cypress의 장점을 체감하지 못했는데, 이번 고민의 과정에서 돌이켜 생각해 본 결과</p>
