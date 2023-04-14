@@ -3,6 +3,18 @@
   "list": [
     {
       "title": {
+        "text": "kbar",
+        "githubLink": "https://github.com/timc1/kbar",
+        "otherLink": null
+      },
+      "position": "Contributor",
+      "startDate": "2023.4",
+      "endDate": "2023.4",
+      "description": "에러 메시지를 수정하여 기여하였습니다.",
+      "which": []
+    },
+    {
+      "title": {
         "text": "toss/slash",
         "githubLink": "https://github.com/toss/slash",
         "otherLink": null
