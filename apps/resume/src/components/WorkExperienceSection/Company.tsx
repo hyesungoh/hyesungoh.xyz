@@ -10,7 +10,11 @@ function Company({ name, position, startDate, endDate, description }: Omit<IComp
     <CompanyCard>
       <h3>{name}</h3>
       <small>
-        {startDate} ~ {endDate}
+        {(startDate !== null || endDate !== null) && (
+          <>
+            {startDate} ~ {endDate}
+          </>
+        )}
       </small>
       <span>{position}</span>
       <P theme={theme}>{description}</P>

@@ -349,6 +349,36 @@
           ]
         }
       ]
+    },
+    {
+      "name": "그 외 프로젝트",
+      "position": "",
+      "startDate": null,
+      "endDate": null,
+      "description": "",
+      "projects": [
+        {
+          "title": {
+            "text": "@hyesungoh/eslint-plugin",
+            "githubLink": "https://github.com/hyesungoh/eslint-plugin",
+            "otherLink": "https://github.com/hyesungoh/eslint-plugin/pkgs/npm/eslint-plugin"
+          },
+          "description": "",
+          "startDate": "2023.01",
+          "endDate": "2023.02",
+          "which": [
+            "자주 사용하며 선호하는 Eslint와 Prettier 설정을 패키지화 하였습니다.",
+            "깃허브 릴리즈 시 배포되도록 CD를 구성하였습니다."
+          ],
+          "techStack": [
+            "Yarn Berry",
+            "Eslint",
+            "Prettier",
+            "Rollup",
+            "Github actions"
+          ]
+        }
+      ]
     }
   ]
 }
