@@ -3,11 +3,48 @@
   "list": [
     {
       "name": "디프만",
-      "position": "11기, 12기 운영진",
+      "position": "11기, 12~13기 운영진",
       "startDate": "2022.03",
       "endDate": null,
       "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
       "projects": [
+        {
+          "title": {
+            "text": "커리어 브랜딩",
+            "githubLink": "https://github.com/depromeet/13th-3team-client",
+            "otherLink": ""
+          },
+          "description": "동료의 익명 칭찬으로 본인의 커리어를 브랜딩할 수 있는 서비스입니다.",
+          "startDate": "2023.4",
+          "endDate": null,
+          "which": [
+            "현재 기획 및 개발중에 있습니다.",
+            "동반 성장에 유리하며 즐거운 분위기를 만들고자 노력하고 있습니다.",
+            "팀 내에 XP를 자연스럽고 부담스럽지 않게 적용하고자 노력하고 있습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Yarn Berry",
+            "Emotion",
+            "Stylelint",
+            "Chromatic",
+            "Framer-motion",
+            "TanStack/React Query",
+            "Vitest",
+            "React Testing Library",
+            "Codecov",
+            "Storybook",
+            "Playwright",
+            "Github actions",
+            "CodeQL",
+            "Husky",
+            "GA",
+            "Hotjar",
+            "Mixpanel",
+            "Sentry"
+          ]
+        },
         {
           "title": {
             "text": "아맞다",
@@ -26,6 +63,7 @@
             "Next.js",
             "React-Native",
             "TypeScript",
+            "Yarn Berry",
             "Emotion",
             "Framer-motion",
             "Recoil",
@@ -54,12 +92,13 @@
           "startDate": "2022.08",
           "endDate": null,
           "which": [
-            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터렉티브하게 만들고자 노력하였습니다.",
+            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터랙티브하게 만들고자 노력하였습니다.",
             "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
             "클라이언트 사이드에서 다이내믹 라우팅되던 페이지들에 SSG를 적용해 TTI를 0.4초, LCP를 1.5초 감소시켰습니다.",
             "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
             "next-sitemap을 도입해 동적으로 sitemap이 생성되도록 하였습니다.",
-            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다."
+            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다.",
+            "관련 개발기는 <a href='https://www.hyesungoh.xyz/depromeet-landing-page target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
           ],
           "techStack": [
             "Next.js",
@@ -85,17 +124,14 @@
           "endDate": null,
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
-            "공용 컴포넌트와 Hook을 개발하였습니다.",
-            "홈 화면과 온보딩 화면을 개발하였습니다.",
-            "사용자 회원가입 시 데이터를 기반으로 회원가입 플로우의 리뉴얼을 리드하였습니다.",
-            "Lint, Codecov, Cypress 등의 CI 구현을 전담하였습니다.",
-            "커스컴 Eslint rule 개발을 전담하였습니다.",
-            "기억에 남는 구현은 <a href='https://github.com/depromeet/11th_7team_web/pull/174' target='_blank' rel='noopener noreferrer'>LoadingHandler</a>와 <a href='https://github.com/depromeet/11th_7team_web/pull/242' target='_blank' rel='noopener noreferrer'>SnapCarousel</a> 컴포넌트입니다."
+            "지표를 근거로 회원가입 플로우의 리뉴얼을 리드해, 회원가입 시 이탈률을 30% 감소시켰습니다.",
+            "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다."
           ],
           "techStack": [
             "Next.js",
             "React-Native",
             "TypeScript",
+            "Yarn Berry",
             "Emotion",
             "Framer-motion",
             "TanStack/React Query",
@@ -120,31 +156,9 @@
       "name": "Google developer student clubs",
       "position": "Lead",
       "startDate": "2022.08",
-      "endDate": null,
+      "endDate": "2023.06",
       "description": "Google로부터 개발과 리더십 능력을 키울 수 있도록 지원받는 프로그램입니다.",
       "projects": [
-        {
-          "title": {
-            "text": "바꾸",
-            "githubLink": "https://github.com/GDSC-SKHU/Bakku-Web",
-            "otherLink": null
-          },
-          "description": "2023 Google Solution Challenge 출품을 위한 서비스입니다.",
-          "startDate": "2023.02",
-          "endDate": null,
-          "which": [
-            "현재 개발중에 있습니다.",
-            "Google의 기술을 쓸수록 이점이 있으며, 새로운 경험을 할 수 있을 것이라 판단해 Angular를 채택하였습니다.",
-            "iOS 플랫폼에 웹뷰로 제공하기 위해 <a href='https://github.com/GDSC-SKHU/Bakku-Flutter' target='_blank' rel='noreferrer'>Flutter 어플리케이션</a> 개발을 담당하고 있습니다."
-          ],
-          "techStack": [
-            "Angular",
-            "TypeScript",
-            "Sass",
-            "GA",
-            "Firebase"
-          ]
-        },
         {
           "title": {
             "text": "Lead 활동",
@@ -153,7 +167,7 @@
           },
           "description": "교내 최고의 개발 커뮤니티를 구성하는 것을 목표로 활동하고 있습니다.",
           "startDate": "2022.08",
-          "endDate": null,
+          "endDate": "2023.06",
           "which": [
             "교내에 파편화되어 있는 개발 커뮤니티를 한곳으로 모아 더욱 많은 학우들이 지식을 나눌 수 있는 환경을 구성하는 것이 목표입니다.",
             "커뮤니티의 비전, 방향, 원칙, 운영 방안을 계획하고 실천하고 있습니다.",
@@ -173,7 +187,7 @@
           "startDate": "2022.08",
           "endDate": "2022.08",
           "which": [
-            "3D와 부드러운 인터렉션을 통해 깊은 인상을 남기고자 하였습니다."
+            "3D와 부드러운 인터랙션을 통해 깊은 인상을 남기고자 하였습니다."
           ],
           "techStack": [
             "Next.js",
@@ -270,8 +284,8 @@
           "endDate": "2021.12",
           "which": [
             "3인 프로젝트에서 프론트엔드 개발을 전담하였습니다.",
-            "Interactive한 서비스가 되기 위해 노력하였습니다.",
-            "Github actions를 사용하여 배포 자동화를 적용하였습니다.",
+            "인터랙티브한 서비스가 되기 위해 노력하였습니다.",
+            "Github actions를 사용하여 배포 자동화를 구성하였습니다.",
             "에러 모니터링, 사용자 경험 추적을 위해 GA와 Sentry를 적용하였습니다.",
             "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
@@ -288,197 +302,51 @@
             "GA",
             "Sentry"
           ]
-        },
-        {
-          "title": {
-            "text": "Wavy Prototype",
-            "githubLink": "https://github.com/hyesungoh/WavyClientPrototype",
-            "otherLink": "https://agitated-volhard-845a19.netlify.app/"
-          },
-          "description": "기술적 검증을 위해 Prototype을 개발하였습니다.",
-          "startDate": "2021.6",
-          "endDate": "2021.7",
-          "which": [
-            "프론트엔드 개발을 전담하였습니다.",
-            "Web에서 실시간으로 사용자의 행동을 인식, 비교하는것에 대한 성능 테스트를 위해 진행하였습니다."
-          ],
-          "techStack": [
-            "React",
-            "TypeScript",
-            "Styled-components",
-            "Recoil",
-            "MaterialUI",
-            "Tensorflow JS",
-            "Netlify"
-          ]
-        },
-        {
-          "title": {
-            "text": "난보바",
-            "githubLink": "https://github.com/famousCucumber/Frontend",
-            "otherLink": null
-          },
-          "description": "사용자가 선택한 재난문자만 이메일로 받아볼 수 있는, 재난문자 필터링 서비스를 개발하였습니다.",
-          "startDate": "2021.5",
-          "endDate": "2일간 진행",
-          "which": [
-            "6인 프로젝트에서 프론트엔드 개발자로 참여하였습니다.",
-            "재난 필터링 관련 프론트엔드 개발을 담당하였습니다."
-          ],
-          "techStack": [
-            "React",
-            "TypeScript",
-            "Styled-components",
-            "Netlify"
-          ]
-        },
-        {
-          "title": {
-            "text": "우리멍냥",
-            "githubLink": "https://github.com/hyesungoh/ourMeongNyangClient",
-            "otherLink": null
-          },
-          "description": "한 시간마다 사용자가 게시한 귀여운 사진을 발송해주는 KakaoWork bot을 개발하였습니다.",
-          "startDate": "2021.4",
-          "endDate": "1주일간 진행",
-          "which": [
-            "6인 프로젝트에서 프론트엔드 개발자로 참여하였습니다.",
-            "이미지 업로드 관련 프론트엔드과 백엔드를 담당하였습니다."
-          ],
-          "techStack": [
-            "React",
-            "TypeScript",
-            "Styled-components",
-            "Firebase",
-            "Netlify"
-          ]
         }
       ]
     },
     {
-      "name": "DogVelopers",
-      "position": "프론트엔드 리더",
-      "startDate": "2021.03",
-      "endDate": "2022.08",
-      "description": "교내 개발 동아리에서 운영진으로 활동하고 있습니다.",
-      "projects": [
-        {
-          "title": {
-            "text": "dogvelopers.com",
-            "githubLink": "https://github.com/dogVelopers/dogVelopers",
-            "otherLink": null
-          },
-          "description": "동아리 소개와 모집을 위한 랜딩 페이지를 개발하였습니다.",
-          "startDate": "2022.01",
-          "endDate": "2022.02",
-          "which": [
-            "1인 프로젝트로써 개발하였습니다.",
-            "사용자 모니터링과 피드백을 위해 GA와 Hotjar를 적용하였습니다."
-          ],
-          "techStack": [
-            "Next.js",
-            "TypeScript",
-            "Emotion",
-            "Framer-motion",
-            "Lottie",
-            "GA",
-            "Hotjar",
-            "Vercel"
-          ]
-        },
-        {
-          "title": {
-            "text": "프론트엔드 교육 활동",
-            "githubLink": null,
-            "otherLink": null
-          },
-          "description": "입문자를 대상으로 프론트엔드 교육을 진행하고 있습니다.",
-          "startDate": "2021.03",
-          "endDate": null,
-          "which": [
-            "지식을 공유하는 것에 즐거움을 느껴 진행하고 있습니다."
-          ],
-          "techStack": []
-        }
-      ]
-    },
-    {
-      "name": "멋쟁이 사자처럼",
-      "position": "동아리원 및 운영진",
+      "name": "교내 동아리",
+      "position": "지식 공유자",
       "startDate": "2017.03",
-      "endDate": "2021.02",
-      "description": "비전공자도 웹서비스를 만들어 꿈을 실현하는 것을 목표로 하는 멋쟁이 사자처럼 활동에 3년간 참여하였습니다.",
+      "endDate": "2022.08",
+      "description": "지식을 공유하며 성장할 수 있다고 믿으며, 행위 자체에 즐거움을 느낍니다.",
       "projects": [
         {
           "title": {
-            "text": "놀라운 사자처럼",
-            "githubLink": "https://github.com/hyesungoh/Like_Amazing_Lion",
-            "otherLink": null
-          },
-          "description": "동아리 홍보를 위한 퀴즈 이벤트 서비스를 개발하였습니다.",
-          "startDate": "2021.01",
-          "endDate": "2021.02",
-          "which": [
-            "1인 프로젝트로써 개발하였습니다."
-          ],
-          "techStack": [
-            "React",
-            "TypeScript",
-            "Scss",
-            "MaterialUI",
-            "Firebase",
-            "Github pages"
-          ]
-        },
-        {
-          "title": {
-            "text": "공룡도 아는 역사",
-            "githubLink": "https://github.com/hyesungoh/dino_history",
-            "otherLink": null
-          },
-          "description": "문화재 정보를 보여주며, 역사 퀴즈를 풀 수 있는 서비스를 개발하였습니다.",
-          "startDate": "2020.8",
-          "endDate": "2020.10",
-          "which": [
-            "4인 프로젝트에서 백엔드 개발자로 참여하였습니다."
-          ],
-          "techStack": [
-            "Django",
-            "BS4",
-            "SQLITE"
-          ]
-        },
-        {
-          "title": {
-            "text": "사이즈 실화냐",
-            "githubLink": "https://github.com/hyesungoh/sizing-real",
-            "otherLink": null
-          },
-          "description": "사용자 신체 치수를 통해 옷의 핏을 예측할 수 있는 서비스를 개발하였습니다.",
-          "startDate": "2017.7",
-          "endDate": "2017.10",
-          "which": [
-            "4인 프로젝트에서 백엔드 개발자로 참여하였습니다.",
-            "처음으로 개발한 웹 서비스입니다.",
-            "전국 200여개 대학교가 참가한 해커톤에서 상위 10팀에 선발되었습니다."
-          ],
-          "techStack": [
-            "Ruby on Rails"
-          ]
-        },
-        {
-          "title": {
-            "text": "RoR, Django 교육 활동",
+            "text": "프론트엔드 지식 공유",
             "githubLink": null,
             "otherLink": null
           },
-          "description": "비전공자, 입문자를 대상으로 6기, 8기에서 각각 RoR, Django 교육을 진행하였습니다.",
+          "description": "",
+          "startDate": "2021.03",
+          "endDate": "2022.08",
+          "which": [
+            "입문자를 대상으로 프론트엔드 지식 공유를 진행하였습니다."
+          ],
+          "techStack": [
+            "React",
+            "JavaScript"
+          ]
+        },
+        {
+          "title": {
+            "text": "RoR, Django 지식 공유",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
           "startDate": "2018.03",
           "endDate": "2020.12",
           "which": [
-            "지식을 공유하는 것에 즐거움을 느껴 진행하였습니다."
+            "비전공자, 입문자를 대상으로 백엔드 지식 공유를 진행하였습니다."
           ],
-          "techStack": null
+          "techStack": [
+            "Ruby on Rails",
+            "Ruby",
+            "Django",
+            "Python"
+          ]
         }
       ]
     }

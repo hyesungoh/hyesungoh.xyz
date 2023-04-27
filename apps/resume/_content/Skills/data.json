@@ -14,7 +14,7 @@
       "name": "HTML/CSS",
       "descriptions": [
         "의미있는 마크업을 작성하기 위해 노력합니다.",
-        "CSS 전처리기를 사용할 수 있습니다.",
+        "CSS 전처리기와 CSS in JS에 익숙합니다.",
         "웹 접근성과 표준을 지키기 위해 Lighthouse, W3C Markup Validation Service를 사용한 경험이 있습니다.",
         "검색 엔진 최적화 경험과 Sitemap.xml, Robots.txt를 통해 네이버, 구글에서 검색되도록 지원해본 경험이 있습니다."
       ]
@@ -46,22 +46,23 @@
         "함수 컴포넌트와 Hooks를 사용하는 것에 익숙합니다.",
         "Suspense와 Error Boundary를 사용해본 경험이 있습니다.",
         "프레임워크로써 Next.js 환경을 선호합니다.",
-        "Recoil을 이용해 전역 상태를 관리한 경험이 있습니다.",
+        "Recoil과 Jotai를 이용해 전역 상태를 관리한 경험이 있습니다.",
         "Redux를 이용한 경험은 부족합니다."
       ]
     },
     {
       "name": "Test",
       "descriptions": [
-        "Jest와 React Testing Library를 이용해 테스트 코드를 작성한 경험이 있습니다.",
-        "Cypress, Playwright을 이용해 E2E 테스트 코드를 작성한 경험이 있습니다."
+        "Jest, Vitest 그리고 React Testing Library를 이용해 테스트 코드를 작성한 경험이 있습니다.",
+        "Cypress, Playwright을 이용해 E2E 테스트 코드를 작성한 경험이 있습니다.",
+        "개발자의 용기를 높여주는 테스트 코드를 위해 고민합니다."
       ]
     },
     {
       "name": "DevOps",
       "descriptions": [
         "자동화를 통해 생산성을 높히는 것을 좋아합니다.",
-        "Github actions를 이용한 테스트와 배포 자동화등의 경험이 있습니다.",
+        "Github actions를 이용한 CI/CD에 익숙합니다.",
         "간단한 AWS IAM 설정, S3, CloudFront, EC2 사용 경험이 있습니다."
       ]
     }
