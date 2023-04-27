@@ -11,7 +11,9 @@
       "startDate": "2023.4",
       "endDate": "2023.4",
       "description": "에러 메시지를 수정하여 기여하였습니다.",
-      "which": []
+      "which": [
+        "PR 링크: <a href='https://github.com/timc1/kbar/pull/298' target='_blank' rel='noreferrer'>https://github.com/timc1/kbar/pull/298</a>"
+      ]
     },
     {
       "title": {
@@ -23,7 +25,9 @@
       "startDate": "2022.10",
       "endDate": "2022.10",
       "description": "@toss/sentry 문서를 수정하여 기여하였습니다.",
-      "which": []
+      "which": [
+        "PR 링크: <a href='https://github.com/toss/slash/pull/70' target='_blank' rel='noreferrer'>https://github.com/toss/slash/pull/70</a>"
+      ]
     },
     {
       "title": {
@@ -50,7 +54,8 @@
       "endDate": "2022.02",
       "description": "더미 데이터를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
       "which": [
-        "한국어 정보를 추가, 잘못된 정보를 수정하였습니다."
+        "한국어 정보를 추가, 잘못된 정보를 수정하였습니다.",
+        "PR 링크: <a href='https://github.com/faker-js/faker/pull/573' target='_blank' rel='noreferrer'>https://github.com/faker-js/faker/pull/573</a>"
       ]
     },
     {
@@ -63,7 +68,9 @@
       "startDate": "2022.02",
       "endDate": "2022.02",
       "description": "Github Readme의 잘못된 Link를 수정하여 기여하였습니다.",
-      "which": []
+      "which": [
+        "PR 링크: <a href='https://github.com/remix-run/react-router/pull/8666' target='_blank' rel='noreferrer'>https://github.com/remix-run/react-router/pull/8666</a>"
+      ]
     },
     {
       "title": {
@@ -77,7 +84,8 @@
       "description": "동영상 플레이어를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
       "which": [
         "동영상 재생 중에 호출되는 callback인 onProgress의 Props에 대한 interface를 정의하였습니다.",
-        "WAVY 프로젝트에서 직접 사용하며 필요성을 느껴 기여하게 되었습니다."
+        "WAVY 프로젝트에서 직접 사용하며 필요성을 느껴 기여하게 되었습니다.",
+        "PR 링크: <a href='https://github.com/cookpete/react-player/pull/1342' target='_blank' rel='noreferrer'>https://github.com/cookpete/react-player/pull/1342</a>"
       ]
     },
     {
@@ -91,8 +99,8 @@
       "endDate": "2021.04",
       "description": "블로그 테마 오픈소스 프로젝트에 기여하였습니다.",
       "which": [
-        "SEO를 위해 robots.txt 플러그인을 적용하였습니다.",
-        "Social media section에 Instagram을 추가하였습니다."
+        "SEO를 위해 robots.txt 플러그인을 적용하였습니다.<br/>PR 링크: <a href='https://github.com/JaeYeopHan/gatsby-starter-bee/pull/247' target='_blank' rel='noreferrer'>https://github.com/JaeYeopHan/gatsby-starter-bee/pull/247</a>",
+        "Social media section에 Instagram을 추가하였습니다.<br/>PR 링크: <a href='https://github.com/JaeYeopHan/gatsby-starter-bee/pull/246' target='_blank' rel='noreferrer'>https://github.com/JaeYeopHan/gatsby-starter-bee/pull/246</a>"
       ]
     },
     {
