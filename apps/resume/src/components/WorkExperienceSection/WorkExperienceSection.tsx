@@ -33,7 +33,7 @@ export default WorkExperienceSection;
 
 const CompanyWrapper = styled.div`
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 
   & > div:first-of-type {
     height: auto;
@@ -52,6 +52,7 @@ const ProjectWrapper = styled.div<{ theme: NextUITheme | undefined }>`
 
   @media ${config.media.xsMax} {
     padding-left: 1rem;
+
     border-left: solid 3px ${({ theme }) => theme.colors.primary.value};
   }
 `;
