@@ -3,7 +3,7 @@
   "list": [
     {
       "name": "디프만",
-      "position": "11기, 12~13기 운영진",
+      "position": "개발자 및 운영진",
       "startDate": "2022.03",
       "endDate": null,
       "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
@@ -99,7 +99,7 @@
             "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
             "next-sitemap을 도입해 동적으로 sitemap이 생성되도록 하였습니다.",
             "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다.",
-            "관련 개발기는 <a href='https://www.hyesungoh.xyz/depromeet-landing-page target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
+            "관련 개발기는 <a href='https://www.hyesungoh.xyz/depromeet-landing-page' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
           ],
           "techStack": [
             "Next.js",
@@ -126,7 +126,8 @@
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
             "지표를 근거로 회원가입 플로우의 리뉴얼을 리드해, 회원가입 시 이탈률을 30% 감소시켰습니다.",
-            "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다."
+            "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다.",
+            "이미지 저장 기능 개발기는 <a href='https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
           ],
           "techStack": [
             "Next.js",
