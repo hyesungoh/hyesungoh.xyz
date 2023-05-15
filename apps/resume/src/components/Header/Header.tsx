@@ -15,11 +15,20 @@ function Header({ heading, description, isPrint = false }: Props) {
   return (
     <header>
       <HeadingWrapper>
-        <H1 h1 css={{ textGradient: `45deg, ${theme.colors.text.value} 10%, ${theme.colors.primary.value} 60%` }}>
-          {heading}
-        </H1>
+        {isPrint ? (
+          <H1 h1>{heading}</H1>
+        ) : (
+          <H1
+            h1
+            css={{
+              textGradient: `45deg, ${theme.colors.text.value} 10%, ${theme.colors.primary.value} 60%`,
+            }}
+          >
+            {heading}
+          </H1>
+        )}
 
-        <ThemeSwitch />
+        {!isPrint && <ThemeSwitch />}
       </HeadingWrapper>
 
       <DescriptionWrapper>
