@@ -5,7 +5,11 @@ import { authorImage, authorName } from 'core/constants';
 
 import { IHeader } from '../../../_content/Header';
 
-function Header({ heading, description }: IHeader) {
+interface Props extends IHeader {
+  isPrint?: boolean;
+}
+
+function Header({ heading, description, isPrint = false }: Props) {
   const { theme } = useTheme();
 
   return (
@@ -22,10 +26,12 @@ function Header({ heading, description }: IHeader) {
         <Avatar src={authorImage.default.src} alt={authorName} text={authorName} size="xl" />
         <Div>
           <p>{description}</p>
-          {/* <small style={{ textDecoration: 'underline' }}>
-            해당 이력서는 <a href="https://resume.hyesungoh.xyz/">https://resume.hyesungoh.xyz</a>에서 보다 원활하게
-            확인하실 수 있습니다.
-          </small> */}
+          {isPrint && (
+            <small style={{ textDecoration: 'underline' }}>
+              해당 이력서는 <a href="https://resume.hyesungoh.xyz/">https://resume.hyesungoh.xyz</a>에서 보다 원활하게
+              확인하실 수 있습니다.
+            </small>
+          )}
         </Div>
       </DescriptionWrapper>
     </header>

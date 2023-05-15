@@ -6,7 +6,6 @@ import { NextUIProvider } from '@nextui-org/react';
 import { darkTheme, lightTheme } from 'core';
 import { KBarProvider } from 'kbar';
 
-import ContactButton from '../components/ContactButton';
 import generateKbarAction from '../constants/KbarActions';
 
 const KbarComponent = dynamic(() => import('core/components/Kbar'), {
@@ -24,7 +23,6 @@ export default function ResumeApp({ Component, pageProps }: AppProps) {
         <KBarProvider actions={generateKbarAction()}>
           <Title />
           <KbarComponent />
-          <ContactButton />
           <Component {...pageProps} />
         </KBarProvider>
       </NextUIProvider>
