@@ -6,7 +6,7 @@
       "position": "개발자 및 운영진",
       "startDate": "2022.03",
       "endDate": null,
-      "description": "디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
+      "description": "직장인부터 학생까지의 디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
       "projects": [
         {
           "title": {
@@ -19,6 +19,7 @@
           "endDate": null,
           "which": [
             "현재 기획 및 개발중에 있습니다.",
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/na-lab-client/pulls?q=is%3Apr+author%3Ahyesungoh+' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
             "동반 성장에 유리하며 즐거운 분위기를 만들고자 노력하고 있습니다.",
             "팀 내에 XP를 자연스럽고 부담스럽지 않게 적용하고자 노력하고 있습니다."
           ],
@@ -37,7 +38,7 @@
             "Codecov",
             "Playwright",
             "Github actions",
-            "Typecov",
+            "Codechecks",
             "CodeQL",
             "Husky",
             "GA",
@@ -57,8 +58,10 @@
           "endDate": null,
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/ahmatda-web/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
             "PM으로써 회의를 진행하며 지표를 근거로 우선순위를 정하고 있습니다.",
-            "모바일 플랫폼으로써 <a href='https://github.com/depromeet/ahmatda-app' target='_blank' rel='noopener noreferrer'>웹뷰 형태의 RN 어플리케이션</a> 개발을 주도했습니다."
+            "모바일 어플리케이션의 웹뷰로써 <a href='https://github.com/depromeet/ahmatda-web/pull/10' target='_blank' rel='noopener noreferrer'>bridge 유틸 및 hooks를 개발</a>하였습니다.",
+            "<a href='https://github.com/depromeet/ahmatda-app' target='_blank' rel='noopener noreferrer'>웹뷰 형태의 RN 어플리케이션</a> 개발을 주도했습니다."
           ],
           "techStack": [
             "Next.js",
@@ -97,8 +100,7 @@
             "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
             "클라이언트 사이드에서 다이내믹 라우팅되던 페이지들에 SSG를 적용해 TTI를 0.4초, LCP를 1.5초 감소시켰습니다.",
             "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
-            "next-sitemap을 도입해 동적으로 sitemap이 생성되도록 하였습니다.",
-            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 하였습니다.",
+            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 해, 더욱 많은 검색에서 디프만이 노출되도록 하였습니다.",
             "관련 개발기는 <a href='https://www.hyesungoh.xyz/depromeet-landing-page' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
           ],
           "techStack": [
@@ -125,6 +127,7 @@
           "endDate": null,
           "which": [
             "10인 프로젝트, 4인의 프론트엔드 파트에 속해 개발 및 운영하고 있습니다.",
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/ygtang-client/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
             "지표를 근거로 회원가입 플로우의 리뉴얼을 리드해, 회원가입 시 이탈률을 30% 감소시켰습니다.",
             "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다.",
             "이미지 저장 기능 개발기는 <a href='https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
@@ -175,32 +178,9 @@
             "커뮤니티의 비전, 방향, 원칙, 운영 방안을 계획하고 실천하고 있습니다.",
             "개발자로써의 성장과 함께 재미를 느낄 수 있도록 해커톤, 미니 프로젝트, 솔루션 챌린지 등 행사를 개최하고 운영하였습니다.",
             "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-gdsc-skhu-web-study-04/' target='_blank' rel='noreferrer'>웹 개발이 낯선 멤버를 대상으로 JavaScript, React, TypeScript, Next.js 등을 강의하였습니다.</a>",
-            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-some-tips-for-developer/' target='_blank' rel='noreferrer'>전체 멤버를 대상으로 '개발자로써 성장을 위해 노력했던 경험', '프로젝트 경험' 등을 공유해</a> 제가 겪은 시행착오를 겪지 않아도 되도록 노력했습니다."
+            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-some-tips-for-developer/' target='_blank' rel='noreferrer'>전체 멤버를 대상으로 '개발자로써 성장을 위해 노력했던 경험', '프로젝트 경험' 등을 공유해</a> 제가 겪은 시행착오를 겪지 않을 수 있도록 노력했습니다."
           ],
           "techStack": null
-        },
-        {
-          "title": {
-            "text": "www.gdsc-skhu.com",
-            "githubLink": "https://github.com/GDSC-at-SKHU/www.gdsc-skhu.com/",
-            "otherLink": "https://www.gdsc-skhu.com/"
-          },
-          "description": "GDSC 소개와 모집을 위한 랜딩 페이지를 개발하였습니다.",
-          "startDate": "2022.08",
-          "endDate": "2022.08",
-          "which": [
-            "3D와 부드러운 인터랙션을 통해 깊은 인상을 남기고자 하였습니다."
-          ],
-          "techStack": [
-            "Next.js",
-            "TypeScript",
-            "Emotion",
-            "Framer-motion",
-            "Three.js",
-            "React-three-fiber",
-            "GA",
-            "Vercel"
-          ]
         }
       ]
     },
@@ -327,8 +307,8 @@
             "입문자를 대상으로 프론트엔드 지식 공유를 진행하였습니다."
           ],
           "techStack": [
-            "React",
-            "JavaScript"
+            "JavaScript",
+            "React"
           ]
         },
         {
@@ -344,10 +324,10 @@
             "비전공자, 입문자를 대상으로 백엔드 지식 공유를 진행하였습니다."
           ],
           "techStack": [
-            "Ruby on Rails",
             "Ruby",
-            "Django",
-            "Python"
+            "Ruby on Rails",
+            "Python",
+            "Django"
           ]
         }
       ]
@@ -379,6 +359,21 @@
             "Rollup",
             "Github actions"
           ]
+        },
+        {
+          "title": {
+            "text": "배운 것을 정리하는 공간",
+            "githubLink": "https://github.com/hyesungoh/learningWhatIWant/issues",
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2021.04",
+          "endDate": null,
+          "which": [
+            "책, 강의, 멘토링 등 다양한 경로로 배우는 것을 정리하고 있습니다.",
+            "<a href='https://github.com/hyesungoh/learningWhatIWant/issues' target='_blank' rel='noreferrer'>짧은 팁 혹은 코드 조각을 이슈</a>로 정리하고 있습니다."
+          ],
+          "techStack": []
         }
       ]
     }
