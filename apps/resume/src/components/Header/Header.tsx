@@ -34,7 +34,7 @@ function Header({ heading, description, isPrint = false }: Props) {
       <DescriptionWrapper>
         <Avatar src={authorImage.default.src} alt={authorName} text={authorName} size="xl" />
         <Div>
-          <p>{description}</p>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
           {isPrint && (
             <small style={{ textDecoration: 'underline' }}>
               해당 이력서는 <a href="https://resume.hyesungoh.xyz/">https://resume.hyesungoh.xyz</a>에서 보다 원활하게

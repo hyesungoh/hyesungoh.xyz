@@ -1,0 +1,380 @@
+{
+  "title": "사이드 프로젝트",
+  "list": [
+    {
+      "name": "디프만",
+      "position": "개발자 및 운영진",
+      "startDate": "2022.03",
+      "endDate": "2023.08",
+      "description": "직장인부터 학생까지의 디자이너와 개발자들이 만나 서비스 런칭을 목표로 하는 연합 동아리입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "나랩",
+            "githubLink": "https://github.com/depromeet/na-lab-client",
+            "otherLink": "https://www.nalab.me"
+          },
+          "description": "동료의 익명 피드백을 모아 직무 강점을 찾는 질문 폼 서비스입니다.",
+          "startDate": "2023.4",
+          "endDate": null,
+          "which": [
+            "23년 7월 기준 일일 최대 사용자 <u>230명</u> 대를 기록하고 있습니다.",
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/na-lab-client/pulls?q=is%3Apr+author%3Ahyesungoh+' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
+            "리뷰와 커리어 명함 페이지에 SSR을 적용하고, 오픈그래프 태그를 개별 사용자에 맞게 그려주어 SNS 공유를 효과적으로 할 수 있도록 하였습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Yarn Berry",
+            "Emotion",
+            "Stylelint",
+            "Framer-motion",
+            "TanStack/React Query",
+            "Storybook",
+            "Chromatic",
+            "Vitest",
+            "React Testing Library",
+            "Codecov",
+            "Playwright",
+            "Github actions",
+            "Vercel",
+            "Codechecks",
+            "CodeQL",
+            "Husky",
+            "GA",
+            "Hotjar",
+            "Mixpanel",
+            "Sentry"
+          ]
+        },
+        {
+          "title": {
+            "text": "아맞다",
+            "githubLink": "https://github.com/depromeet/ahmatda-web",
+            "otherLink": "https://github.com/depromeet/ahmatda-web#download"
+          },
+          "description": "소지품 리마인드를 위한 서비스입니다.",
+          "startDate": "2022.10",
+          "endDate": null,
+          "which": [
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/ahmatda-web/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
+            "모바일 어플리케이션의 웹뷰로써 <a href='https://github.com/depromeet/ahmatda-web/pull/10' target='_blank' rel='noopener noreferrer'>bridge 유틸 및 hooks를 개발</a>하였습니다.",
+            "<a href='https://github.com/depromeet/ahmatda-app' target='_blank' rel='noopener noreferrer'>웹뷰 형태의 RN 어플리케이션</a> 개발을 주도했습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "React-Native",
+            "TypeScript",
+            "Yarn Berry",
+            "Emotion",
+            "Framer-motion",
+            "Recoil",
+            "TanStack/React Query",
+            "Jest",
+            "React Testing Library",
+            "Codecov",
+            "Playwright",
+            "Github actions",
+            "CodeQL",
+            "Husky",
+            "GA",
+            "Hotjar",
+            "Mixpanel",
+            "Sentry",
+            "Cloudflare Pages"
+          ]
+        },
+        {
+          "title": {
+            "text": "www.depromeet.com",
+            "githubLink": "https://github.com/depromeet/www.depromeet.com",
+            "otherLink": "https://www.depromeet.com"
+          },
+          "description": "디프만의 공식 랜딩 페이지입니다.",
+          "startDate": "2022.08",
+          "endDate": null,
+          "which": [
+            "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터랙티브하게 만들고자 노력하였습니다.",
+            "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",
+            "클라이언트 사이드에서 다이내믹 라우팅되던 페이지들에 SSG를 적용해 TTI를 0.4초, LCP를 1.5초 감소시켰습니다.",
+            "GA와 Hotjar를 도입해 사용자 경험과 트래픽을 추적하였습니다.",
+            "Google Search Console을 도입해 모든 페이지의 색인이 생성되도록 해, 더욱 많은 검색에서 디프만이 노출되도록 하였습니다.",
+            "관련 개발기는 <a href='https://www.hyesungoh.xyz/depromeet-landing-page' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Emotion",
+            "Framer-motion",
+            "Github actions",
+            "next-sitemap",
+            "GA",
+            "Hotjar",
+            "Husky",
+            "Vercel"
+          ]
+        },
+        {
+          "title": {
+            "text": "영감탱",
+            "githubLink": "https://github.com/depromeet/11th_7team_web",
+            "otherLink": "https://litt.ly/ygtang"
+          },
+          "description": "영감을 기록하는 모든 이들을 위한 아카이빙 서비스입니다.",
+          "startDate": "2022.03",
+          "endDate": null,
+          "which": [
+            "22년 7월 기준 앱 스토어 생산성 카테고리 113위를 달성했었습니다.",
+            "23년 7월 기준 MAU 200명대를 기록하고 있습니다.",
+            "제가 작성한 PR은 <a href='https://github.com/depromeet/ygtang-client/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
+            "지표를 근거로 회원가입 플로우의 리뉴얼을 리드해, 회원가입 시 이탈률을 30% 감소시켰습니다.",
+            "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다.",
+            "이미지 저장 기능 개발기는 <a href='https://www.hyesungoh.xyz/image-download-at-webview-app-with-s3' target='_blank' rel='noopener noreferrer' />다음 링크</a>에서 확인할 수 있습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "React-Native",
+            "TypeScript",
+            "Yarn Berry",
+            "Emotion",
+            "Framer-motion",
+            "TanStack/React Query",
+            "Recoil",
+            "Jest",
+            "React Testing Library",
+            "Codecov",
+            "Cypress",
+            "Github actions",
+            "CodeQL",
+            "GA",
+            "Hotjar",
+            "Mixpanel",
+            "Sentry",
+            "Husky",
+            "Cloudflare Pages"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Google developer student clubs",
+      "position": "Lead",
+      "startDate": "2022.08",
+      "endDate": "2023.06",
+      "description": "Google로부터 개발과 리더십 능력을 키울 수 있도록 지원받는 프로그램입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "Lead 활동",
+            "githubLink": null,
+            "otherLink": "https://gdsc.community.dev/sungkonghoe-university/"
+          },
+          "description": "교내 최고의 개발 커뮤니티를 구성하는 것을 목표로 활동하고 있습니다.",
+          "startDate": "2022.08",
+          "endDate": "2023.06",
+          "which": [
+            "교내에 파편화되어 있는 개발 커뮤니티를 한곳으로 모아 더욱 많은 학우들이 지식을 나눌 수 있는 환경을 구성하는 것이 목표입니다.",
+            "커뮤니티의 비전, 방향, 원칙, 운영 방안을 계획하고 실천하고 있습니다.",
+            "개발자로써의 성장과 함께 재미를 느낄 수 있도록 해커톤, 미니 프로젝트, 솔루션 챌린지 등 행사를 개최하고 운영하였습니다.",
+            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-gdsc-skhu-web-study-04/' target='_blank' rel='noreferrer'>웹 개발이 낯선 멤버를 대상으로 JavaScript, React, TypeScript, Next.js 등을 강의하였습니다.</a>",
+            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-some-tips-for-developer/' target='_blank' rel='noreferrer'>전체 멤버를 대상으로 '개발자로써 성장을 위해 노력했던 경험', '프로젝트 경험' 등을 공유해</a> 제가 겪은 시행착오를 겪지 않을 수 있도록 노력했습니다."
+          ],
+          "techStack": null
+        }
+      ]
+    },
+    {
+      "name": "블로그, 이력서 템플릿",
+      "position": "오픈소스 프로젝트",
+      "startDate": "2022.03",
+      "endDate": null,
+      "description": "",
+      "projects": [
+        {
+          "title": {
+            "text": "Comet-land",
+            "githubLink": "https://github.com/hyesungoh/comet-land",
+            "otherLink": "https://comet-land-blog.vercel.app/"
+          },
+          "description": "블로그와 이력서를 같은 스타일로 관리하고자 개발하였습니다.",
+          "startDate": "2022.03",
+          "endDate": null,
+          "which": [
+            "Next.js의 'getStaticProps', 'getStaticPaths'를 이용해 SSG로써 구현하였습니다.",
+            "Unified, Rehype를 이용해 Markdown을 컴파일하였습니다.",
+            "robots.txt, sitemap.xml과 같은 <a href='https://github.com/hyesungoh/comet-land/blob/f58f27480391b50adea2f3a3b944dd87318852ee/apps/blog/scripts/generate-static-files.mjs' target='_blank' rel='noreferrer'>정적 파일 생성을 자동화</a>하였습니다.",
+            "블로그와 이력서 간 동일한 설정, 컴포넌트를 재사용하기 위해 Turborepo를 사용해 모노레포를 구성하였습니다.",
+            "회고는 <a href='https://www.hyesungoh.xyz/comet-land-0-intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "NextUI",
+            "Turborepo",
+            "KBar",
+            "GA",
+            "Hotjar",
+            "Vercel",
+            "Github actions",
+            "Jest",
+            "React Testing Library",
+            "Cypress"
+          ]
+        },
+        {
+          "title": {
+            "text": "create-comet-land",
+            "githubLink": "https://github.com/hyesungoh/create-comet-land",
+            "otherLink": "https://www.npmjs.com/package/create-comet-land"
+          },
+          "description": "comet-land 프로젝트를 더욱 쉽게 시작할 수 있도록 개발하였습니다.",
+          "startDate": "2022.06",
+          "endDate": null,
+          "which": [
+            "동적이며 아름답게 보여짐과 동시에 관리에 용이할 것이라 판단하여 React와 Ink를 사용하였습니다.",
+            "Shelljs를 이용해 git clone 후, fs 모듈을 이용해 파일을 수정하는 방법으로 개발하였습니다.",
+            "Github actions를 이용해 릴리즈시 NPM에 배포되도록 CD를 구축하였습니다.",
+            "회고는 <a href='https://www.hyesungoh.xyz/create-comet-land' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
+          ],
+          "techStack": [
+            "React",
+            "TypeScript",
+            "Ink",
+            "Shelljs",
+            "Webpack",
+            "Github actions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Software Maestro",
+      "position": "12기",
+      "startDate": "2021.04",
+      "endDate": "2021.12",
+      "description": "창의도전형 SW인재 육성으로 SW산업의 미래를 선도하는 것을 목표로 하는 정부지원 사업입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "Wavy",
+            "githubLink": "https://github.com/EO2-WAVY/WavyFrontend",
+            "otherLink": null
+          },
+          "description": "인공지능 기반 댄스 학습 서비스를 개발하였습니다.",
+          "startDate": "2021.07",
+          "endDate": "2021.12",
+          "which": [
+            "3인 프로젝트에서 프론트엔드 개발을 전담하였습니다.",
+            "인터랙티브한 서비스가 되기 위해 노력하였습니다.",
+            "Github actions를 사용하여 배포 자동화를 구성하였습니다.",
+            "에러 모니터링, 사용자 경험 추적을 위해 GA와 Sentry를 적용하였습니다.",
+            "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
+          ],
+          "techStack": [
+            "React",
+            "TypeScript",
+            "Styled-components",
+            "Framer-motion",
+            "Recoil",
+            "SWR",
+            "AWS S3",
+            "AWS CF",
+            "Github actions",
+            "GA",
+            "Sentry"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "교내 동아리",
+      "position": "지식 공유자",
+      "startDate": "2017.03",
+      "endDate": "2022.08",
+      "description": "지식을 공유하며 성장할 수 있다고 믿으며, 행위 자체에 즐거움을 느낍니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "프론트엔드 지식 공유",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2021.03",
+          "endDate": "2022.08",
+          "which": [
+            "입문자를 대상으로 프론트엔드 지식 공유를 진행하였습니다."
+          ],
+          "techStack": [
+            "JavaScript",
+            "React"
+          ]
+        },
+        {
+          "title": {
+            "text": "RoR, Django 지식 공유",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2018.03",
+          "endDate": "2020.12",
+          "which": [
+            "비전공자, 입문자를 대상으로 백엔드 지식 공유를 진행하였습니다."
+          ],
+          "techStack": [
+            "Ruby",
+            "Ruby on Rails",
+            "Python",
+            "Django"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "그 외 프로젝트",
+      "position": "",
+      "startDate": null,
+      "endDate": null,
+      "description": "",
+      "projects": [
+        {
+          "title": {
+            "text": "@hyesungoh/eslint-plugin",
+            "githubLink": "https://github.com/hyesungoh/eslint-plugin",
+            "otherLink": "https://github.com/hyesungoh/eslint-plugin/pkgs/npm/eslint-plugin"
+          },
+          "description": "",
+          "startDate": "2023.01",
+          "endDate": "2023.02",
+          "which": [
+            "자주 사용하며 선호하는 Eslint와 Prettier 설정을 패키지화 하였습니다.",
+            "깃허브 릴리즈 시 배포되도록 CD를 구성하였습니다."
+          ],
+          "techStack": [
+            "Yarn Berry",
+            "Eslint",
+            "Prettier",
+            "Rollup",
+            "Github actions"
+          ]
+        },
+        {
+          "title": {
+            "text": "배운 것을 정리하는 공간",
+            "githubLink": "https://github.com/hyesungoh/learningWhatIWant/issues",
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2021.04",
+          "endDate": null,
+          "which": [
+            "책, 강의, 멘토링 등 다양한 경로로 배우는 것을 정리하고 있습니다.",
+            "<a href='https://github.com/hyesungoh/learningWhatIWant/issues' target='_blank' rel='noreferrer'>짧은 팁 혹은 코드 조각을 이슈</a>로 정리하고 있습니다."
+          ],
+          "techStack": []
+        }
+      ]
+    }
+  ]
+}

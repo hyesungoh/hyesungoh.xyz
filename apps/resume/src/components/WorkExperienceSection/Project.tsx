@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { NextUITheme, useTheme } from '@nextui-org/react';
 
-import { IProject } from '../../../_content/Work-Experience';
+import { IProject } from '../../../_content/Side-Projects';
 import Li from '../Li';
 import TitleTooltip from '../TitleTooltip';
 
