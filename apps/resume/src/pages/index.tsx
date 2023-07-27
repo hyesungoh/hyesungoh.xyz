@@ -1,5 +1,6 @@
 import { data as etcData, IEtc } from '../../_content/Etc';
 import { data as headerData, IHeader } from '../../_content/Header';
+import { data as linkData } from '../../_content/Link';
 import { data as otherExperienceDate, IOtherExperience } from '../../_content/Other-Experience';
 import { data as sideProjectsData, IWorkExperience } from '../../_content/Side-Projects';
 import { data as skillsData, ISkills } from '../../_content/Skills';
@@ -12,6 +13,7 @@ import WorkExperienceSection from '../components/WorkExperienceSection';
 
 interface Props {
   header: IHeader;
+  link: IEtc;
   workExperience: IWorkExperience;
   sideProjects: IWorkExperience;
   otherExperience: IOtherExperience;
@@ -19,11 +21,12 @@ interface Props {
   etc: IEtc;
 }
 
-function Resume({ header, workExperience, sideProjects, otherExperience, skills, etc }: Props) {
+function Resume({ header, link, workExperience, sideProjects, otherExperience, skills, etc }: Props) {
   return (
     <>
       <main>
         <Header {...header} />
+        <SkillsSection {...link} />
         <WorkExperienceSection {...workExperience} />
         <WorkExperienceSection {...sideProjects} />
         <OtherExperienceSection {...otherExperience} />
@@ -42,6 +45,7 @@ export async function getStaticProps() {
   return {
     props: {
       header: headerData,
+      link: linkData,
       workExperience: workExperienceData,
       sideProjects: sideProjectsData,
       otherExperience: otherExperienceDate,

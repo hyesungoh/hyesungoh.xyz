@@ -3,16 +3,9 @@
   "list": [
     {
       "name": "학력",
-      "descriptions": ["성공회대학교 소프트웨어공학과 4학년 1학기 재학중", "한국게임과학고등학교 프로그래밍학과 졸업"]
-    },
-    {
-      "name": "링크",
       "descriptions": [
-        "현재 이력서: <a href='https://resume.hyesungoh.xyz' target='_blank' rel='noreferrer'>resume.hyesungoh.xyz</a>",
-        "Github: <a href='https://github.com/hyesungoh' target='_blank' rel='noreferrer'>github.com/hyesungoh</a>",
-        "Blog: <a href='https://www.hyesungoh.xyz/' target='_blank' rel='noreferrer'>www.hyesungoh.xyz</a>",
-        "LinkedIn: <a href='https://www.linkedin.com/in/hyesungoh414/' target='_blank' rel='noreferrer'>www.linkedin.com/in/hyesungoh414</a>",
-        "Email: <a href='mailto:haesungoh414@gmail.com'>haesungoh414@gmail.com</a>"
+        "성공회대학교 소프트웨어공학과 4학년 1학기 재학중",
+        "한국게임과학고등학교 프로그래밍학과 졸업"
       ]
     }
   ]
