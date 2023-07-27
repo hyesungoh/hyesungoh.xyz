@@ -93,7 +93,7 @@
           },
           "description": "디프만의 공식 랜딩 페이지입니다.",
           "startDate": "2022.08",
-          "endDate": null,
+          "endDate": "2023.04",
           "which": [
             "깊은 인상을 남기며 정보를 효과적으로 전달하기 위해 인터랙티브하게 만들고자 노력하였습니다.",
             "이미지 형식 변환, next/image의 priority, placeholder 옵션 등을 통해 FCP를 13.8초, TTI를 12초, LCP를 11.9초 감소시켰습니다.",

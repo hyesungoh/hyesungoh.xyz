@@ -11,9 +11,7 @@ function Experience({ title, position, startDate, endDate, description, which }:
   return (
     <Div>
       <TitleTooltip {...title} />
-      <small>
-        {startDate} ~ {endDate}
-      </small>
+      <small>{startDate === endDate ? startDate : `${startDate} ~ ${endDate}`}</small>
       <span>{position}</span>
       <p>{description}</p>
       {which.length > 0 && (
