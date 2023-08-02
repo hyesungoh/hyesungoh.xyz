@@ -12,8 +12,222 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-07-27</lastBuildDate>
+        <lastBuildDate>2023-08-02</lastBuildDate>
         <item>
+    <title><![CDATA[모노레포에서 Github Actions 현명하게 사용하기]]></title>
+    <link>https://www.hyesungoh.xyz/wise-use-of-github-actions-in-monorepo</link>
+    <pubDate>2023-08-02</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/wise-use-of-github-actions-in-monorepo</guid>
+    <description>
+    <![CDATA[병렬 실행, 라벨링 자동화 그리고 변경이 일어난 부분만 실행하기]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://github.com/hyesungoh/hyesungoh.xyz/assets/26461307/b03d2d75-74a0-4576-b4b4-cfd4d32f898a" alt="모노레포에서 Github Actions 현명하게 사용하기"></p>
+<p>현재 근무하고 있는 'F Lab'에서는 프론트엔드 프로젝트들을 모노레포로 관리하고 있습니다.</p>
+<p>기존 Github Actions으로 적용되어 있던 CI를 개발자 관점과 비즈니스 관점으로 개선한 경험과 함께 방법을 공유하고자 합니다.</p>
+<h2 id="github-actions" class="heading">Github Actions?</h2>
+<p>본문은 Github Actions를 이미 다루어본 경험이 있는 분들이 대상입니다.</p>
+<p>그렇기에 자세한 설명은 생략하고, 아직 경험이 없으신 분들을 위해 Github의 문서에서 발췌한 설명과 <a href="https://docs.github.com/ko/actions" target="_blank" rel="noopener noreferer">링크</a>를 첨부해 두겠습니다.</p>
+<blockquote>
+<p>GitHub Actions를 사용하여 리포지토리에서 바로 소프트웨어 개발 워크플로를 자동화, 사용자 지정 및 실행합니다. CI/CD를 포함하여 원하는 작업을 수행하기 위한 작업을 검색, 생성 및 공유하고 완전히 사용자 정의된 워크플로에서 작업을 결합할 수 있습니다.</p>
+</blockquote>
+<h2 id="as-is---직렬" class="heading">As Is - 직렬</h2>
+<p>저희의 모노레포 안에는 5개의 프로젝트가 존재했습니다.</p>
+<p>각 프로젝트의 의존 관계가 존재하긴 했지만, 빌드에 대한 의존은 존재하지 않았습니다.</p>
+<p>이런 프로젝트 의존 관계와 다르게 CI는 직렬적으로 실행되고 있었어요.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token comment"># .github/workflows/ci.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build A
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build B
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build C
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build D
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build E
+</span></code></pre>
+<p>직렬적으로 실행함에 있어서 시간이 오래 소모된다는 단점과 함께</p>
+<p>각 프로젝트마다 실행되어야 하는 Step들(lint, test 등)이 한 파일에 작성되어 개발자의 시인성을 해치는 문제점을 가지고 있었습니다.</p>
+<blockquote>
+<p>단순히 반복되는 부분들이라면 <a href="https://docs.github.com/en/actions/using-workflows/reusing-workflows" target="_blank" rel="noopener noreferer">Reusable workflows</a>로 해결할 수도 있습니다.</p>
+</blockquote>
+<h2 id="to-be---병렬" class="heading">To Be - 병렬</h2>
+<p>CI 실행 시간과 시인성을 높이기 위해 각 프로젝트별로 yml 파일을 분리했습니다.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token comment"># .github/workflows/ci-a.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build A
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># .github/workflows/ci-b.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build B
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># .github/workflows/ci-c.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build C
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># .github/workflows/ci-d.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build D
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># .github/workflows/ci-e.yml</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build E
+</span></code></pre>
+<p>이를 통해 기존 CI 실행 시간의 <code>절반</code> 수준으로 시간을 단축할 수 있었고,</p>
+<p>각 프로젝트에서 사용하는, 관심사가 같은 Step들이 모이게 되어 작성하는 개발자의 시인성을 높일 수 있었다고 생각합니다.</p>
+<br />
+<p>분리 이후 각 프로젝트에서 반복적으로 등장하는 Step들이 생겼지만</p>
+<p>저희는 위에서 언급한 Reusable workflow를 이용해 해결하지 않았습니다.</p>
+<p>반복되는 Step들의 코드 라인이 크지 않았고, 몇 단어만 개별화하면 되었기에 그 대신 <code>env</code> 를 이용해 각 프로젝트마다 바뀌는 command prefix, build path 등을 선언해 <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself#WET" target="_blank" rel="noopener noreferer">WET</a>하게 대응했습니다.</p>
+<blockquote>
+<p>AHA하게 대응했다고 말하고 싶지만, 아직 개선 이후 큰 변화가 필요하진 않았어서 덕을 볼지 피를 볼지는 아직 미지수입니다. 😅</p>
+</blockquote>
+<h2 id="as-is---변경-지점에-무심" class="heading">As Is - 변경 지점에 무심</h2>
+<p>기존 직렬적으로 실행되던 CI도 그렇고, 위에서 개선한 병렬적으로 실행되는 CI도 마찬가지로 변경 지점에 무심하게 전부 실행됩니다.</p>
+<pre class="language-diff"><code class="language-diff code-highlight"><span class="code-line">프로젝트 A 변경 (의존 관계 없음)
+</span><span class="code-line">
+</span><span class="code-line inserted"><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">프로젝트 A CI 실행
+</span></span></span><span class="code-line deleted"><span class="token inserted-sign inserted"><span class="token line"></span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">프로젝트 B CI 실행
+</span></span></span><span class="code-line deleted"><span class="token deleted-sign deleted"><span class="token line"></span><span class="token prefix deleted">-</span><span class="token line">프로젝트 C CI 실행
+</span></span></span><span class="code-line deleted"><span class="token deleted-sign deleted"><span class="token line"></span><span class="token prefix deleted">-</span><span class="token line">프로젝트 D CI 실행
+</span></span></span><span class="code-line deleted"><span class="token deleted-sign deleted"><span class="token line"></span><span class="token prefix deleted">-</span><span class="token line">프로젝트 E CI 실행
+</span></span></span></code></pre>
+<p>모든 프로젝트의 CI 실행 시간이 비슷하다면, 개발자가 느끼는 시간에서는 단점을 느껴지지 않지만</p>
+<p>금전(비즈니스)적으로 생각을 해봤을 때는 단점이 생깁니다.</p>
+<p><img src="https://github.com/hyesungoh/hyesungoh.xyz/assets/26461307/1ce9cda7-70cb-43f8-b19f-ad425301b7a0" alt="Github actions billing"></p>
+<p>Github actions를 실행 시간에 따라 요금을 청구하기 때문입니다.</p>
+<p>예를 들어 각 CI가 모두 3분씩 소모된다면, 위의 경우에서는 실행 환경에 따라 최소 0.096USD, 최대 3.84USD의 눈먼 금액이 지출됩니다.</p>
+<h2 id="to-be---변경이-일어난-부분만-실행" class="heading">To Be - 변경이 일어난 부분만 실행</h2>
+<p>이를 해결하기 위해 저희는 <a href="https://github.com/dorny/paths-filter" target="_blank" rel="noopener noreferer">dorny/paths-filter</a> Github Action을 사용했습니다.</p>
+<p>직관적으로 필터를 설정할 수 있고, 의존 관계를 나타내는 데에 쉬운 작성 방법을 제공한다고 판단해 사용하게 되었고 사용 방법은 다음과 같습니다.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 의존 관계가 없는 프로젝트</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># .github/workflows/ci-a.yml</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="5">  <span class="token key atrule">job_compute_diff</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="6">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Compute file diff
+</span><span class="code-line line-number" line="7">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line line-number" line="8">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="9">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout current commit ($<span class="token punctuation">{</span><span class="token punctuation">{</span> github.sha <span class="token punctuation">}</span><span class="token punctuation">}</span>)
+</span><span class="code-line line-number" line="10">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number highlight-line" line="12">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Compute diff
+</span><span class="code-line line-number highlight-line" line="13">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> dorny/paths<span class="token punctuation">-</span>filter@v2
+</span><span class="code-line line-number highlight-line" line="14">        <span class="token key atrule">id</span><span class="token punctuation">:</span> compute_diff
+</span><span class="code-line line-number highlight-line" line="15">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number highlight-line" line="16">          <span class="token key atrule">filters</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line line-number highlight-line" line="17"><span class="token scalar string">            files:
+</span></span><span class="code-line line-number highlight-line" line="18"><span class="token scalar string">              - 'packages/A/**'</span>
+</span><span class="code-line line-number" line="19">
+</span><span class="code-line line-number" line="20">    <span class="token key atrule">outputs</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="21">      <span class="token key atrule">files</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.compute_diff.outputs.files <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="22">
+</span><span class="code-line line-number" line="23">  <span class="token key atrule">job_build</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="24">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Build A
+</span><span class="code-line line-number" line="25">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line line-number highlight-line" line="26">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>job_compute_diff<span class="token punctuation">]</span>
+</span><span class="code-line line-number highlight-line" line="27">    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> needs.job_compute_diff.outputs.files == 'true' <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="28">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="29">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token punctuation">...</span>
+</span></code></pre>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 의존 관계가 있는 프로젝트</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># .github/workflows/ci-b.yml</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="5">  <span class="token key atrule">job_compute_diff</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="6">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Compute file diff
+</span><span class="code-line line-number" line="7">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line line-number" line="8">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="9">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout current commit ($<span class="token punctuation">{</span><span class="token punctuation">{</span> github.sha <span class="token punctuation">}</span><span class="token punctuation">}</span>)
+</span><span class="code-line line-number" line="10">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number highlight-line" line="12">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Compute diff
+</span><span class="code-line line-number highlight-line" line="13">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> dorny/paths<span class="token punctuation">-</span>filter@v2
+</span><span class="code-line line-number highlight-line" line="14">        <span class="token key atrule">id</span><span class="token punctuation">:</span> compute_diff
+</span><span class="code-line line-number highlight-line" line="15">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number highlight-line" line="16">          <span class="token comment"># A, B, C 프로젝트에 변경이 일어날 때 B의 CI를 실행하기 위함</span>
+</span><span class="code-line line-number highlight-line" line="17">          <span class="token key atrule">filters</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line line-number highlight-line" line="18"><span class="token scalar string">            files:
+</span></span><span class="code-line line-number highlight-line" line="19"><span class="token scalar string">              - 'packages/A/**'
+</span></span><span class="code-line line-number highlight-line" line="20"><span class="token scalar string">              - 'packages/B/**'
+</span></span><span class="code-line line-number highlight-line" line="21"><span class="token scalar string">              - 'packages/C/**'</span>
+</span><span class="code-line line-number" line="22">
+</span><span class="code-line line-number" line="23">    <span class="token key atrule">outputs</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="24">      <span class="token key atrule">files</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.compute_diff.outputs.files <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="25">
+</span><span class="code-line line-number" line="26">  <span class="token key atrule">job_build</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="27">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Build A
+</span><span class="code-line line-number" line="28">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line line-number highlight-line" line="29">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>job_compute_diff<span class="token punctuation">]</span>
+</span><span class="code-line line-number highlight-line" line="30">    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> needs.job_compute_diff.outputs.files == 'true' <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="31">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="32">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token punctuation">...</span>
+</span></code></pre>
+<p>이처럼 프로젝트별로 확인이 필요할 때만 CI가 실행되도록 구성하였고, 덕분에 개발자의 시간과 필요 없이 소모되는 금액을 줄일 수 있었습니다.</p>
+<h3 id="더-줄이려면">더 줄이려면?</h3>
+<p>본문의 주제와 벗어난 경험인 것 같아 깊게 다루진 않지만,</p>
+<p>CI가 트리거되는 type과 draft와 같은 상태를 확인해 정말 필요할 때만 자원을 사용하도록 구성할 수 있습니다.</p>
+<ul>
+<li><a href="https://docs.github.com/ko/github-ae@latest/actions/using-workflows/workflow-syntax-for-github-actions#onevent_nametypes" target="_blank" rel="noopener noreferer">on.&#x3C;event_name>.types</a></li>
+<li><a href="https://github.com/orgs/community/discussions/25722" target="_blank" rel="noopener noreferer">Don't run actions on draft pull requests</a></li>
+</ul>
+<h2 id="as-is---라벨링" class="heading">As Is - 라벨링</h2>
+<p>작성한 Pull Request가 모노레포의 어느 프로젝트를 변경한 것인지 직관적으로 나타내기 위해서 <a href="https://github.com/actions/labeler" target="_blank" rel="noopener noreferer">actions/labeler</a>를 이용해 다음과 같이 구성하고 있었습니다.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">'area: A'</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> packages/A/<span class="token important">**</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">'area: B'</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> packages/B/<span class="token important">**</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># ...</span>
+</span></code></pre>
+<p>어느 프로젝트가 변경이 일어났는지 확인하는 용도로는 충분했지만,</p>
+<p>변경의 크기, 브랜치, PR의 제목 등에 따른 라벨링은 기능을 제공하고 있지 않습니다.</p>
+<h2 id="to-be---더욱-많은-정보를-라벨로-제공" class="heading">To Be - 더욱 많은 정보를 라벨로 제공</h2>
+<p>actions/labeler와 다르게 위에서 언급한 기능을 포함하고 사용 방법이 비슷한 <a href="https://github.com/srvaroa/labeler" target="_blank" rel="noopener noreferer">srvaroa/labeler</a>를 사용해 더욱 많은 정보를 라벨링되도록 구성할 수 있었습니다.</p>
+<h3 id="title">Title</h3>
+<p>저희는 PR의 제목에 P1 ~ P3를 접두어로 사용해 해당 PR의 우선순위를 나타내고 있습니다.</p>
+<p>이를 더욱 시각적으로 나타내기 위해 라벨링을 다음과 같이 적용할 수 있었습니다.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">'P1 🔥'</span>
+</span><span class="code-line">    <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">'^P1:.*'</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">'P2'</span>
+</span><span class="code-line">    <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">'^P2:.*'</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">'P3'</span>
+</span><span class="code-line">    <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">'^P3:.*'</span>
+</span></code></pre>
+<h3 id="diff">Diff</h3>
+<p>개발자가 PR을 보기 전에는 PR의 크기를 가늠할 수 없는데, 이는 리뷰에 대한 개발자의 부담을 늘린다고 생각했습니다.</p>
+<p>변경이 작은 PR에 한해서 리뷰에 소모되는 부담을 줄이고 변경의 크기를 미리 계산해서 일과에 소모되는 컨텍스트 스위칭 비용을 줄이기 위해 PR의 Diff에 따른 라벨링도 다음과 같이 할 수 있었습니다.</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"diff: XS"</span>
+</span><span class="code-line">    <span class="token key atrule">size</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">below</span><span class="token punctuation">:</span> <span class="token number">50</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"diff: S"</span>
+</span><span class="code-line">    <span class="token key atrule">size</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">above</span><span class="token punctuation">:</span> <span class="token number">50</span>
+</span><span class="code-line">        <span class="token key atrule">below</span><span class="token punctuation">:</span> <span class="token number">150</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"diff: M"</span>
+</span><span class="code-line">    <span class="token key atrule">size</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">above</span><span class="token punctuation">:</span> <span class="token number">150</span>
+</span><span class="code-line">        <span class="token key atrule">below</span><span class="token punctuation">:</span> <span class="token number">250</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"diff: L"</span>
+</span><span class="code-line">    <span class="token key atrule">size</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">above</span><span class="token punctuation">:</span> <span class="token number">250</span>
+</span><span class="code-line">        <span class="token key atrule">below</span><span class="token punctuation">:</span> <span class="token number">500</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"diff: XL"</span>
+</span><span class="code-line">    <span class="token key atrule">size</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">above</span><span class="token punctuation">:</span> <span class="token number">500</span>
+</span></code></pre>
+<h2 id="마치며" class="heading">마치며</h2>
+<p>본문에서 다루었던 경험들을 통해 개발자의 비용을 줄이는 것과 함께 금전적인 비용까지 줄여볼 수 있었습니다.</p>
+<p>금전적인 비용은 제 월급에서 빠져나가진 않아 깊게 체감되진 않지만 (농담) 개발자의 부담감을 줄이고 능률을 올렸다고는 체감하고 있습니다.</p>
+<p>제 경험을 재료 삼아 더욱 개선된 환경에서 필요한 곳에만 비용을 집중해 재밌게 개발하는 분들이 많아지길 바라는 마음에 글을 마칩니다. 감사합니다.</p>
+<h2 id="부록---알아두면-좋을-것-같은-방법들" class="heading">부록 - 알아두면 좋을 것 같은 방법들</h2>
+<p>모노레포 환경에 한정되어 있진 않아 본문에서 다루진 않았지만, 공유하고 싶은 Github Actions 방법 혹은 문법이 몇 가지 존재합니다.</p>
+<p>의존성 캐싱, 빌드 캐싱, Job needs 등 매우 간단하지만 효과가 뛰어난 것들인데요.</p>
+<p><a href="https://github.com/depromeet/na-lab-client/blob/main/.github/workflows/ci.yml" target="_blank" rel="noopener noreferer">오픈소스로 개발하고 있는 사이드 프로젝트</a>에서 몇 가지 적용하고 있어 궁금하시다면 참고가 될만할 것 같아 공유드립니다.</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA['클린 코더'를 읽고]]></title>
     <link>https://www.hyesungoh.xyz/클린-코더</link>
     <pubDate>2023-07-27</pubDate>
