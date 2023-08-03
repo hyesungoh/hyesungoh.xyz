@@ -7,7 +7,7 @@ category: 'Github'
 
 ![모노레포에서 Github Actions 현명하게 사용하기](https://github.com/hyesungoh/hyesungoh.xyz/assets/26461307/b03d2d75-74a0-4576-b4b4-cfd4d32f898a)
 
-현재 근무하고 있는 'F Lab'에서는 프론트엔드 프로젝트들을 모노레포로 관리하고 있습니다.
+현재 근무하고 있는 ['F Lab'](https://f-lab.kr/)에서는 프론트엔드 프로젝트들을 모노레포로 관리하고 있습니다.
 
 기존 Github Actions으로 적용되어 있던 CI를 개발자 관점과 비즈니스 관점으로 개선한 경험과 함께 방법을 공유하고자 합니다.
 
