@@ -75,7 +75,7 @@
 <p>저희는 위에서 언급한 Reusable workflow를 이용해 해결하지 않았습니다.</p>
 <p>반복되는 Step들의 코드 라인이 크지 않았고, 몇 단어만 개별화하면 되었기에 그 대신 <code>env</code> 를 이용해 각 프로젝트마다 바뀌는 command prefix, build path 등을 선언해 <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself#WET" target="_blank" rel="noopener noreferer">WET</a>하게 대응했습니다.</p>
 <blockquote>
-<p>AHA하게 대응했다고 말하고 싶지만, 아직 개선 이후 큰 변화가 필요하진 않았어서 덕을 볼지 피를 볼지는 아직 미지수입니다. 😅</p>
+<p>AHA하게 대응했다고 말하고 싶지만, 아직 개선 이후 큰 변화가 필요하진 않았어서 덕을 볼지 피를 볼지는 미지수입니다. 😅</p>
 </blockquote>
 <h2 id="as-is---변경-지점에-무심" class="heading">As Is - 변경 지점에 무심</h2>
 <p>기존 직렬적으로 실행되던 CI도 그렇고, 위에서 개선한 병렬적으로 실행되는 CI도 마찬가지로 변경 지점에 무심하게 전부 실행됩니다.</p>
