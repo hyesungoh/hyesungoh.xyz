@@ -12,8 +12,20 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-08-02</lastBuildDate>
+        <lastBuildDate>2023-08-18</lastBuildDate>
         <item>
+    <title><![CDATA[Type-Safe하게 다형성 지원하기]]></title>
+    <link>https://www.hyesungoh.xyz/polymorphism-with-type-safe</link>
+    <pubDate>2023-08-18</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/polymorphism-with-type-safe</guid>
+    <description>
+    <![CDATA[polymorphism-with-type-safe]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://github.com/hyesungoh/hyesungoh.xyz/assets/26461307/6c232519-57cf-4b28-baf2-e8f0399990da" alt="Type Safe하게 다형성 지원하기"></p>
+<p>본 글은 현재 재직중인 <a href="https://f-lab.kr/blog/polymorphism-with-type-safe" target="_blank" rel="noopener noreferer">'F-Lab'의 블로그</a>에서 확인할 수 있어요!</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[모노레포에서 Github Actions 현명하게 사용하기]]></title>
     <link>https://www.hyesungoh.xyz/wise-use-of-github-actions-in-monorepo</link>
     <pubDate>2023-08-02</pubDate>
