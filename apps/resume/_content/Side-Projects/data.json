@@ -14,7 +14,7 @@
             "githubLink": "https://github.com/depromeet/na-lab-client",
             "otherLink": "https://www.nalab.me"
           },
-          "description": "동료의 익명 피드백을 모아 직무 강점을 찾는 질문 폼 서비스입니다.",
+          "description": "동료의 익명 피드백을 모아 직무 강점을 찾는 웹 서비스입니다.",
           "startDate": "2023.4",
           "endDate": null,
           "which": [
@@ -54,7 +54,7 @@
             "githubLink": "https://github.com/depromeet/ahmatda-web",
             "otherLink": "https://github.com/depromeet/ahmatda-web#download"
           },
-          "description": "소지품 리마인드를 위한 서비스입니다.",
+          "description": "소지품 리마인드를 위한 웹뷰 기반 모바일 서비스입니다.",
           "startDate": "2022.10",
           "endDate": null,
           "which": [
@@ -121,7 +121,7 @@
             "githubLink": "https://github.com/depromeet/11th_7team_web",
             "otherLink": "https://litt.ly/ygtang"
           },
-          "description": "영감을 기록하는 모든 이들을 위한 아카이빙 서비스입니다.",
+          "description": "영감을 기록하는 모든 이들을 위한 아카이빙 서비스이며, 웹뷰 기반 모바일 플랫폼으로 제공됩니다.",
           "startDate": "2022.03",
           "endDate": null,
           "which": [
