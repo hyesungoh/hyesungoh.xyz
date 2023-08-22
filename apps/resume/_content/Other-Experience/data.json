@@ -84,7 +84,6 @@
       "description": "동영상 플레이어를 제공하는 오픈소스 프로젝트에 기여하였습니다.",
       "which": [
         "동영상 재생 중에 호출되는 callback인 onProgress의 Props에 대한 interface를 정의하였습니다.",
-        "WAVY 프로젝트에서 직접 사용하며 필요성을 느껴 기여하게 되었습니다.",
         "PR 링크: <a href='https://github.com/cookpete/react-player/pull/1342' target='_blank' rel='noreferrer'>https://github.com/cookpete/react-player/pull/1342</a>"
       ]
     },
