@@ -12,8 +12,39 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-08-18</lastBuildDate>
+        <lastBuildDate>2023-09-04</lastBuildDate>
         <item>
+    <title><![CDATA['돌연한 출발'을 읽고]]></title>
+    <link>https://www.hyesungoh.xyz/돌연한-출발</link>
+    <pubDate>2023-09-04</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/돌연한-출발</guid>
+    <description>
+    <![CDATA[돌연한-출발]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://github.com/hyesungoh/learningWhatIWant/assets/26461307/d9c2c40a-31a4-4d08-a00c-94c42945a8cb" alt="돌연한 출발"></p>
+<h2 id="읽게-된-계기" class="heading">읽게 된 계기</h2>
+<p>카프카를 처음 알게 된 건 교보문고에서 카프카 탄생 140주년으로 이 책을 발매했을 때다</p>
+<p>이쁜 표지에 홀렸고, 고전을 좋아하고 읽고 싶어하기에 구매까지 이어졌다</p>
+<h2 id="읽은-후-느낀-점" class="heading">읽은 후 느낀 점</h2>
+<p>형용사인 '카프카적이다' 라는 뜻을 얼추 알게 된 것 같다</p>
+<p>여러 단편을 읽으며 안좋은 꿈에서 헤매고 있는 듯한 기분을 받았는데, 그런 느낌인 것 같다</p>
+<br />
+<p>책에서 말하는 카프카의 생애와 회사 동료와 나눴던 카프카에 대한 이야기를 통해 강렬하게 기억이 남은 것은</p>
+<p>그의 상황을, 이를테면 가부장적 폭력을 일삼았던 아버지와 이중적인 어머니의 영향을 작품에 녹여냈단 것이다.</p>
+<p>녹아든 그의 상황이 현대의 일반인들이 공감할 수 있는 상황인 것처럼 느껴지기 쉽고 그래서 좋은 책으로 평가되고 있다고 생각했다.</p>
+<br />
+<p>가장 감탄한 것은 작가가 본업이 아닌 상태에서 본인이 좋아하는 일이라는 점 하나로 후세에 기록되는 작품을 남길만큼의 열정이라고 생각한다.</p>
+<h2 id="밑줄-친-문장들" class="heading">밑줄 친 문장들</h2>
+<ul>
+<li>우리가 읽는 책이 머리를 주먹으로 내리쳐 깨우지 않는다면, 도대체 무엇 때문에 그 책을 읽어야 할까? (중략) 우리에게는 마치 불행처럼 다가오는 책들이 필요해. 우리를 매우 고통스럽게 하는 불행, 우리가 자기 자신보다 더 좋아한 어떤 이의 죽음 같은 불행, 모두가 사라져서 아무도 없는 숲속에 홀로 남겨진 불행, 말자하면 스스로 삶을 끝내야할 것 같은 불행 말이야. 한 권의 책은 우리 안의 얼어붙은 바다를 깨는 도끼여야 해. (p.32)</li>
+<li>여기서는 다른 그 누구도 입장 허가를 받을 수 없었어. 이 입구는 오직 당신만을 위한 것이었으니까. (p.56 법 앞에서 중에서)</li>
+<li>내가 '여기를 떠난다.'라고 했으렷다. 그것이 나의 목적지이니라. (p.154 돌연한 출발 중에서)</li>
+<li>죽는 것은 모두가 그전에 일조으이 목표를, 일종의 행위를 가지며, 거기에 부대껴 마모되는 법이거늘 (p.170 가장의 근심 중에서)</li>
+<li>저는 출구를 찾고 있었기 때문에 모방했습니다. 다른 그 어떤 이유에서도 아니었지요. (p.204 학술원에의 보고 중에서)</li>
+</ul>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[Type-Safe하게 다형성 지원하기]]></title>
     <link>https://www.hyesungoh.xyz/polymorphism-with-type-safe</link>
     <pubDate>2023-08-18</pubDate>
