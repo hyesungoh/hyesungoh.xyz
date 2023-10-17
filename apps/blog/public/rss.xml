@@ -12,8 +12,35 @@
           <![CDATA[I like to share my knowledge for those who wandering in issue.]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-10-02</lastBuildDate>
+        <lastBuildDate>2023-10-17</lastBuildDate>
         <item>
+    <title><![CDATA['읽기 좋은 코드가 좋은 코드다'를 읽고]]></title>
+    <link>https://www.hyesungoh.xyz/읽기-좋은-코드가-좋은-코드다</link>
+    <pubDate>2023-10-17</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/읽기-좋은-코드가-좋은-코드다</guid>
+    <description>
+    <![CDATA[읽기-좋은-코드가-좋은-코드다]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://github.com/hyesungoh/learningWhatIWant/assets/26461307/c55b2c99-6015-4b3a-beea-58d5e2a0e1c7" alt="읽기 좋은 코드가 좋은 코드다"></p>
+<p>정리한 내용들은 <a href="https://github.com/hyesungoh/learningWhatIWant/tree/master/Books/%EC%9D%BD%EA%B8%B0-%EC%A2%8B%EC%9D%80-%EC%BD%94%EB%93%9C%EA%B0%80-%EC%A2%8B%EC%9D%80-%EC%BD%94%EB%93%9C%EB%8B%A4" target="_blank" rel="noopener noreferer">깃허브</a>에서 확인할 수 있다.</p>
+<h2 id="읽게-된-계기" class="heading">읽게 된 계기</h2>
+<p>저자는 구글, 마이크로소프트와 같은 기업에서 수 많은 사람들과 함께 일해 보았는데</p>
+<p>읽기 쉬운 코드를 만들기 위해 당연하다고 생각되는 방법들을 지키는 사람들이 10명 중 한 두명이라 말했다.</p>
+<br />
+<p>무엇이 좋은 코드냐에 대한 생각이 읽기 좋은 코드라는 생각에는 공감하며,</p>
+<p>그런 코드를 만들 수 있는 방법을, 당연하게 생각되는 방법들을 알기 위해 읽게 되었다.</p>
+<h2 id="읽은-후-느낀-점" class="heading">읽은 후 느낀 점</h2>
+<p>바라지도 않았지만, 은 총알 같은 방법이 포함되어 있진 않았다.</p>
+<br />
+<p>생각지도 못한 방법을 찾았기 보다는</p>
+<p>내가 고민하고 실천하려 했던 방법들을 구체화하고 믿음을 굳건히 할 수 있었던 책이라 생각한다.</p>
+<br />
+<p>현실 세계에서 도움을 많이 받을 것 같은 부분은 두 가지인데,</p>
+<p>읽기 쉬운 코드를 만들기 위해 타인에게 의견을 물어보고 타인의 눈으로 보는 것</p>
+<p>그리고 코드를 만들 당시의 생각과 고민을 주석에 녹이는 것도 도움이 될 수 있다는 것이다.</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA['불안'을 읽고]]></title>
     <link>https://www.hyesungoh.xyz/불안</link>
     <pubDate>2023-10-02</pubDate>
