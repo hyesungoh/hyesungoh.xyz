@@ -342,6 +342,26 @@
       "projects": [
         {
           "title": {
+            "text": "open-external-browser",
+            "githubLink": "https://github.com/hyesungoh/open-external-browser",
+            "otherLink": "https://www.npmjs.com/package/open-external-browser"
+          },
+          "description": "카카오톡과 같은 인앱 브라우저에서 외부 브라우저를 열 수 있도록 도와주는 라이브러리입니다.",
+          "startDate": "2023.09",
+          "endDate": "2023.09",
+          "which": [
+            "tsup을 이용해 ESM, CJS 형태로 빌드해 제공합니다."
+          ],
+          "techStack": [
+            "Yarn Berry",
+            "React",
+            "tsup",
+            "Eslint",
+            "Prettier"
+          ]
+        },
+        {
+          "title": {
             "text": "@hyesungoh/eslint-plugin",
             "githubLink": "https://github.com/hyesungoh/eslint-plugin",
             "otherLink": "https://github.com/hyesungoh/eslint-plugin/pkgs/npm/eslint-plugin"

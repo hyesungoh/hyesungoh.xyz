@@ -10,15 +10,15 @@
       "projects": [
         {
           "title": {
-            "text": "Growth 스쿼드",
+            "text": "홈페이지",
             "githubLink": null,
             "otherLink": null
           },
-          "description": "비즈니스의 성장을 목표로하는 스쿼드에 속해 있습니다.",
+          "description": "근거를 기반으로 홈페이지를 유지보수합니다.",
           "startDate": "2023.6",
           "endDate": null,
           "which": [
-            "근거를 기반으로 홈페이지를 유지보수하고 있습니다.",
+            "섹션과 페이지 별 머물렀던 시간과 스크롤 정도를 기록할 수 있는 트래킹 시스템을 선언적으로 구축하도록 노력했습니다.",
             "동적으로 사이트맵을 생성되도록 개발해, 블로그와 이력서 등 동적으로 추가되는 Route를 검색엔진에 빠르게 노출될 수 있도록 하였습니다.",
             "블로그 개별 페이지에 SSR시 dehydrate를 이용해 라이트하우스 기준 성능 점수 32점 상승 및 처음으로 그려지는 HTML에 데이터를 노출해 SEO에 이점이 있도록 노력했습니다.",
             "Sentry를 부착해 에러 모니터링 환경을 구축하였습니다."
@@ -37,6 +37,67 @@
         },
         {
           "title": {
+            "text": "F-Lab Design System",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": "2023.6",
+          "endDate": null,
+          "which": [
+            "초기 환경을 구축하고, 스토리북 및 크로마틱을 설정하였습니다.",
+            "Type-Safe하게 다형성을 지원하기 위해 노력하였으며 <a href='https://f-lab.kr/blog/polymorphism-with-type-safe' target='_blank' rel='noreferrer'>관련 경험을 사내 블로그에 기고</a>하였습니다."
+          ],
+          "techStack": [
+            "TypeScript",
+            "React",
+            "Emotion",
+            "Storybook",
+            "Chromatic"
+          ]
+        },
+        {
+          "title": {
+            "text": "백오피스",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "운영에 소모되는 자원을 줄이기 위한 백오피스 서비스입니다.",
+          "startDate": "2023.6",
+          "endDate": null,
+          "which": [
+            "조건이 복잡한 form과 table을 명시적으로 구현하도록 노력했습니다."
+          ],
+          "techStack": [
+            "TypeScript",
+            "Next.js",
+            "Emotion",
+            "React Hook Form",
+            "Antd"
+          ]
+        },
+        {
+          "title": {
+            "text": "멘토 페이지",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "F-Lab의 멘토님들께서 사용하실 수 있는 서비스입니다.",
+          "startDate": "2023.6",
+          "endDate": null,
+          "which": [
+            "Nuxt.js로 개발되어 있는 레거시를 Next.js 환경으로 마이그레이션 했습니다."
+          ],
+          "techStack": [
+            "TypeScript",
+            "Next.js",
+            "Emotion",
+            "React Hook Form",
+            "Antd"
+          ]
+        },
+        {
+          "title": {
             "text": "프론트엔드 챕터",
             "githubLink": null,
             "otherLink": null
@@ -47,8 +108,6 @@
           "which": [
             "PR의 작업 범위, diff 크기, 제목을 이용해 라벨링을 자동화해 PR의 시인성을 높이고, 개발자의 부담을 덜 수 있도록 노력했습니다. <br/>관련해 사내 블로그에 기고한 글은 <a href='https://f-lab.kr/blog/wise-use-of-github-actions-in-monorepo' target='_blank' rel='noreferrer'> 다음 링크</a>에서 확인하실 수 있습니다.",
             "직렬적으로 동작하던 CI를 의존 관계에 따라 병렬적으로 동작하도록 변경해 CI 시간을 절반으로 단축시켜 개발자의 생산성을 높였습니다.",
-            "F-Lab Design System 패키지 환경을 구축하고, 스토리북 및 크로마틱을 설정하였습니다.",
-            "F-Lab Design System에 Type-Safe하게 다형성을 지원하기 위해 노력하였으며 <a href='https://f-lab.kr/blog/polymorphism-with-type-safe' target='_blank' rel='noreferrer'>관련 경험을 사내 블로그에 기고</a>하였습니다.",
             "모노레포 안에서 반복적으로 사용되던 tsconfig, eslint와 같은 설정 파일을 패키지화하여 중복을 제거하고, 새로운 프로젝트를 시작할 때 빠르게 설정을 적용할 수 있도록 노력했습니다.",
             "staged된 파일에만 pre-commit git hook이 실행되도록 설정해, 커밋 시 불필요하게 소모되는 시간을 줄여 개발자의 생산성을 높였습니다.",
             "Vitest, Playwright를 이용해 테스트 환경을 구축하고 팀 내에 테스트 문화 도입을 위해 선행하고 있습니다."
