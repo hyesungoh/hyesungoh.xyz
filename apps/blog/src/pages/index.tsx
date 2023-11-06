@@ -5,7 +5,6 @@ import MainHeader from '../components/Header/MainHeader';
 import PostCard from '../components/PostCard';
 import SEO from '../components/SEO';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
-import useScrollRestoration from '../hooks/useScrollRestoration';
 import { getAllPosts } from '../lib/api';
 import PostType from '../types/post';
 
@@ -15,7 +14,6 @@ interface Props {
 
 function Blog({ allPosts }: Props) {
   const { theme } = useTheme();
-  useScrollRestoration();
 
   const {
     setTarget,

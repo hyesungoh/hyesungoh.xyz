@@ -7,6 +7,7 @@ import { darkTheme, lightTheme } from 'core';
 import { KBarProvider, useRegisterActions } from 'kbar';
 
 import generateKbarAction from '../constants/KbarActions';
+import useScrollRestoration from '../hooks/useScrollRestoration';
 
 const KbarComponent = dynamic(() => import('core/components/Kbar'), {
   ssr: false,
@@ -15,6 +16,8 @@ const KbarComponent = dynamic(() => import('core/components/Kbar'), {
 export default function BlogApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const kbarActions = generateKbarAction(router);
+
+  useScrollRestoration();
 
   return (
     <NextThemesProvider
