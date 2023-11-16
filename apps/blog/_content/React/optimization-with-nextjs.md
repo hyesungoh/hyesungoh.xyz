@@ -30,20 +30,20 @@ npm install @next/bundle-analyzer --save-dev
 yarn add @next/bundle-analyzer -D
 ```
 
-우선 설치를 진행해준 후,
+우선 설치를 진행해준 후, 
 
 ```js
 // next.config.js
 
 // 환경변수 ANALYZE가 true일 시에
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+    enabled: process.env.ANALYZE === 'true',
 });
 
 module.exports = withBundleAnalyzer({});
 ```
 
-루트 디렉토리에 위치한 `next.config.js` 파일에 위 내용과 함께 `.env.local`, `.env`와 같은 환경 변수 파일에서 아래 내용을 추가해주시면 적용하실 수 있습니다.
+루트 디렉토리에 위치한 `next.config.js` 파일에 위 내용과 함께 `.env.local` , `.env` 와 같은 환경 변수 파일에서 아래 내용을 추가해주시면 적용하실 수 있습니다.
 
 ```text
 ANALYZER=true
@@ -72,27 +72,27 @@ yarn add next-compose-plugins -D
 const withPlugins = require('next-compose-plugins');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+    enabled: process.env.ANALYZE === 'true',
 });
 
 // 해당 내용은 아래 공식 문서를 참고하시면 좋을 것 같습니다.
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+    reactStrictMode: true,
 };
 
 module.exports = withPlugins(
-  [
-    withBundleAnalyzer,
-    withFooPlugin,
-    // 추가적인 Plugin들을 작성해주시면 됩니다.
-  ],
-  nextConfig
+    [
+        withBundleAnalyzer,
+        withFooPlugin,
+        // 추가적인 Plugin들을 작성해주시면 됩니다.
+    ],
+    nextConfig
 );
 ```
 
-보시는 것처럼 저는 sentry plugin이 기존에 작성되어 있었으며, `next-compose-plugins`를 사용하여 `bundle-analyzer`와 함께 작성한 모습을 확인하실 수 있습니다.
+보시는 것처럼 저는 sentry plugin이 기존에 작성되어 있었으며, `next-compose-plugins` 를 사용하여 `bundle-analyzer` 와 함께 작성한 모습을 확인하실 수 있습니다.
 
 [next-compose-plugins의 npm 주소는 다음 링크](https://www.npmjs.com/package/next-compose-plugins)에서 확인하실 수 있습니다.
 
@@ -117,28 +117,28 @@ yarn add compression-webpack-plugin -D
 const withPlugins = require('next-compose-plugins');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+    enabled: process.env.ANALYZE === 'true',
 });
 
 const CompressionPlugin = require('compression-webpack-plugin');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  webpack: config => {
-    config.plugins.push(new CompressionPlugin());
-    return config;
-  },
+    reactStrictMode: true,
+    webpack: config => {
+        config.plugins.push(new CompressionPlugin());
+        return config;
+    },
 };
 
 module.exports = withPlugins(
-  [
-    withBundleAnalyzer({
-      compress: true,
-    }),
-    withFooPlugin,
-  ],
-  nextConfig
+    [
+        withBundleAnalyzer({
+            compress: true,
+        }),
+        withFooPlugin,
+    ],
+    nextConfig
 );
 ```
 
@@ -150,15 +150,17 @@ module.exports = withPlugins(
 
 ### gzip은 무조건 좋은 것인가?
 
-- 사용자 측면
+* 사용자 측면
 
-  ![gzip brower support](https://user-images.githubusercontent.com/26461307/155727003-4a83dbfc-032c-4f9a-9a85-e288e654b2d1.png)
+  
+
+![gzip brower support](https://user-images.githubusercontent.com/26461307/155727003-4a83dbfc-032c-4f9a-9a85-e288e654b2d1.png)
 
   _이미지 출처 : https://caniuse.com/?search=gzip_
 
   보시는 것처럼 대부분의 브라우저가 gzip을 지원하고 있습니다. 하지만 웹프록시, 보안 소프트웨어 등의 문제로 요청 헤더가 깨져서 사용하지 못하는 사용자가 전체 사용자의 15%가 된다고 합니다.
 
-- 성능 향상 측면
+* 성능 향상 측면
 
   Gzip은 많은 경우에서 성능 향상을 야기할 수 있지만, 통상적으로 1~2kb 이하의 파일은 압축하지 않는 것이 좋다고 합니다. 그 이유는 압축해서 얻는 효과보다 압축을 푸는 데 사용되는 리소스, 서버 혹 웹 브라우저의 CPU가 더욱 크기 때문입니다.
 
@@ -194,10 +196,22 @@ _적용 후_
 
 ## 참고
 
-- [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
-- [next-compose-plugins](https://www.npmjs.com/package/next-compose-plugins)
-- [compressionWebpackPlugin](https://webpack.js.org/plugins/compression-webpack-plugin/)
-- [caniuse - gzip](https://caniuse.com/?search=gzip)
-- [gzip에 관하여](https://vnthf.github.io/blog/Front-Gzip%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC/)
-- [Next 배포를 위한 준비](https://darrengwon.tistory.com/833)
-- [Webpack Bundle.js 파일 성능개선](https://drhot552.github.io/web/Bundle.js%ED%8C%8C%EC%9D%BC-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/#)
+* [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+* [next-compose-plugins](https://www.npmjs.com/package/next-compose-plugins)
+* [compressionWebpackPlugin](https://webpack.js.org/plugins/compression-webpack-plugin/)
+* [caniuse - gzip](https://caniuse.com/?search=gzip)
+* [gzip에 관하여](https://vnthf.github.io/blog/Front-Gzip%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC/)
+* [Next 배포를 위한 준비](https://darrengwon.tistory.com/833)
+* [Webpack Bundle.js 파일 성능개선](https://drhot552.github.io/web/Bundle.js%ED%8C%8C%EC%9D%BC-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0/#)
+
+## 이후 업데이트
+
+### Gzip compress
+
+해당 게시물 이후로 gzip compress를 Next config에서 설정할 수 있습니다. [공식 문서](https://nextjs.org/docs/app/api-reference/next-config-js/compress)
+
+```js
+module.exports = {
+    compress: false,
+}
+```
