@@ -6,13 +6,13 @@
       "position": "프론트엔드 엔지니어",
       "startDate": "2023.06",
       "endDate": null,
-      "description": "",
+      "description": "저를 포함해 총 2명의 프론트엔드 엔지니어로 구성된 팀에서 근무하고 있습니다. ",
       "projects": [
         {
           "title": {
             "text": "홈페이지",
             "githubLink": null,
-            "otherLink": null
+            "otherLink": "https://f-lab.kr"
           },
           "description": "근거를 기반으로 홈페이지를 유지보수합니다.",
           "startDate": "2023.6",
@@ -58,6 +58,26 @@
         },
         {
           "title": {
+            "text": "LMS",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "멘티님들께서 학습 시에 사용하는 Learning Management System입니다.",
+          "startDate": "2023.12",
+          "endDate": null,
+          "which": [
+            "홈페이지의 하위 디렉토리에 있던 LMS를 별도의 도메인으로 분리하는 작업을 전담하였습니다.",
+            "홈페이지의 로그인 정보를 공유할 수 있도록 postMessage를 이용해 구현하였습니다."
+          ],
+          "techStack": [
+            "TypeScript",
+            "Next.js",
+            "Emotion",
+            "React Hook Form"
+          ]
+        },
+        {
+          "title": {
             "text": "백오피스",
             "githubLink": null,
             "otherLink": null
@@ -66,7 +86,7 @@
           "startDate": "2023.6",
           "endDate": null,
           "which": [
-            "조건이 복잡한 form과 table을 명시적으로 구현하도록 노력했습니다."
+            "복잡한 조건의 form과 table을 명시적으로 구현하도록 노력했습니다."
           ],
           "techStack": [
             "TypeScript",
@@ -94,6 +114,23 @@
             "Emotion",
             "React Hook Form",
             "Antd"
+          ]
+        },
+        {
+          "title": {
+            "text": "App",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "학습에 도움이 되는 자료를 제공하는 App 서비스입니다.",
+          "startDate": "2024.2",
+          "endDate": null,
+          "which": [
+            "환경 설정과 함께 WebView 기반의 개발을 전담하고 있습니다"
+          ],
+          "techStack": [
+            "TypeScript",
+            "React Native"
           ]
         },
         {
