@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { Button, Tooltip, useTheme } from '@nextui-org/react';
 import { Icon } from 'core';
 
+import useIsPrint from '../../hooks/useIsPrint';
+
 interface Props {
   text: string;
   githubLink: string | null;
@@ -9,7 +11,23 @@ interface Props {
 }
 
 function TitleTooltip({ text, githubLink, otherLink }: Props) {
-  return githubLink !== null || otherLink !== null ? (
+  const isPrint = useIsPrint();
+
+  if (githubLink === null && otherLink === null) {
+    return <h3>{text}</h3>;
+  }
+
+  if (isPrint) {
+    return (
+      <h3>
+        <a href={githubLink || otherLink} target="_blank" rel="noreferrer">
+          {text}
+        </a>
+      </h3>
+    );
+  }
+
+  return (
     <Tooltip
       placement="topStart"
       color="primary"
@@ -19,8 +37,6 @@ function TitleTooltip({ text, githubLink, otherLink }: Props) {
         <h3>{text}</h3>
       </StyledButton>
     </Tooltip>
-  ) : (
-    <h3>{text}</h3>
   );
 }
 

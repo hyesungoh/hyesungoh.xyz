@@ -4,13 +4,14 @@ import { ThemeSwitch } from 'core';
 import { authorImage, authorName } from 'core/constants';
 
 import { IHeader } from '../../../_content/Header';
+import useIsPrint from '../../hooks/useIsPrint';
 
-interface Props extends IHeader {
-  isPrint?: boolean;
-}
+interface Props extends IHeader {}
 
-function Header({ heading, description, isPrint = false }: Props) {
+function Header({ heading, description }: Props) {
   const { theme } = useTheme();
+
+  const isPrint = useIsPrint();
 
   return (
     <header>

@@ -24,7 +24,7 @@ function Resume({ header, link, workExperience, sideProjects, otherExperience, s
   return (
     <>
       <main>
-        <Header {...header} isPrint />
+        <Header {...header} />
         <SkillsSection {...link} />
         <WorkExperienceSection {...workExperience} />
         <WorkExperienceSection {...sideProjects} />
