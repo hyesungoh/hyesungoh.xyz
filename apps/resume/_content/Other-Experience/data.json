@@ -3,30 +3,19 @@
   "list": [
     {
       "title": {
-        "text": "kbar",
-        "githubLink": "https://github.com/timc1/kbar",
+        "text": "오픈 소스 문서 기여",
+        "githubLink": null,
         "otherLink": null
       },
-      "position": "Contributor",
-      "startDate": "2023.4",
-      "endDate": "2023.4",
-      "description": "에러 메시지를 수정하여 기여하였습니다.",
+      "position": "",
+      "startDate": "",
+      "endDate": "",
+      "description": "오픈 소스 및 생태계에 관심을 가지며, 간단한 문서 수정을 통해 기여한 경험이 있습니다.",
       "which": [
-        "PR 링크: <a href='https://github.com/timc1/kbar/pull/298' target='_blank' rel='noreferrer'>https://github.com/timc1/kbar/pull/298</a>"
-      ]
-    },
-    {
-      "title": {
-        "text": "toss/slash",
-        "githubLink": "https://github.com/toss/slash",
-        "otherLink": null
-      },
-      "position": "Contributor",
-      "startDate": "2022.10",
-      "endDate": "2022.10",
-      "description": "@toss/sentry 문서를 수정하여 기여하였습니다.",
-      "which": [
-        "PR 링크: <a href='https://github.com/toss/slash/pull/70' target='_blank' rel='noreferrer'>https://github.com/toss/slash/pull/70</a>"
+        "pmndrs/drei, PR 링크: <a href='https://github.com/pmndrs/drei/pull/1855' target='_blank' rel='noreferrer'>https://github.com/pmndrs/drei/pull/1855</a>",
+        "Kbar, PR 링크: <a href='https://github.com/timc1/kbar/pull/298' target='_blank' rel='noreferrer'>https://github.com/timc1/kbar/pull/298</a>",
+        "toss/slash, PR 링크: <a href='https://github.com/toss/slash/pull/70' target='_blank' rel='noreferrer'>https://github.com/toss/slash/pull/70</a>",
+        "react-router, PR 링크: <a href='https://github.com/remix-run/react-router/pull/8666' target='_blank' rel='noreferrer'>https://github.com/remix-run/react-router/pull/8666</a>"
       ]
     },
     {
@@ -35,13 +24,11 @@
         "githubLink": null,
         "otherLink": null
       },
-      "position": "13기, 14기 Expert",
+      "position": "13기, 14기, 15기 Expert",
       "startDate": "2022.06",
       "endDate": "",
-      "description": "연수생이 보다 개발에 몰입할 수 있도록 조언과 도움을 주는 활동에 참여하였습니다.",
-      "which": [
-        "2개의 팀에 참여해 출시까지의 과정을 도왔습니다."
-      ]
+      "description": "연수생이 보다 개발에 몰입할 수 있도록 도움을 주는 활동에 참여해 후배 개발자 양성에 기여하고 있습니다.",
+      "which": []
     },
     {
       "title": {
@@ -56,20 +43,6 @@
       "which": [
         "한국어 정보를 추가, 잘못된 정보를 수정하였습니다.",
         "PR 링크: <a href='https://github.com/faker-js/faker/pull/573' target='_blank' rel='noreferrer'>https://github.com/faker-js/faker/pull/573</a>"
-      ]
-    },
-    {
-      "title": {
-        "text": "React-router",
-        "githubLink": "https://github.com/remix-run/react-router",
-        "otherLink": null
-      },
-      "position": "Contributor",
-      "startDate": "2022.02",
-      "endDate": "2022.02",
-      "description": "Github Readme의 잘못된 Link를 수정하여 기여하였습니다.",
-      "which": [
-        "PR 링크: <a href='https://github.com/remix-run/react-router/pull/8666' target='_blank' rel='noreferrer'>https://github.com/remix-run/react-router/pull/8666</a>"
       ]
     },
     {
@@ -118,7 +91,7 @@
     },
     {
       "title": {
-        "text": "엘리스 아카데미 외주",
+        "text": "엘리스 아카데미",
         "githubLink": null,
         "otherLink": "https://academy.elice.io/courses/18841/info"
       },

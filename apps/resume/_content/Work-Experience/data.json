@@ -67,7 +67,7 @@
           "endDate": null,
           "which": [
             "홈페이지의 하위 디렉토리에 있던 LMS를 별도의 도메인으로 분리하는 작업을 전담하였습니다.",
-            "홈페이지의 로그인 정보를 공유할 수 있도록 postMessage를 이용해 구현하였습니다."
+            "홈페이지의 로그인 정보를 공유할 수 있도록 웹 클라이언트간 postMessage를 이용해 구현하였습니다."
           ],
           "techStack": [
             "TypeScript",
@@ -139,7 +139,7 @@
             "githubLink": null,
             "otherLink": null
           },
-          "description": "프론트엔드 개발자의 생산성을 위해 노력했습니다.",
+          "description": "프론트엔드 개발자의 생산성과 환경을 위해 노력했습니다.",
           "startDate": "2023.06",
           "endDate": null,
           "which": [
@@ -147,9 +147,12 @@
             "직렬적으로 동작하던 CI를 의존 관계에 따라 병렬적으로 동작하도록 변경해 CI 시간을 절반으로 단축시켜 개발자의 생산성을 높였습니다.",
             "모노레포 안에서 반복적으로 사용되던 tsconfig, eslint와 같은 설정 파일을 패키지화하여 중복을 제거하고, 새로운 프로젝트를 시작할 때 빠르게 설정을 적용할 수 있도록 노력했습니다.",
             "staged된 파일에만 pre-commit git hook이 실행되도록 설정해, 커밋 시 불필요하게 소모되는 시간을 줄여 개발자의 생산성을 높였습니다.",
-            "Vitest, Playwright를 이용해 테스트 환경을 구축하고 팀 내에 테스트 문화 도입을 위해 선행하고 있습니다."
+            "Vitest, Playwright를 이용해 테스트 환경을 구축하고 팀 내에 테스트 문화 도입을 위해 선행하고 있습니다.",
+            "매주 진행하는 프론트엔드 챕터 모임에서 팀원의 성장을 위해 새롭게 알게 된 내용 및 도구들을 가장 활발히 공유하며, 성장에 유리한 환경을 만들기 위해 노력합니다."
           ],
           "techStack": [
+            "Yarn Berry",
+            "Yarn Workspaces",
             "Vitest",
             "React Testing Library",
             "Codecov",
