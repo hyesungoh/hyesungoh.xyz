@@ -89,8 +89,8 @@
         {
           "title": {
             "text": "www.depromeet.com",
-            "githubLink": "https://github.com/depromeet/www.depromeet.com",
-            "otherLink": "https://www.depromeet.com"
+            "githubLink": "https://github.com/depromeet/www.depromeet.com/releases/tag/v4.0.2",
+            "otherLink": "https://www-depromeet-com-git-feat-spons-14da9b-depromeet-official-site.vercel.app/"
           },
           "description": "디프만의 공식 랜딩 페이지입니다.",
           "startDate": "2022.08",
@@ -229,7 +229,7 @@
             "githubLink": "https://github.com/hyesungoh/create-comet-land",
             "otherLink": "https://www.npmjs.com/package/create-comet-land"
           },
-          "description": "comet-land 프로젝트를 더욱 쉽게 시작할 수 있도록 개발하였습니다.",
+          "description": "comet-land 프로젝트를 더욱 쉽게 시작할 수 있는 CLI 어플리케이션입니다.",
           "startDate": "2022.06",
           "endDate": null,
           "which": [
