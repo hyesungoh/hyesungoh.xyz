@@ -14,7 +14,8 @@
       "which": [
         "pnpm/action-setup, PR 링크: <a href='https://github.com/pnpm/action-setup/pull/129' target='_blank' rel='noreferrer'>https://github.com/pnpm/action-setup/pull/129</a>",
         "pmndrs/drei, PR 링크: <a href='https://github.com/pmndrs/drei/pull/1855' target='_blank' rel='noreferrer'>https://github.com/pmndrs/drei/pull/1855</a>",
-        "Kbar, PR 링크: <a href='https://github.com/timc1/kbar/pull/298' target='_blank' rel='noreferrer'>https://github.com/timc1/kbar/pull/298</a>",
+        "kbar, PR 링크: <a href='https://github.com/timc1/kbar/pull/298' target='_blank' rel='noreferrer'>https://github.com/timc1/kbar/pull/298</a>",
+        "labeler, PR 링크: <a href='https://github.com/srvaroa/labeler/pull/87' target='_blank' rel='noreferrer'>https://github.com/srvaroa/labeler/pull/87</a>",
         "toss/slash, PR 링크: <a href='https://github.com/toss/slash/pull/70' target='_blank' rel='noreferrer'>https://github.com/toss/slash/pull/70</a>",
         "react-router, PR 링크: <a href='https://github.com/remix-run/react-router/pull/8666' target='_blank' rel='noreferrer'>https://github.com/remix-run/react-router/pull/8666</a>"
       ]
