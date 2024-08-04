@@ -81,7 +81,7 @@ const Article = styled.article`
   }
 
   & p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   & blockquote p:last-of-type {
