@@ -15,6 +15,21 @@
     },
     {
       "title": {
+        "text": "framer/motion",
+        "githubLink": "https://github.com/framer/motion",
+        "otherLink": null
+      },
+      "position": "not merged yet",
+      "startDate": "2024.08",
+      "endDate": "2024.08",
+      "description": "",
+      "which": [
+        "드래그 이후 클릭을 하는 경우 정상적으로 동작하지 않는 문제를 해결하는 PR을 작성하였습니다.",
+        "PR 링크: <a href='https://github.com/framer/motion/pull/2758' target='_blank' rel='noreferrer'>https://github.com/framer/motion/pull/2758</a>"
+      ]
+    },
+    {
+      "title": {
         "text": "오픈 소스 문서 기여",
         "githubLink": null,
         "otherLink": null

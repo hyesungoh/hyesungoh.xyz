@@ -2,6 +2,41 @@
   "title": "사이드 프로젝트",
   "list": [
     {
+      "name": "git-goods",
+      "position": "",
+      "startDate": "2024.06",
+      "endDate": "",
+      "description": "오버엔지니어링을 '지향'하며, github와 관련된 서비스를 만드는 그룹입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "gitanimals",
+            "githubLink": "https://github.com/git-goods/git-animal-client",
+            "otherLink": "https://www.gitanimals.org/"
+          },
+          "description": "커밋을 통해 동물을 키우고, 동물이 포함된 이미지를 제공하는 서비스입니다.",
+          "startDate": "2024.06",
+          "endDate": "",
+          "which": [
+            "모노레포 패키지 분리 전략을 주도하였습니다.",
+            "사용자의 목소리를 적극 반영할 수 있는 환경을 만들기 위해 노력했습니다.",
+            "게이미피케이션이 가미된 프로젝트가 될 수 있도록 노력했습니다."
+          ],
+          "techStack": [
+            "Next.js",
+            "TypeScript",
+            "Turborepo",
+            "TanStack/React Query",
+            "PNPM",
+            "panda-css",
+            "Jotai",
+            "Framer-motion",
+            "Vercel"
+          ]
+        }
+      ]
+    },
+    {
       "name": "디프만",
       "position": "개발자 및 운영진",
       "startDate": "2022.03",
@@ -265,9 +300,6 @@
           "endDate": "2021.12",
           "which": [
             "3인 프로젝트에서 프론트엔드 개발을 전담하였습니다.",
-            "인터랙티브한 서비스가 되기 위해 노력하였습니다.",
-            "Github actions를 사용하여 배포 자동화를 구성하였습니다.",
-            "에러 모니터링, 사용자 경험 추적을 위해 GA와 Sentry를 적용하였습니다.",
             "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
           ],
           "techStack": [
