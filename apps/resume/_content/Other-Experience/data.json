@@ -3,6 +3,18 @@
   "list": [
     {
       "title": {
+        "text": "Toss Frontend Accelerator",
+        "githubLink": null,
+        "otherLink": null
+      },
+      "position": "",
+      "startDate": "2024.07",
+      "endDate": "2024.08",
+      "description": "4주 동안 토스 프론트엔드 리드와 멘토-멘티의 관계를 맺어 학습하는 프로그램입니다.",
+      "which": []
+    },
+    {
+      "title": {
         "text": "오픈 소스 문서 기여",
         "githubLink": null,
         "otherLink": null
