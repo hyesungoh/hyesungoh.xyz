@@ -15,6 +15,21 @@
     },
     {
       "title": {
+        "text": "toss/es-toolkit",
+        "githubLink": "https://github.com/toss/es-toolkit",
+        "otherLink": null
+      },
+      "position": "Contributor",
+      "startDate": "2024.08",
+      "endDate": "2024.08",
+      "description": "빠른 성능과 작은 번들 사이즈를 자랑하는 JavaScript 유틸리티 라이브러리입니다.",
+      "which": [
+        "정규 표현식임을 확인하는 isRegExp 함수를 추가하였습니다.",
+        "PR 링크: <a href='https://github.com/toss/es-toolkit/pull/417' target='_blank' rel='noreferrer'>https://github.com/toss/es-toolkit/pull/417</a>"
+      ]
+    },
+    {
+      "title": {
         "text": "framer/motion",
         "githubLink": "https://github.com/framer/motion",
         "otherLink": null
