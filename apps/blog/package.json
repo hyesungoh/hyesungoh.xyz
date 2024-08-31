@@ -16,7 +16,7 @@
     "@nextui-org/react": "^1.0.0-beta.12",
     "core": "*",
     "gray-matter": "^4.0.3",
-    "kbar": "^0.1.0-beta.40",
+    "kbar": "^0.1.0-beta.45",
     "next": "^13.2.4",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",

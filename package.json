@@ -16,7 +16,7 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "yarn@4.4.1",
   "devDependencies": {
     "@types/node": "^18.15.3",
     "@types/react": "^18.0.28",
