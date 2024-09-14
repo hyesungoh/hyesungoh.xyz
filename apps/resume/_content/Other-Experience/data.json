@@ -140,44 +140,6 @@
     },
     {
       "title": {
-        "text": "학과 TA",
-        "githubLink": null,
-        "otherLink": null
-      },
-      "position": null,
-      "startDate": "2021.3",
-      "endDate": "2023.6",
-      "description": "21년도 1학기와 23년도 1학기에 학과 TA를 맡았습니다.",
-      "which": [
-        "<a href='https://github.com/hyesungoh/BOJ_grading_automation' target='_blank' rel='noreferrer'/>백준 온라인 저지 채점을 자동화하는 스크립트를 개발</a>해 업무를 자동화하였고 후배 TA도 사용할 수 있도록 인계하였습니다."
-      ]
-    },
-    {
-      "title": {
-        "text": "엘리스 아카데미",
-        "githubLink": null,
-        "otherLink": "https://academy.elice.io/courses/18841/info"
-      },
-      "position": "선생님",
-      "startDate": "2020.08",
-      "endDate": "2020.09",
-      "description": "'모두의 딥러닝' 서적을 엘리스 아카데미 플랫폼에 포팅하였습니다.",
-      "which": []
-    },
-    {
-      "title": {
-        "text": "군 전역",
-        "githubLink": null,
-        "otherLink": null
-      },
-      "position": "병장 만기 전역",
-      "startDate": "2018.11",
-      "endDate": "2020.07",
-      "description": "육군 9사단에서 전역하였습니다.",
-      "which": []
-    },
-    {
-      "title": {
         "text": "청년창업 CEO 양성과정",
         "githubLink": null,
         "otherLink": null
