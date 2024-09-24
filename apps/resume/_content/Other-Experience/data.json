@@ -21,7 +21,7 @@
       },
       "position": "Contributor",
       "startDate": "2024.08",
-      "endDate": "2024.08",
+      "endDate": "",
       "description": "빠른 성능과 작은 번들 사이즈를 자랑하는 JavaScript 유틸리티 라이브러리입니다.",
       "which": [
         "<a href='https://github.com/toss/es-toolkit/pull/417' target='blank'>isRegExp</a>, <a href='https://github.com/toss/es-toolkit/pull/579' target='blank'>isError</a>, <a href='https://github.com/toss/es-toolkit/pull/478' target='blank'>some</a>, <a href='https://github.com/toss/es-toolkit/pull/524' target='blank'>isDate</a>, <a href='https://github.com/toss/es-toolkit/pull/577' target='blank'>isFinite</a> 함수를 추가하였습니다.",
