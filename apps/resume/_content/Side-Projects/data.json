@@ -37,6 +37,30 @@
       ]
     },
     {
+      "name": "무한도전",
+      "position": "",
+      "startDate": "2023.12",
+      "endDate": "",
+      "description": "개발 서적 스터디 그룹을 운영하고 있습니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "개발 서적 스터디",
+            "githubLink": "https://github.com/orgs/muhandojeon/repositories",
+            "otherLink": null
+          },
+          "description": null,
+          "startDate": "2023.12",
+          "endDate": "",
+          "which": [
+            "리액트, 함수형 프로그래밍과 같은 기술에 대한 서적부터 소프트 스킬에 대한 서적까지 함께 읽으며 스터디를 운영하고 있습니다.",
+            "만족도 조사, 회고를 통해 더 효과적으로 공부할 수 있는 스터디 그룹이 될 수 있도록 노력하고 있습니다."
+          ],
+          "techStack": null
+        }
+      ]
+    },
+    {
       "name": "디프만",
       "position": "개발자 및 운영진",
       "startDate": "2022.03",
@@ -47,7 +71,7 @@
           "title": {
             "text": "나랩",
             "githubLink": "https://github.com/depromeet/na-lab-client",
-            "otherLink": "https://www.nalab.me"
+            "otherLink": null
           },
           "description": "동료의 익명 피드백을 모아 직무 강점을 찾는 웹 서비스입니다.",
           "startDate": "2023.4",
@@ -88,7 +112,7 @@
           "title": {
             "text": "아맞다",
             "githubLink": "https://github.com/depromeet/ahmatda-web",
-            "otherLink": "https://github.com/depromeet/ahmatda-web#download"
+            "otherLink": null
           },
           "description": "소지품 리마인드를 위한 웹뷰 기반 모바일 서비스입니다.",
           "startDate": "2022.10",
@@ -193,32 +217,6 @@
       ]
     },
     {
-      "name": "Google developer student clubs",
-      "position": "Lead",
-      "startDate": "2022.08",
-      "endDate": "2023.06",
-      "description": "Google로부터 개발과 리더십 능력을 키울 수 있도록 지원받는 프로그램입니다.",
-      "projects": [
-        {
-          "title": {
-            "text": "Lead 활동",
-            "githubLink": null,
-            "otherLink": "https://gdsc.community.dev/sungkonghoe-university/"
-          },
-          "description": "교내 최고의 개발 커뮤니티를 구성하는 것을 목표로 활동하였습니다.",
-          "startDate": "2022.08",
-          "endDate": "2023.06",
-          "which": [
-            "교내에 파편화되어 있는 개발 커뮤니티를 한곳으로 모아 더욱 많은 학우들이 지식을 나눌 수 있는 환경을 구성하는 것을 목표로 진행했습니다.",
-            "개발자로써의 성장과 함께 재미를 느낄 수 있도록 해커톤, 미니 프로젝트, 솔루션 챌린지 등 행사를 개최하고 운영하였습니다.",
-            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-gdsc-skhu-web-study-04/' target='_blank' rel='noreferrer'>웹 개발이 낯선 멤버를 대상으로 JavaScript, React, TypeScript, Next.js 등을 강의하였습니다.</a>",
-            "<a href='https://gdsc.community.dev/events/details/developer-student-clubs-sungkonghoe-university-presents-some-tips-for-developer/' target='_blank' rel='noreferrer'>전체 멤버를 대상으로 '개발자로써 성장을 위해 노력했던 경험', '프로젝트 경험' 등을 공유해</a> 제가 겪은 시행착오를 겪지 않을 수 있도록 노력했습니다."
-          ],
-          "techStack": null
-        }
-      ]
-    },
-    {
       "name": "블로그, 이력서 템플릿",
       "position": "오픈소스 프로젝트",
       "startDate": "2022.03",
@@ -278,87 +276,6 @@
             "Shelljs",
             "Webpack",
             "Github actions"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Software Maestro",
-      "position": "12기",
-      "startDate": "2021.04",
-      "endDate": "2021.12",
-      "description": "창의도전형 SW인재 육성으로 SW산업의 미래를 선도하는 것을 목표로 하는 정부지원 사업입니다.",
-      "projects": [
-        {
-          "title": {
-            "text": "Wavy",
-            "githubLink": "https://github.com/EO2-WAVY/WavyFrontend",
-            "otherLink": null
-          },
-          "description": "인공지능 기반 댄스 학습 서비스를 개발하였습니다.",
-          "startDate": "2021.07",
-          "endDate": "2021.12",
-          "which": [
-            "3인 프로젝트에서 프론트엔드 개발을 전담하였습니다.",
-            "회고는 <a href='https://www.hyesungoh.xyz/wavy0-Intro/' target='_blank' rel='noreferrer'>다음 링크</a>에서 확인하실 수 있습니다."
-          ],
-          "techStack": [
-            "React",
-            "TypeScript",
-            "Styled-components",
-            "Framer-motion",
-            "Recoil",
-            "SWR",
-            "AWS S3",
-            "AWS CF",
-            "Github actions",
-            "GA",
-            "Sentry"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "교내 동아리",
-      "position": "지식 공유자",
-      "startDate": "2017.03",
-      "endDate": "2022.08",
-      "description": "지식을 공유하며 성장할 수 있다고 믿으며, 행위 자체에 즐거움을 느낍니다.",
-      "projects": [
-        {
-          "title": {
-            "text": "프론트엔드 지식 공유",
-            "githubLink": null,
-            "otherLink": null
-          },
-          "description": "",
-          "startDate": "2021.03",
-          "endDate": "2022.08",
-          "which": [
-            "입문자를 대상으로 프론트엔드 지식 공유를 진행하였습니다."
-          ],
-          "techStack": [
-            "JavaScript",
-            "React"
-          ]
-        },
-        {
-          "title": {
-            "text": "RoR, Django 지식 공유",
-            "githubLink": null,
-            "otherLink": null
-          },
-          "description": "",
-          "startDate": "2018.03",
-          "endDate": "2020.12",
-          "which": [
-            "비전공자, 입문자를 대상으로 백엔드 지식 공유를 진행하였습니다."
-          ],
-          "techStack": [
-            "Ruby",
-            "Ruby on Rails",
-            "Python",
-            "Django"
           ]
         }
       ]

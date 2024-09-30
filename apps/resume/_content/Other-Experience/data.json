@@ -11,7 +11,9 @@
       "startDate": "2024.07",
       "endDate": "2024.08",
       "description": "4주 동안 토스 프론트엔드 리드와 멘토-멘티의 관계를 맺어 학습하는 프로그램입니다.",
-      "which": []
+      "which": [
+        "우수 수료생으로 선정되었습니다."
+      ]
     },
     {
       "title": {
@@ -25,7 +27,8 @@
       "description": "빠른 성능과 작은 번들 사이즈를 자랑하는 JavaScript 유틸리티 라이브러리입니다.",
       "which": [
         "<a href='https://github.com/toss/es-toolkit/pull/417' target='blank'>isRegExp</a>, <a href='https://github.com/toss/es-toolkit/pull/579' target='blank'>isError</a>, <a href='https://github.com/toss/es-toolkit/pull/478' target='blank'>some</a>, <a href='https://github.com/toss/es-toolkit/pull/524' target='blank'>isDate</a>, <a href='https://github.com/toss/es-toolkit/pull/577' target='blank'>isFinite</a> 함수를 추가하였습니다.",
-        "<a href='https://github.com/toss/es-toolkit/pull/591' target='blank'>startCase</a> 함수의 동작을 수정하였습니다."
+        "<a href='https://github.com/toss/es-toolkit/pull/591' target='blank'>startCase</a> 함수의 동작을 수정하였습니다.",
+        "<a href='https://github.com/toss/es-toolkit/pull/604' target='blank'>isSet, isMpa</a> 함수의 문서를 추가하였습니다."
       ]
     },
     {
@@ -136,32 +139,6 @@
         "SEO를 위해 robots.txt 플러그인을 적용하였습니다.<br/>PR 링크: <a href='https://github.com/JaeYeopHan/gatsby-starter-bee/pull/247' target='_blank' rel='noreferrer'>https://github.com/JaeYeopHan/gatsby-starter-bee/pull/247</a>",
         "Social media section에 Instagram을 추가하였습니다.<br/>PR 링크: <a href='https://github.com/JaeYeopHan/gatsby-starter-bee/pull/246' target='_blank' rel='noreferrer'>https://github.com/JaeYeopHan/gatsby-starter-bee/pull/246</a>"
       ]
-    },
-    {
-      "title": {
-        "text": "청년창업 CEO 양성과정",
-        "githubLink": null,
-        "otherLink": null
-      },
-      "position": "우수상",
-      "startDate": "2016.06",
-      "endDate": "2016.08",
-      "description": "고용노동부와 전라북도에서 지원하는 청년창업 과정에서 우수상을 수상하였습니다.",
-      "which": [
-        "치매 예방 기능성 게임을 개발하여 창업하였습니다."
-      ]
-    },
-    {
-      "title": {
-        "text": "전국 Junior 창업 경진 대회",
-        "githubLink": null,
-        "otherLink": null
-      },
-      "position": "우수상",
-      "startDate": "2016.07",
-      "endDate": "2016.08",
-      "description": "한밭대학교 주최의 경진 대회에서 우수상을 수상하였습니다.",
-      "which": []
     }
   ]
 }

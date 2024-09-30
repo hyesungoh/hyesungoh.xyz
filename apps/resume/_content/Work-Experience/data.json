@@ -19,7 +19,7 @@
           "endDate": null,
           "which": [
             "섹션과 페이지 별 머물렀던 시간과 스크롤 정도를 기록할 수 있는 트래킹 시스템을 선언적으로 구축하도록 노력했습니다.",
-            "동적으로 사이트맵을 생성되도록 개발해, 블로그와 이력서 등 동적으로 추가되는 Route를 검색엔진에 빠르게 노출될 수 있도록 하였습니다.",
+            "인증 정보를 포함해, 초기 렌더링에 필요한 값들을 dehydrate, 초기 전역 상태에 저장해 사용자 경험을 개선했습니다.",
             "블로그 개별 페이지의 SSR시 컨텐츠 내용을 조회하도록 수정해 라이트하우스 기준 성능 점수 32점 상승 및 처음으로 그려지는 HTML에 데이터를 노출해 SEO에 이점이 있도록 노력했습니다.",
             "Sentry를 부착해 에러 모니터링 환경을 구축하였습니다."
           ],
@@ -107,7 +107,7 @@
           "startDate": "2023.6",
           "endDate": null,
           "which": [
-            "Nuxt.js로 개발되어 있는 레거시를 Next.js 환경으로 마이그레이션 했습니다."
+            "대시보드의 각 섹션을 병렬적으로 처리하며, 스켈레톤을 적용해 사용자 경험을 개선했습니다."
           ],
           "techStack": [
             "TypeScript",
@@ -115,24 +115,6 @@
             "Emotion",
             "React Hook Form",
             "Antd"
-          ]
-        },
-        {
-          "title": {
-            "text": "App",
-            "githubLink": null,
-            "otherLink": null
-          },
-          "description": "학습에 도움이 되는 자료를 제공하는 App 서비스입니다.",
-          "startDate": "2024.2",
-          "endDate": null,
-          "which": [
-            "환경 설정과 함께 WebView 기반의 개발을 전담했습니다.",
-            "어쩌면 지금까지의 경력 중 가장 큰 실패로 생각될 수 있는 프로젝트입니다."
-          ],
-          "techStack": [
-            "TypeScript",
-            "React Native"
           ]
         },
         {
@@ -147,10 +129,35 @@
           "which": [
             "PR의 작업 범위, diff 크기, 제목을 이용해 라벨링을 자동화해 PR의 시인성을 높이고, 개발자의 부담을 덜 수 있도록 노력했습니다. <br/>관련해 사내 블로그에 기고한 글은 <a href='https://f-lab.kr/blog/wise-use-of-github-actions-in-monorepo' target='_blank' rel='noreferrer'> 다음 링크</a>에서 확인하실 수 있습니다.",
             "직렬적으로 동작하던 CI를 의존 관계에 따라 병렬적으로 동작하도록 변경해 CI 시간을 절반으로 단축시켜 개발자의 생산성을 높였습니다.",
-            "stand alone 빌드 적용 및 배포 과정을 개선해 절반 이상의 시간으로 단축시켰습니다.",
-            "staged된 파일에만 pre-commit git hook이 실행되도록 설정해, 커밋 시 불필요하게 소모되는 시간을 줄여 개발자의 생산성을 높였습니다.",
+            "stand alone 빌드 적용 및 배포 과정을 개선해 기존 50분, 14분 소요되던 과정을 8분으로 단축시켰습니다.",
             "Vitest, Playwright를 이용해 테스트 환경을 구축하고 팀 내에 테스트 문화 도입을 위해 선행하고 있습니다.",
             "매주 진행하는 프론트엔드 챕터 모임에서 팀원의 성장을 위해 새롭게 알게 된 내용 및 도구들을 가장 활발히 공유하며, 성장에 유리한 환경을 만들기 위해 노력합니다."
+          ],
+          "techStack": [
+            "Yarn Berry",
+            "Yarn Workspaces",
+            "Vitest",
+            "React Testing Library",
+            "Codecov",
+            "Playwright",
+            "Github actions",
+            "Husky"
+          ]
+        },
+        {
+          "title": {
+            "text": "조직",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "개발 이외에 회사에 기여할 수 있는 것을 찾아 하였습니다.",
+          "startDate": "2023.06",
+          "endDate": null,
+          "which": [
+            "정기적으로 만들었던 기능의 데이터를 보며, 메이커들에게 효능감을 주고 앞으로의 방향성을 생각할 수 있는 시간을 만들어 운영하고 있습니다.",
+            "회사의 인지도를 위해 연합 동아리들과 직접 연락해 계약을 체결하고 필요한 지원을 제공하고 있습니다.",
+            "<a href='https://f-lab.kr/blog/f-thon-1st-end' target='_blank'>해커톤 행사를 주도적으로 기획하고 운영한 경험</a>이 있습니다.",
+            "컬쳐핏 인터뷰를 리드하고 있습니다."
           ],
           "techStack": [
             "Yarn Berry",
