@@ -1,13 +1,8 @@
-import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
-export function Layout({ children }: PropsWithChildren<unknown>) {
-  return <Div>{children}</Div>;
-}
-
-const Div = styled.div`
+export const Layout = styled.div`
   position: relative;
-  max-width: 700px;
+  max-width: 660px;
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;

@@ -73,7 +73,7 @@ export default class ResumeDocument extends Document {
           <GlobalStyle />
         </Head>
         <body>
-          <Layout>
+          <Layout style={{ maxWidth: '700px' }}>
             <Main />
             <Footer />
           </Layout>
