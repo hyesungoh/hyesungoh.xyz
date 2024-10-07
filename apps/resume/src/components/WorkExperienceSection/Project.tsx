@@ -11,10 +11,12 @@ function Project({ title, description, startDate, endDate, which, techStack }: I
   return (
     <Div>
       <TitleTooltip {...title} />
-      <small>
-        {startDate} ~ {endDate}
-      </small>
-      <span>{description}</span>
+      {startDate && (
+        <small>
+          {startDate} ~ {endDate}
+        </small>
+      )}
+      {description && <span>{description}</span>}
       {which.length > 0 && (
         <ul>
           {which.map((each, index) => (

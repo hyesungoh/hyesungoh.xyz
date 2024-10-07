@@ -18,9 +18,9 @@
           "startDate": "2024.06",
           "endDate": "",
           "which": [
+            "<a href='https://github.com/git-goods/git-animal-client/blob/2bfc92f261b58d77a65c94dbc3cb701cc658ba7e/packages/api/src/_instance/safe.ts#L6-L30' target='_blank'>Zod의 타입 검증과 Axios method를 추상화한 유틸</a>을 개발해 레이어 간 타입 검증을 쉽게 할 수 있도록 하였습니다.",
             "모노레포 패키지 분리 전략을 주도하였습니다.",
-            "사용자의 목소리를 적극 반영할 수 있는 환경을 만들기 위해 노력했습니다.",
-            "게이미피케이션이 가미된 프로젝트가 될 수 있도록 노력했습니다."
+            "사용자의 목소리를 적극 반영할 수 있는 환경을 만들기 위해 노력했습니다."
           ],
           "techStack": [
             "Next.js",
@@ -31,7 +31,8 @@
             "panda-css",
             "Jotai",
             "Framer-motion",
-            "Vercel"
+            "Vercel",
+            "Zod"
           ]
         }
       ]
