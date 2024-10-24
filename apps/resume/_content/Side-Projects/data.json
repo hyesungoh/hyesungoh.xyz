@@ -23,7 +23,8 @@
             "사용자의 목소리를 적극 반영할 수 있는 환경을 만들기 위해 노력했습니다."
           ],
           "techStack": [
-            "Next.js",
+            "React v18",
+            "Next.js v14 w/ app",
             "TypeScript",
             "Turborepo",
             "TanStack/React Query",
@@ -111,42 +112,6 @@
         },
         {
           "title": {
-            "text": "아맞다",
-            "githubLink": "https://github.com/depromeet/ahmatda-web",
-            "otherLink": null
-          },
-          "description": "소지품 리마인드를 위한 웹뷰 기반 모바일 서비스입니다.",
-          "startDate": "2022.10",
-          "endDate": null,
-          "which": [
-            "제가 작성한 PR은 <a href='https://github.com/depromeet/ahmatda-web/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
-            "<a href='https://github.com/depromeet/ahmatda-app' target='_blank' rel='noopener noreferrer'>웹뷰 형태의 RN 어플리케이션</a> 개발을 주도했습니다."
-          ],
-          "techStack": [
-            "Next.js",
-            "React-Native",
-            "TypeScript",
-            "Yarn Berry",
-            "Emotion",
-            "Framer-motion",
-            "Recoil",
-            "TanStack/React Query",
-            "Jest",
-            "React Testing Library",
-            "Codecov",
-            "Playwright",
-            "Github actions",
-            "CodeQL",
-            "Husky",
-            "GA",
-            "Hotjar",
-            "Mixpanel",
-            "Sentry",
-            "Cloudflare Pages"
-          ]
-        },
-        {
-          "title": {
             "text": "www.depromeet.com",
             "githubLink": "https://github.com/depromeet/www.depromeet.com/releases/tag/v4.0.2",
             "otherLink": "https://www-depromeet-com-git-feat-spons-14da9b-depromeet-official-site.vercel.app/"
@@ -186,7 +151,7 @@
           "endDate": null,
           "which": [
             "22년 7월 기준 앱 스토어 생산성 카테고리 113위를 달성했었습니다.",
-            "23년 7월 기준 MAU 200명대를 기록하고 있습니다.",
+            "출시 이후 꾸준히 MAU 200명대를 기록하고 있습니다.",
             "제가 작성한 PR은 <a href='https://github.com/depromeet/ygtang-client/pulls?q=is%3Apr+author%3Ahyesungoh+sort%3Acreated-asc' target='_blank' rel='noopener noreferrer'>다음 링크</a>에서 확인할 수 있습니다.",
             "지표를 근거로 회원가입 플로우의 리뉴얼을 리드해, 회원가입 시 이탈률을 30% 감소시켰습니다.",
             "수집한 지표를 Mixpanel을 통해 시각화 및 분석하여 운영에 반영하고 있습니다.",
