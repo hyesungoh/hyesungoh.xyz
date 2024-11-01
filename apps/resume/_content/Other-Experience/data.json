@@ -28,7 +28,7 @@
       "which": [
         "<a href='https://github.com/toss/es-toolkit/pull/417' target='blank'>isRegExp</a>, <a href='https://github.com/toss/es-toolkit/pull/579' target='blank'>isError</a>, <a href='https://github.com/toss/es-toolkit/pull/478' target='blank'>some</a>, <a href='https://github.com/toss/es-toolkit/pull/524' target='blank'>isDate</a>, <a href='https://github.com/toss/es-toolkit/pull/577' target='blank'>isFinite</a> 함수를 추가하였습니다.",
         "<a href='https://github.com/toss/es-toolkit/pull/591' target='blank'>startCase</a> 함수의 동작을 수정하였습니다.",
-        "<a href='https://github.com/toss/es-toolkit/pull/604' target='blank'>isSet, isMpa</a> 함수의 문서를 추가하였습니다."
+        "<a href='https://github.com/toss/es-toolkit/pull/604' target='blank'>isSet, isMap</a> 함수의 문서를 추가하였습니다."
       ]
     },
     {

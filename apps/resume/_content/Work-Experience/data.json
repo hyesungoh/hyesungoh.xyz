@@ -18,8 +18,8 @@
           "startDate": null,
           "endDate": null,
           "which": [
-            "멘티와 멘토용 플랫폼의 다기능 대시보드를 개발했습니다. Suspense와 Error Boundary를 활용해 선언적인 로딩 및 에러 처리를 구현했으며, Suspensive를 통해 컴포넌트의 책임을 명확히 분리하여 결합도를 낮췄습니다.",
-            "판매 페이지의 섹션별 이벤트 추적 시 발생하는 관심사 분리 문제를 해결하기 위해, 섹션과 페이지별 체류 시간 및 스크롤 정도를 기록하는 선언적 트래킹 컴포넌트를 구현했습니다. 이를 통해 코드의 가독성과 유지보수성을 크게 향상시켰습니다.",
+            "멘티와 멘토용 플랫폼의 다기능 대시보드를 개발했습니다. Suspense와 Error Boundary를 활용해 선언적인 로딩 및 에러 처리를 구현했으며, <a href='https://suspensive.org/ko/docs/react/wrap' target='_blank'>Suspensive의 wrap api</a>를 통해 컴포넌트의 책임을 명확히 분리하여 결합도를 낮췄습니다.",
+            "판매 페이지의 섹션별 이벤트 추적 시 발생하는 관심사 분리 문제를 해결하기 위해, 섹션의 체류 시간과 페이지 스크롤 정도를 기록하는 선언적 트래킹 컴포넌트를 구현했습니다. 이를 통해 코드의 가독성과 유지보수성을 크게 향상시켰습니다.",
             "인터랙션을 선언적으로 만들 수 있는 framer-motion을 선호하며, <a href='https://github.com/framer/motion/pull/2758' target='_blank' rel='noreferrer'>내부 동작의 버그를 찾아 PR을 작성한 경험</a>이 있습니다."
           ],
           "techStack": []
