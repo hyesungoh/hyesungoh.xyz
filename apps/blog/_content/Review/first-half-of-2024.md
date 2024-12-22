@@ -1,5 +1,6 @@
 ---
 title: '도움이 되지 않는 달리기는 없다'
+subtitle: '2024년 상반기 회고'
 date: 2024-08-04 19:24:00
 category: 'Review'
 ---
