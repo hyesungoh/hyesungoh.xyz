@@ -2,11 +2,32 @@
   "title": "경력",
   "list": [
     {
+      "name": "모요",
+      "position": "프론트엔드 개발자",
+      "startDate": "2024.12",
+      "endDate": null,
+      "description": "모두에게 통신을 쉽고 정직하게 만드는 과정에 함께하고 있습니다",
+      "projects": [
+        {
+          "title": {
+            "text": "근무중",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": null,
+          "endDate": null,
+          "which": [],
+          "techStack": []
+        }
+      ]
+    },
+    {
       "name": "F-Lab & Company",
       "position": "프론트엔드 개발자",
       "startDate": "2023.06",
-      "endDate": null,
-      "description": "24년 3월부터 사내 1인 프론트엔드 개발자로써 클라이언트 개발을 전담하고 있습니다.",
+      "endDate": "2024.12",
+      "description": "24년 3월부터 사내 1인 프론트엔드 개발자로써 클라이언트 개발을 전담했습니다.",
       "projects": [
         {
           "title": {
