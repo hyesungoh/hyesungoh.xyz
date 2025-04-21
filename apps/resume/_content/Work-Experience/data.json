@@ -2,15 +2,36 @@
   "title": "경력",
   "list": [
     {
-      "name": "모요",
+      "name": "비바리퍼블리카 (토스)",
       "position": "프론트엔드 개발자",
-      "startDate": "2024.12",
+      "startDate": "2025.04",
       "endDate": null,
-      "description": "모두에게 통신을 쉽고 정직하게 만드는 과정에 함께하고 있습니다",
+      "description": "",
       "projects": [
         {
           "title": {
-            "text": "근무중",
+            "text": "재직중",
+            "githubLink": null,
+            "otherLink": null
+          },
+          "description": "",
+          "startDate": null,
+          "endDate": null,
+          "which": [],
+          "techStack": []
+        }
+      ]
+    },
+    {
+      "name": "모요",
+      "position": "프론트엔드 개발자",
+      "startDate": "2024.12",
+      "endDate": "2025.04",
+      "description": "모두에게 통신을 쉽고 정직하게 만드는 비전을 가지고 있는 통신 도메인 스타트업입니다.",
+      "projects": [
+        {
+          "title": {
+            "text": "TBD",
             "githubLink": null,
             "otherLink": null
           },
