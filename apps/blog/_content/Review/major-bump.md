@@ -1,7 +1,7 @@
 ---
 title: 'Major bump'
 subtitle: '2025년 하반기 회고'
-date: 2025-01-07 19:24:00
+date: 2026-01-12 19:24:00
 category: 'Review'
 ---
 
