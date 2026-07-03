@@ -7,6 +7,8 @@ import SEO from '../components/SEO';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import { getAllPosts } from '../lib/api';
 import PostType from '../types/post';
+import { useMediaQuery } from 'core';
+import { MissingStaticPage } from 'next/dist/shared/lib/utils';
 
 interface Props {
   allPosts: PostType[];
