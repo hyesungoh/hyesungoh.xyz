@@ -285,6 +285,31 @@
 <p>경험이 적은 시기에 읽었더라면 공감이 되지 않을 내용들이 몇 있었다고 생각하기 때문인데요. 외로 단지 인지 심리학에 관심이 많은 사람이라면 몇 챕터들을 취사섭취해보면 좋지 않을까라는 생각이 들긴 합니다.</p>]]>
     </content:encoded>
   </item><item>
+    <title><![CDATA['다시 소프트웨어 엔지니어'를 읽고]]></title>
+    <link>https://www.hyesungoh.xyz/다시-소프트웨어-엔지니어</link>
+    <pubDate>2025-09-08</pubDate>
+    <guid isPermaLink="false">https://www.hyesungoh.xyz/다시-소프트웨어-엔지니어</guid>
+    <description>
+    <![CDATA[다시-소프트웨어-엔지니어]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p><img src="https://github.com/user-attachments/assets/5ce4b2cf-f435-4e15-b4c2-5565f3ac61aa" alt="다시 소프트웨어 엔지니어"></p>
+<p>스터디 진행 내용은 <a href="https://github.com/muhandojeon/Fundamentals-of-Software-Engineering" target="_blank" rel="noopener noreferer">다음 주소</a>에서 확인할 수 있다.</p>
+<h2 id="읽게-된-계기" class="heading">읽게 된 계기</h2>
+<p>광고로 이 책을 알게 됐다. 나는 알고리즘에 책 광고에 대한 CPC(Cost Per Click)가 참 낮은 사람으로 인식되어 있을 것이다.</p>
+<p>교육 사업이 잘 되는 방법은 공포를 파는 것이라고 그랬나, 요즘의 모든 개발자들은 조금씩 공포를 가지고 있을 것이라 생각한다.</p>
+<p>그것이 대체되는 것에서 오는 공포이든, FOMO이든</p>
+<p>그 공포심 때문일까, 스터디원들도 이 책을 읽고 싶어하였고 이번 스터디의 책으로 정해졌다.</p>
+<h2 id="읽은-후-느낀-점" class="heading">읽은 후 느낀 점</h2>
+<p>책 내용 자체는 주니어가 읽기에 적합하다 생각한다. 요즘 세상에서 말하는 T자형 인재가 되는, 혹은 소프트웨어 서비스의 기본이 되는 개념들을 설명하고 소프트웨어 엔지니어로써 일한다는 것은 무엇인지 말한다.</p>
+<p>다만 내가 막연히 기대했던 (은탄환을 또 막연히 기대했나 싶지만) 'AI에게 대체되지 않는 방법' 같은 비밀은 없었다.</p>
+<p>기술도 빠르게 발전함에 따라서 책이 말하는 최신 기술은 이미 낡은게 되어버렸다 생각한다.</p>
+<br />
+<p>이런 부분들을 책을 통해 찾으려 했던 것이 욕심인 것은 알지만, 내 기대가 높았던 탓이지 않을까 싶다.</p>
+<p>책의 원제목은 'Fundamentals of Software Engineering'인데, 국내 출판사가 판매량을 높히기 위해 AI 브랜딩을 씌우진 않았나 싶기도하고.</p>
+<p>AI에 대한 부분들의 만족도가 낮은것이지, 그것 외에 책이 추천하는 다른 책들이라던가, 설명하는 개념들이라던가, 개발자로써의 자세라던가. 이미 유명한 다른 명저들을 읽지 않은 대학생, 주니어들에게는 취사 섭취를 추천할만한 책이라 생각된다.</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA['구글 엔지니어는 이렇게 일한다'를 읽고]]></title>
     <link>https://www.hyesungoh.xyz/구글-엔지니어는-이렇게-일한다</link>
     <pubDate>2025-08-23</pubDate>
